@@ -1,0 +1,8 @@
+<rules-template>
+ <site>
+  <regurl>finance.sina.com.cn</regurl>
+  <tag>h1 id=artibodyTitle</tag>
+  <beginPattern></beginPattern>
+  <endPattern></endPattern>
+ </site>
+</rules-template>

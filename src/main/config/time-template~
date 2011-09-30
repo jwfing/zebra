@@ -1,0 +1,14 @@
+<rules-template>
+ <site>
+  <regurl>finance.sina.com.cn</regurl>
+  <tag>span</tag>
+  <attributes>
+   <attribute>
+    <key>id</key>
+    <value>pub_date</value>
+   </attribute>
+  </attributes>
+  <beginPattern></beginPattern>
+  <endPattern></endPattern>
+ </site>
+</rules-template>

@@ -1,0 +1,328 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<script src="http://www.sohu.com/sohuflash_1.js" type=text/javascript></script>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>国内要闻-搜狐新闻</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<style type=text/css>
+.ui_top{color:#000000;font-size:12px;line-height:18px;}
+.ui_top a:link{color:#000000;text-decoration:none;}
+.ui_top a:visited{color:#000000;text-decoration:none;}
+.ui_top a:hover {color:#000000;text-decoration:underline;}
+
+.up1 {color:656565;line-height:18px;font-size:12px}
+.up1 td{color:#656565;line-height:18px;font-size:12px}
+.up1 A:link {color:#656565;text-decoration:none;line-height:18px;font-size:12px}
+.up1 A:Visited {color:#656565;text-decoration:none;}
+.up1 A:Hover {color:#656565;TEXT-DECORATION: underline;}
+
+td,body,input,select {font-size: 12px;color:#333333;}
+a:hover {color:#005EF9;text-decoration: underline;}
+
+
+.eng {font-size: 11px; font-family: arial,helvetica}
+.white {font-size: 12px;color: #FFFFFF;	text-decoration: none;}
+.treeline{font-size: 12px;color: #54DEFF;	text-decoration: none;}
+
+a.white:hover {color:#FFEFA5}
+
+.blue {	text-decoration: underline;color:#000099;line-height: 18px;}
+
+.finput {BORDER-RIGHT: 0px ridge;BORDER-TOP: 1px ridge #727272;	BORDER-LEFT: 1px ridge #727272;	BORDER-BOTTOM: 0px ridge;font-size: 12px;}
+.black {
+	color: #333333;
+	text-decoration: none;
+	line-height: 19px;
+	font-size: 12px;
+}
+.black2 {color: #333333;text-decoration: none;line-height: 15px;}
+.foxinput {BORDER-RIGHT: 1px ridge; BORDER-TOP: #ffffff 1px ridge; BORDER-LEFT: #ffffff 1px }
+
+.newstitle {
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+	line-height: 22px;
+}
+.gray {	font-size: 12px;line-height: 20px;color: #656565;text-decoration: none;}
+.newsblue1 {
+	font-size: 14px;
+	line-height: 21px;
+	color: #0F0CBF;
+}
+.newsblue2 {
+	font-size: 12px;
+	color: #002DF0;
+	text-decoration: none;
+}
+.newsblue3 {
+	font-size: 12px;
+	color: #0F0CBF;
+	line-height: 18px;
+
+}
+.newsblue4 {
+	font-size: 14px;
+	line-height: 23px;
+	color: #0F0CBF;
+}
+li {
+	margin-left: 10px;
+	list-style-type: square;
+	list-style-image: url(/nimages/cc_blue.gif);
+
+
+
+}
+.yellow1 {
+	font-size: 12px;
+	color: #FFD98F;
+}
+.newsblue5 {
+	color: #005ef9;
+	text-decoration: none;
+	line-height: 18px;
+
+}
+.newst1,a.newst1:hover {
+	color: #FEC34E;
+	text-decoration: none;
+}
+.newsred1,a.newsred1:hover {
+	color: #FF8D12;
+	text-decoration: none;
+}
+.newstop {color: #333333;text-decoration: none;line-height: 15px;}
+a.newstop:hover {color:#333333;text-decoration:  underline;}
+.newstop2 {color: #333333;text-decoration: none;line-height: 18px;}
+a.newstop2:hover {color:#333333;text-decoration:  underline;}
+.navigater {color: #333333;text-decoration: none;line-height: 19px;font-size: 12px;}
+a.blue:hover{color:#cc0000;}
+a.navigater:hover{color:#cc0000;}
+.news_img {border-color: #000000;}
+.newsblue0,a.newsblue0:visited {font-size: 14px;line-height: 21px;color: #0F0CBF;}
+a.newsblue1:visited,a.newsblue2:visited,a.newsblue3:visited,a.newsblue4:visited {color:#800080}
+.ui_nav1,a.ui_nav1:visited {color: #D91200;line-height:20px;text-decoration: none;}
+a.ui_nav1:hover{color: #D91200;text-decoration:underline;}
+
+.newsblue1 A:link{ 
+font-size: 14px;
+	line-height: 21px;
+	color: #0F0CBF;
+}
+.newsblue1 A:hover{ 
+color:#005ef9
+}
+
+.newsblue1 span{ 
+font-size:10px;color:gray
+}</style>
+
+<link href=/wimages/ui.css rel=stylesheet type=text/css>
+
+</head>
+<body topmargin=4 leftmargin=0>
+<center>
+<img src=http://images.sohu.com/ccc.gif width=1 height=5><br>
+<table width=760 border=0 cellpadding=0 cellspacing=0>
+<tr valign=top>
+<td width=114 valign=top><TABLE cellSpacing=0 cellPadding=0 border=0>
+<TBODY>
+<TR>
+<TD width=87><IMG height=22 src="http://images.sohu.com/uiue/sohu_logo/2005/sohu_logo2.gif" border=0></TD>
+<TD bgColor=#efebef><A href="http://news.sohu.com"><IMG height=22 src="http://images.sohu.com/uiue/sohu_logo/2006/news_logo2.gif" border=0></A></TD></TR></TBODY></TABLE></td>
+<td width=646 align=right class=ui_top valign=bottom bgcolor=#EFEBEF>
+<style type="text/css">.ui_top a{padding:0 2px 0 2px;}</style>
+	<table cellspacing=0 cellpadding=0 border=0>
+		<tr><td class=ui_top valign=bottom align=right><a href="http://www.sohu.com/">搜狐首页</a>-<a href="http://news.sohu.com/"><font color=#ff0000>新闻</font></a>-<a href="http://sports.sohu.com/">体育</a>-<a href="http://yule.sohu.com/">娱乐</a>-<a href="http://business.sohu.com/"><font color=#ff0000>财经</font></a>-<a href="http://it.sohu.com/">IT</a>-<a href="http://auto.sohu.com/">汽车</a>-<a href="http://house.sohu.com/">房产</a>-<a href="http://home.sohu.com/">家居</a>-<a href="http://women.sohu.com/">女人</a>-<a href="http://tv.sohu.com/">TV</a>-<a href="http://www.chinaren.com">ChinaRen</a>-<a href="http://login.mail.sohu.com/">邮件</a>-<a href="http://blog.sohu.com/">博客</a>-<a href="http://club.sohu.com/">BBS</a>-<a href="http://www.sogou.com">搜狗</font>&nbsp;</td></tr>
+	</table></td></tr>
+</table> 
+	
+<table width=760 border=0 cellpadding=0 cellspacing=0>
+<tr><td height=24 style="text-indent:7px">
+
+</td>
+
+</tr>
+</table>
+<table width=760 border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td width=590 valign=top align=left>
+ <!------滚动疴铄-------->
+<table width="590" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td bgcolor="#333333"><img src="/images/cc.gif" width="1" height="1"></td>
+          </tr>
+          <tr> 
+            <td height="26" class=newstitle>
+            <a href=http://news.sohu.com/>新闻中心</a> &gt; <a href=http://news.sohu.com/guoneixinwen.shtml>国内新闻</a> &gt; <a href=http://news.sohu.com/1/0903/61/subject212846158.shtml>国内要闻</a>
+			</td>
+          </tr>
+          <tr> 
+            <td bgcolor="#333333"><img src="/images/cc.gif" width="1" height="1"></td>
+          </tr>
+          <tr> 
+            <td height="10"><img src="/images/cc.gif" width="1" height="1"></td>
+          </tr>
+        </table>
+
+
+
+ <table width="100%" border="0" align="left">
+
+
+ <tr>
+ <td class=newsblue1> 
+  ·<a href=http://news.sohu.com/20110728/n314735019.shtml target=_blank>福州建设海峡西岸航空枢纽 多政策推动航线建设</a><span>(07/28 00:22)</span><br>·<a href=http://news.sohu.com/20110728/n314734181.shtml target=_blank>三亚建热带滨海旅游城 吸引世界各地游客买房产</a><span>(07/28 00:05)</span><br>·<a href=http://news.sohu.com/20110728/n314734243.shtml target=_blank>湖南持续高温旱情蔓延 700万亩农田遇严重干旱</a><span>(07/28 00:05)</span><br>·<a href=http://news.sohu.com/20110728/n314734244.shtml target=_blank>甘肃华锐藏族特色婚俗后继乏人 或面临失传危机</a><span>(07/28 00:05)</span><br>·<a href=http://news.sohu.com/20110727/n314733789.shtml target=_blank>重庆首条地铁即将开通 轨道民警将跟车巡逻</a><span>(07/27 23:43)</span><br>·<a href=http://news.sohu.com/20110727/n314733794.shtml target=_blank>成都查“口水油”连锁火锅店 全市门店停业(图)</a><span>(07/27 23:42)</span><br>·<a href=http://news.sohu.com/20110727/n314733088.shtml target=_blank>福建规范事业单位招聘 杜绝因人设岗、量身定做</a><span>(07/27 23:19)</span><br>·<a href=http://news.sohu.com/20110727/n314732830.shtml target=_blank>28日宁夏迎来降雨 暂别酷热难耐“烧烤”天</a><span>(07/27 23:06)</span><br>·<a href=http://news.sohu.com/20110727/n314732682.shtml target=_blank>绵阳官方回应延迟公布涪江水质受污染质疑(图)</a><span>(07/27 22:35)</span><br>·<a href=http://news.sohu.com/20110727/n314732878.shtml target=_blank>浙大称与湖南新型瘦肉精案无关 涉案教授已回校</a><span>(07/27 22:34)</span><br>·<a href=http://news.sohu.com/20110727/n314732437.shtml target=_blank>重庆检方上半年查办职务犯罪641人 涉6厅级官员</a><span>(07/27 22:31)</span><br>·<a href=http://news.sohu.com/20110727/n314731780.shtml target=_blank>宜昌连日遭雷雨大风冰雹 致1760公顷农作物绝收</a><span>(07/27 22:22)</span><br>·<a href=http://news.sohu.com/20110727/n314731803.shtml target=_blank>新个税法实施条例发布 外籍人可享附加减免费用</a><span>(07/27 22:18)</span><br>·<a href=http://news.sohu.com/20110727/n314731919.shtml target=_blank>国内最大民用遥感无人机实现同机双载遥感飞行</a><span>(07/27 22:07)</span><br>·<a href=http://news.sohu.com/20110727/n314731743.shtml target=_blank>厦门构建游艇产业链 将设中国内地首家游艇超市</a><span>(07/27 22:06)</span><br>·<a href=http://news.sohu.com/20110727/n314731195.shtml target=_blank>北京顺义龙湾屯三措施保“三电”安全运行</a><span>(07/27 21:58)</span><br>·<a href=http://news.sohu.com/20110727/n314731003.shtml target=_blank>食品药品监管局规范保健食品有关行政许可事项</a><span>(07/27 21:56)</span><br>·<a href=http://news.sohu.com/20110727/n314731004.shtml target=_blank>公安机关坚决预防重特大道路交通事故会召开</a><span>(07/27 21:56)</span><br>·<a href=http://news.sohu.com/20110727/n314730910.shtml target=_blank>中国规范互联网公司收集用户个人信息行为</a><span>(07/27 21:50)</span><br>·<a href=http://news.sohu.com/20110727/n314731062.shtml target=_blank>湖北今年援建新疆兵团农五师18项目 总投资6亿</a><span>(07/27 21:39)</span><br>·<a href=http://news.sohu.com/20110727/n314731082.shtml target=_blank>山西部分地区持续高温 中医专家建议偷闲消夏</a><span>(07/27 21:39)</span><br>·<a href=http://news.sohu.com/20110727/n314730691.shtml target=_blank>山东威海6人因暴雨洪涝死亡 一万多间房屋倒塌</a><span>(07/27 21:38)</span><br>·<a href=http://news.sohu.com/20110727/n314731063.shtml target=_blank>浙江乐清一“霸王”搬运队被判刑</a><span>(07/27 21:38)</span><br>·<a href=http://news.sohu.com/20110727/n314730348.shtml target=_blank>中俄驻俄罗斯远东地区代表呼吁加强新闻合作</a><span>(07/27 21:32)</span><br>·<a href=http://news.sohu.com/20110727/n314730010.shtml target=_blank>广东审议扶贫开发条例 扶贫工作走上法制化轨道</a><span>(07/27 21:13)</span><br>·<a href=http://news.sohu.com/20110727/n314729780.shtml target=_blank>韩正：上海“两个中心”建设要把握好三个注重</a><span>(07/27 21:11)</span><br>·<a href=http://news.sohu.com/20110727/n314729660.shtml target=_blank>上海出台健康促进规划 与医改同步推进</a><span>(07/27 21:03)</span><br>·<a href=http://news.sohu.com/20110727/n314729490.shtml target=_blank>江苏南通山羊死亡 农业部鉴定发病与疫苗无关</a><span>(07/27 20:58)</span><br>·<a href=http://news.sohu.com/20110727/n314729400.shtml target=_blank>浙江桐乡一纺织厂仓库起火 几十吨毛纱被烧毁</a><span>(07/27 20:50)</span><br>·<a href=http://news.sohu.com/20110727/n314729412.shtml target=_blank>公安部要求8月底前对所有营运客车等进行检查</a><span>(07/27 20:48)</span><br>·<a href=http://news.sohu.com/20110727/n314729452.shtml target=_blank>北京与外埠合力严格食品准入 建乳粉等追溯系统</a><span>(07/27 20:47)</span><br>·<a href=http://news.sohu.com/20110727/n314729429.shtml target=_blank>中国决定向埃塞俄比亚等国提供紧急粮食援助</a><span>(07/27 20:46)</span><br>·<a href=http://news.sohu.com/20110727/n314729430.shtml target=_blank>风雹洪涝再袭河北 气象灾害已致10死2失踪</a><span>(07/27 20:46)</span><br>·<a href=http://news.sohu.com/20110727/n314729299.shtml target=_blank>中国向埃塞俄比亚肯尼亚吉布提提供粮食援助</a><span>(07/27 20:43)</span><br>·<a href=http://news.sohu.com/20110727/n314729223.shtml target=_blank>中方将按世贸规则处理与欧盟X射线安检设备争端</a><span>(07/27 20:41)</span><br>·<a href=http://news.sohu.com/20110727/n314729155.shtml target=_blank>涪江绵阳段水质好转但仍不达标 自来水不可饮用</a><span>(07/27 20:39)</span><br>·<a href=http://news.sohu.com/20110727/n314729547.shtml target=_blank>北京学校体育场地设施今后5年开放率将达70%</a><span>(07/27 20:38)</span><br>·<a href=http://news.sohu.com/20110727/n314729125.shtml target=_blank>海南高院要求市县政府申请强拆须提交风险评估</a><span>(07/27 20:27)</span><br>·<a href=http://news.sohu.com/20110727/n314728980.shtml target=_blank>公安部：排查隐患 坚决遏制重特大道路交通事故</a><span>(07/27 20:26)</span><br>·<a href=http://news.sohu.com/20110727/n314729042.shtml target=_blank>科研人员发现肿瘤细胞调控关键因子和新机制</a><span>(07/27 20:15)</span><br>·<a href=http://news.sohu.com/20110727/n314729126.shtml target=_blank>海南“亮剑”行动捣毁16个制假窝点 抓嫌犯92人</a><span>(07/27 20:15)</span><br>·<a href=http://news.sohu.com/20110727/n314728638.shtml target=_blank>北京延庆新增两处市级地下文物埋藏区</a><span>(07/27 20:14)</span><br>·<a href=http://news.sohu.com/20110727/n314728523.shtml target=_blank>国防部发言人就中美军事关系、南海问题等答问</a><span>(07/27 20:12)</span><br>·<a href=http://news.sohu.com/20110727/n314728563.shtml target=_blank>内蒙古东南部洪灾致赤峰8人死 冲毁农田10万亩</a><span>(07/27 20:11)</span><br>·<a href=http://news.sohu.com/20110727/n314728591.shtml target=_blank>广东公布审计报告 七个省直部门问题被曝光</a><span>(07/27 20:07)</span><br>·<a href=http://news.sohu.com/20110727/n314727949.shtml target=_blank>上海高楼玻璃幕墙连发爆裂坠落事件引市民关注</a><span>(07/27 19:53)</span><br>·<a href=http://news.sohu.com/20110727/n314727492.shtml target=_blank>重庆聘任20名律师维护公安民警正当执法权益</a><span>(07/27 19:45)</span><br>·<a href=http://news.sohu.com/20110727/n314727098.shtml target=_blank>银监会：下半年将紧抓房地产贷款风险</a><span>(07/27 19:33)</span><br>·<a href=http://news.sohu.com/20110727/n314726957.shtml target=_blank>上海将白领纳入保障房体系 或吸引更多城市效仿</a><span>(07/27 19:32)</span><br>·<a href=http://news.sohu.com/20110727/n314727010.shtml target=_blank>山西半数县市土壤存在旱情 重旱近两成</a><span>(07/27 19:28)</span><br>·<a href=http://news.sohu.com/20110727/n314727097.shtml target=_blank>刘明康：下半年要深入推进平台贷款风险防控</a><span>(07/27 19:27)</span><br>·<a href=http://news.sohu.com/20110727/n314726441.shtml target=_blank>网曝沪七月飞雪网友叹奇迹 气象局称可能性不大</a><span>(07/27 19:26)</span><br>·<a href=http://news.sohu.com/20110727/n314726886.shtml target=_blank>调查指九成上海人不知合理使用抗生素基本知识</a><span>(07/27 19:22)</span><br>·<a href=http://news.sohu.com/20110727/n314726754.shtml target=_blank>新疆阿拉尔市20年一遇特大冰雹 果农损失惨重</a><span>(07/27 19:21)</span><br>·<a href=http://news.sohu.com/20110727/n314726755.shtml target=_blank>江西新余一医院院长借采购设备之机敛财被判刑</a><span>(07/27 19:21)</span><br>·<a href=http://news.sohu.com/20110727/n314728963.shtml target=_blank>安徽涡阳村民纷纷“被有病” 卫生院骗取新农合</a><span>(07/27 19:20)</span><br>·<a href=http://news.sohu.com/20110727/n314726627.shtml target=_blank>福建泉州破部督拐卖儿童案 解救13儿童捕35嫌犯</a><span>(07/27 19:19)</span><br>·<a href=http://news.sohu.com/20110727/n314725872.shtml target=_blank>武警院校体制编制调整启动 将由27所精简为14所</a><span>(07/27 19:11)</span><br>·<a href=http://news.sohu.com/20110727/n314725841.shtml target=_blank>人社部：须尽快研究社会保险基金保值增值办法</a><span>(07/27 19:10)</span><br>·<a href=http://news.sohu.com/20110727/n314725842.shtml target=_blank>我国正在研究职工与城镇居民养老保险转移衔接</a><span>(07/27 19:10)</span><br>·<a href=http://news.sohu.com/20110727/n314726115.shtml target=_blank>银川一在建工地突发大火 未造成人员伤亡(组图)</a><span>(07/27 19:10)</span><br>·<a href=http://news.sohu.com/20110727/n314725893.shtml target=_blank>组图：大巴车沪昆高速江西段追尾 4人死20余伤</a><span>(07/27 19:08)</span><br>·<a href=http://news.sohu.com/20110727/n314726114.shtml target=_blank>民政部针对山东暴雨洪涝灾情启动国家四级响应</a><span>(07/27 19:08)</span><br>·<a href=http://news.sohu.com/20110727/n314725486.shtml target=_blank>审计暴露山东政府性债务问题多</a><span>(07/27 19:01)</span><br>·<a href=http://news.sohu.com/20110727/n314725487.shtml target=_blank>民政部:已有数万孤残儿童通过涉外收养回归家庭</a><span>(07/27 18:57)</span><br>·<a href=http://news.sohu.com/20110727/n314725429.shtml target=_blank>阿坝州锰渣污染涪江 重庆各监测断面水质正常</a><span>(07/27 18:56)</span><br>·<a href=http://news.sohu.com/20110727/n314725488.shtml target=_blank>山东百吨遭到污染洋葱被贱卖 能否食用尚无定论</a><span>(07/27 18:56)</span><br>·<a href=http://news.sohu.com/20110727/n314725077.shtml target=_blank>温家宝主持召开国务院常务会议</a><span>(07/27 18:48)</span><br>·<a href=http://news.sohu.com/20110727/n314725189.shtml target=_blank>重庆维护公安民警正当执法权益律师顾问团成立</a><span>(07/27 18:48)</span><br>·<a href=http://news.sohu.com/20110727/n314725192.shtml target=_blank>国防部：望中美两军管控分歧共推关系健康发展</a><span>(07/27 18:48)</span><br>·<a href=http://news.sohu.com/20110727/n314724675.shtml target=_blank>成都为30万低收入居民发放价格补贴</a><span>(07/27 18:34)</span><br>·<a href=http://news.sohu.com/20110727/n314724130.shtml target=_blank>中国短道速滑队爆发内部冲突 王濛等人受伤</a><span>(07/27 18:23)</span><br>·<a href=http://news.sohu.com/20110727/n314724263.shtml target=_blank>山东部分地区遭受风灾 玉米大面积倒伏</a><span>(07/27 18:22)</span><br>·<a href=http://news.sohu.com/20110727/n314724676.shtml target=_blank>江西连续6天发布高温预警 防暑药品销售火爆</a><span>(07/27 18:18)</span><br>·<a href=http://news.sohu.com/20110727/n314724235.shtml target=_blank>北京体育局副局长：全市49.1%人常参加体育锻炼</a><span>(07/27 18:11)</span><br>·<a href=http://news.sohu.com/20110727/n314720529.shtml target=_blank>山东遇严重暴雨洪涝灾情 威海42.3万人受灾6死</a><span>(07/27 17:44)</span><br>·<a href=http://news.sohu.com/20110727/n314720294.shtml target=_blank>专家：三峡仅对库区20公里内气温和降水有影响</a><span>(07/27 17:42)</span><br>·<a href=http://news.sohu.com/20110727/n314720552.shtml target=_blank>国防部否认中国军舰在南海驱赶外国渔船渔民</a><span>(07/27 17:42)</span><br>·<a href=http://news.sohu.com/20110727/n314719531.shtml target=_blank>国防部：美军舰机对华抵近侦察损害战略互信</a><span>(07/27 17:36)</span><br>·<a href=http://news.sohu.com/20110727/n314719378.shtml target=_blank>钱江三桥通车前就有严重隐患 监管不力终引坍塌</a><span>(07/27 17:35)</span><br>·<a href=http://news.sohu.com/20110727/n314719210.shtml target=_blank>湖南遭遇大范围高温天气</a><span>(07/27 17:32)</span><br>·<a href=http://news.sohu.com/20110727/n314719144.shtml target=_blank>近期华北东北等暴雨洪涝风雹造成57人死亡失踪</a><span>(07/27 17:31)</span><br>·<a href=http://news.sohu.com/20110727/n314721649.shtml target=_blank>阿坝州锰渣污染事件对下游重庆水域水质无影响</a><span>(07/27 17:31)</span><br>·<a href=http://news.sohu.com/20110727/n314720547.shtml target=_blank>绵阳涪江河水污染事件续：多方配送生活用水</a><span>(07/27 17:26)</span><br>·<a href=http://news.sohu.com/20110727/n314718890.shtml target=_blank>台军F-16战机特技表演 噪音损坏3间铁皮屋(图)</a><span>(07/27 17:24)</span><br>·<a href=http://news.sohu.com/20110727/n314718250.shtml target=_blank>基层铁路职工工作环境差 毕业八年月薪两千六七</a><span>(07/27 17:23)</span><br>·<a href=http://news.sohu.com/20110727/n314717344.shtml target=_blank>外管局称外储免费用相当于随意印钞 将带来通胀</a><span>(07/27 17:15)</span><br>·<a href=http://news.sohu.com/20110727/n314717038.shtml target=_blank>深圳否认“无偿收回”说 如何续期物权法未规定</a><span>(07/27 17:13)</span><br>·<a href=http://news.sohu.com/20110727/n314719526.shtml target=_blank>美军舰机对华抵近侦察是制约两军关系障碍之一</a><span>(07/27 17:13)</span><br>·<a href=http://news.sohu.com/20110727/n314717867.shtml target=_blank>组图：贵州黔西县旱情严重 百姓饮水告急</a><span>(07/27 17:12)</span><br>·<a href=http://news.sohu.com/20110727/n314718978.shtml target=_blank>国防部：中美应正视矛盾分歧 不做有损关系之事</a><span>(07/27 17:04)</span><br>·<a href=http://news.sohu.com/20110727/n314718802.shtml target=_blank>四川绵阳水质污染指标已下降 接近饮用水标准</a><span>(07/27 16:55)</span><br>·<a href=http://news.sohu.com/20110727/n314717419.shtml target=_blank>甘肃省今年上半年实现生产总值1934.65亿元</a><span>(07/27 16:51)</span><br>·<a href=http://news.sohu.com/20110727/n314715390.shtml target=_blank>重庆上半年猪肉价格上涨近四成</a><span>(07/27 16:49)</span><br>·<a href=http://news.sohu.com/20110727/n314718807.shtml target=_blank>绵阳主城区闹水荒 22台消防车送水不间断(组图)</a><span>(07/27 16:44)</span><br>·<a href=http://news.sohu.com/20110727/n314714960.shtml target=_blank>陈炳德将访问俄罗斯、乌克兰、以色列三国</a><span>(07/27 16:41)</span><br>·<a href=http://news.sohu.com/20110727/n314714964.shtml target=_blank>近期暴雨洪涝风雹灾害造成18省57人死亡或失踪</a><span>(07/27 16:41)</span><br>·<a href=http://news.sohu.com/20110727/n314714968.shtml target=_blank>江西于都县委书记胡健勇因干扰换届被免职</a><span>(07/27 16:29)</span><br>·<a href=http://news.sohu.com/20110727/n314713411.shtml target=_blank>武汉8家铅蓄电池企业因排放不达标被停产</a><span>(07/27 16:21)</span><br>·<a href=http://news.sohu.com/20110727/n314713535.shtml target=_blank>城镇居民养老保险待遇60岁可领取 参保需3条件</a><span>(07/27 16:19)</span><br>·<a href=http://news.sohu.com/20110727/n314711370.shtml target=_blank>央行：上半年银行间债券发行量同比减少23.7%</a><span>(07/27 16:13)</span><br>·<a href=http://news.sohu.com/20110727/n314711380.shtml target=_blank>香港去年吸引外来直接投资689亿美元 居全球第3</a><span>(07/27 16:11)</span><br>·<a href=http://news.sohu.com/20110727/n314711389.shtml target=_blank>上海工商局监测毛巾质量 14批次商品被曝不合格</a><span>(07/27 16:07)</span><br>·<a href=http://news.sohu.com/20110727/n314711386.shtml target=_blank>乌鲁木齐市主城区所有机动车道今起禁止停车</a><span>(07/27 16:06)</span><br>·<a href=http://news.sohu.com/20110727/n314720553.shtml target=_blank>工信部:升级、运行客户端等操作须征得用户同意</a><span>(07/27 16:04)</span><br>·<a href=http://news.sohu.com/20110727/n314712299.shtml target=_blank>湖南7县市气温超40℃  发布高温橙色预警</a><span>(07/27 15:58)</span><br>·<a href=http://news.sohu.com/20110727/n314710690.shtml target=_blank>人社部：国家将适时调整基础养老金标准</a><span>(07/27 15:52)</span><br>·<a href=http://news.sohu.com/20110727/n314708241.shtml target=_blank>四川组织事故调查组赶赴绵阳调查水质超标事件</a><span>(07/27 15:48)</span><br>·<a href=http://news.sohu.com/20110727/n314708045.shtml target=_blank>吉林要求县级以上政府要单独设立食品安全机构</a><span>(07/27 15:47)</span><br>·<a href=http://news.sohu.com/20110727/n314708234.shtml target=_blank>湖南耒阳罗某蚕吞挪用巨额公款炒股被提起公诉</a><span>(07/27 15:46)</span><br>·<a href=http://news.sohu.com/20110727/n314713420.shtml target=_blank>公安部破获两起贩婴案 解救89名儿童抓获369人</a><span>(07/27 15:39)</span><br>·<a href=http://news.sohu.com/20110727/n314706550.shtml target=_blank>新闻出版总署：我国网络游戏用户达7000余万</a><span>(07/27 15:37)</span><br>·<a href=http://news.sohu.com/20110727/n314705897.shtml target=_blank>修改后个人所得税法实施条例发布</a><span>(07/27 15:32)</span><br>·<a href=http://news.sohu.com/20110727/n314708645.shtml target=_blank>多省市突降冰雹 气象专家称为强对流天气所致</a><span>(07/27 15:32)</span><br>·<a href=http://news.sohu.com/20110727/n314706561.shtml target=_blank>甘肃白银一区县组织部原副部长涉贪受审</a><span>(07/27 15:31)</span><br>·<a href=http://news.sohu.com/20110727/n314705506.shtml target=_blank>中国正在改造一艘废旧航母用于科研试验和训练</a><span>(07/27 15:29)</span><br>·<a href=http://news.sohu.com/20110727/n314705442.shtml target=_blank>银监会关于调整村镇银行组建核准有关事项通知</a><span>(07/27 15:27)</span><br>·<a href=http://news.sohu.com/20110727/n314705898.shtml target=_blank>人社部：城镇居民与职工养老险不可同时享受</a><span>(07/27 15:27)</span><br>·<a href=http://news.sohu.com/20110727/n314720554.shtml target=_blank>工信部公开征求互联网信息服务管理规定意见</a><span>(07/27 15:27)</span><br>·<a href=http://news.sohu.com/20110727/n314706749.shtml target=_blank>中国正改造一艘废旧航母 用于科研和训练(图)</a><span>(07/27 15:23)</span><br>·<a href=http://news.sohu.com/20110727/n314704869.shtml target=_blank>香河政府收开发商竞拍所得土地 购房人不满赔偿</a><span>(07/27 15:22)</span><br>·<a href=http://news.sohu.com/20110727/n314704468.shtml target=_blank>台湾221农渔会信用部及网点开办人民币兑换服务</a><span>(07/27 15:17)</span><br>·<a href=http://news.sohu.com/20110727/n314724663.shtml target=_blank>高速路暴利超过房地产 管理方“变戏法”多收费</a><span>(07/27 15:16)</span><br>·<a href=http://news.sohu.com/20110727/n314705359.shtml target=_blank>国家发改委价检司更名价格监督检查与反垄断局</a><span>(07/27 15:15)</span><br>·<a href=http://news.sohu.com/20110727/n314704464.shtml target=_blank>陈炳德将对俄罗斯、乌克兰和以色列进行访问</a><span>(07/27 15:11)</span><br>·<a href=http://news.sohu.com/20110727/n314702865.shtml target=_blank>达芬奇造假余波未平 高端家具行业面临信任危机</a><span>(07/27 15:07)</span><br>·<a href=http://news.sohu.com/20110727/n314702720.shtml target=_blank>两市低开高走 沪指涨0.76%报2723.49点</a><span>(07/27 15:03)</span><br>·<a href=http://news.sohu.com/20110727/n314702859.shtml target=_blank>青海首批16名残疾人驾驶员获得机动车驾驶证</a><span>(07/27 15:03)</span><br>·<a href=http://news.sohu.com/20110727/n314702149.shtml target=_blank>面包车追尾大货酿惨剧 当场3人死亡另有2人重伤</a><span>(07/27 15:02)</span><br>·<a href=http://news.sohu.com/20110727/n314702163.shtml target=_blank>湖北宜昌海事首次启用科技反腐倡廉监督系统</a><span>(07/27 14:59)</span><br>·<a href=http://news.sohu.com/20110727/n314717864.shtml target=_blank>第九颗北斗导航卫星今晨升空 10月提供初始服务</a><span>(07/27 14:55)</span><br>·<a href=http://news.sohu.com/20110727/n314702118.shtml target=_blank>四川德阳三名工人违规作业中毒被困 两人身亡</a><span>(07/27 14:55)</span><br>·<a href=http://news.sohu.com/20110727/n314701572.shtml target=_blank>北京猪肉价3个月来首次回落 环比6月一斤降8毛</a><span>(07/27 14:54)</span><br>·<a href=http://news.sohu.com/20110727/n314701343.shtml target=_blank>北京11处积水最长3小时排除 气象台连发3种预警</a><span>(07/27 14:51)</span><br>·<a href=http://news.sohu.com/20110727/n314714721.shtml target=_blank>歼-10战机超低空隐蔽接敌 闯空中加油险关(图)</a><span>(07/27 14:48)</span><br>·<a href=http://news.sohu.com/20110727/n314701398.shtml target=_blank>上海等地10月试点汉语四六级 促进理解中华文化</a><span>(07/27 14:48)</span><br>·<a href=http://news.sohu.com/20110727/n314713548.shtml target=_blank>全国人大代表议保障房建设：勿让其沦为城中村</a><span>(07/27 14:47)</span><br>·<a href=http://news.sohu.com/20110727/n314701048.shtml target=_blank>北京市出台十二五食品安全计划 解决生产小散乱</a><span>(07/27 14:47)</span><br>·<a href=http://news.sohu.com/20110727/n314705669.shtml target=_blank>广州市中院受理大新大厦“一房二卖”案(图)</a><span>(07/27 14:46)</span><br>·<a href=http://news.sohu.com/20110727/n314701352.shtml target=_blank>陈德铭：做好生猪屠宰管理需充分发挥舆论监督</a><span>(07/27 14:41)</span><br>·<a href=http://news.sohu.com/20110727/n314700682.shtml target=_blank>贵州铜仁全力围剿“醉驾” 醉驾26起判决21起</a><span>(07/27 14:40)</span><br>·<a href=http://news.sohu.com/20110727/n314700544.shtml target=_blank>云南上半年职工平均工资15894元 同比增13.1%</a><span>(07/27 14:38)</span><br>·<a href=http://news.sohu.com/20110727/n314699982.shtml target=_blank>北京工商局表示将全程追溯配方乳粉畜禽水产品</a><span>(07/27 14:37)</span><br>·<a href=http://news.sohu.com/20110727/n314699325.shtml target=_blank>长江流域旱涝连灾与三峡工程关联缺乏科学依据</a><span>(07/27 14:26)</span><br>·<a href=http://news.sohu.com/20110727/n314698684.shtml target=_blank>市民家庭账本看物价变化 1年间百元少买7斤鸡蛋</a><span>(07/27 14:21)</span><br>·<a href=http://news.sohu.com/20110727/n314699055.shtml target=_blank>武汉辛亥革命博物馆将于8月完工</a><span>(07/27 14:21)</span><br>·<a href=http://news.sohu.com/20110727/n314722053.shtml target=_blank>新沪四条释放调控收紧信号 下半年房价有望下跌</a><span>(07/27 14:16)</span><br>·<a href=http://news.sohu.com/20110727/n314697546.shtml target=_blank>北京明启统一预约挂号平台 近40家医院错峰放号</a><span>(07/27 14:10)</span><br>·<a href=http://news.sohu.com/20110727/n314697330.shtml target=_blank>广西遭遇20年来最严重缺电局面 已拉响红色预警</a><span>(07/27 14:07)</span><br>·<a href=http://news.sohu.com/20110727/n314697627.shtml target=_blank>14时报盘：股指震荡走高 创业板四股涨停</a><span>(07/27 14:07)</span><br>·<a href=http://news.sohu.com/20110727/n314700388.shtml target=_blank>公安部打拐专项行动解救被拐卖妇女儿童近4万人</a><span>(07/27 14:05)</span><br>·<a href=http://news.sohu.com/20110727/n314697008.shtml target=_blank>尘肺农民工：被忽视的维权</a><span>(07/27 14:04)</span><br>·<a href=http://news.sohu.com/20110727/n314696912.shtml target=_blank>吉利负债高达710亿元 回应称公司财务状况良好</a><span>(07/27 14:03)</span><br>·<a href=http://news.sohu.com/20110727/n314698976.shtml target=_blank>港过去12个月3万人发生骨折 近七成因跌倒所致</a><span>(07/27 14:02)</span><br>·<a href=http://news.sohu.com/20110727/n314697084.shtml target=_blank>港启德发展区将供1.6万住宅单位 最快2013面市</a><span>(07/27 14:01)</span><br>·<a href=http://news.sohu.com/20110727/n314699209.shtml target=_blank>云南1137人事故中死亡 交通事故为最大问题</a><span>(07/27 13:59)</span><br>·<a href=http://news.sohu.com/20110727/n314696696.shtml target=_blank>香港铁路展开观塘线延线工程 预计2015年落成</a><span>(07/27 13:58)</span><br>·<a href=http://news.sohu.com/20110727/n314697665.shtml target=_blank>奎北铁路带动新疆北部喀纳斯景区游客人数剧增</a><span>(07/27 13:58)</span><br>·<a href=http://news.sohu.com/20110727/n314696517.shtml target=_blank>澳门议员及团体促请特区政府检讨燃气安全措施</a><span>(07/27 13:55)</span><br>·<a href=http://news.sohu.com/20110727/n314696610.shtml target=_blank>昆明机场暑运日均保障进出港航班540架次</a><span>(07/27 13:53)</span><br>·<a href=http://news.sohu.com/20110727/n314697315.shtml target=_blank>广深港高铁广深段试运行 香港段预计2015年建成</a><span>(07/27 13:51)</span><br>·<a href=http://news.sohu.com/20110727/n314696825.shtml target=_blank>澳门明爱创办人陆毅神父辞世 崔世安发悼词</a><span>(07/27 13:47)</span><br>·<a href=http://news.sohu.com/20110727/n314695814.shtml target=_blank>国务院令:新个人所得税法实施条例9月1日起施行</a><span>(07/27 13:45)</span><br>·<a href=http://news.sohu.com/20110727/n314694997.shtml target=_blank>深圳机场步入双跑道时代 空中交通拥堵仍存(图)</a><span>(07/27 13:37)</span><br>·<a href=http://news.sohu.com/20110727/n314698850.shtml target=_blank>香港抽检婴儿奶粉全部合格 三款雪糕细菌超标</a><span>(07/27 13:35)</span><br>·<a href=http://news.sohu.com/20110727/n314694787.shtml target=_blank>大运会游客指南首发 购物场所定点受理投诉(图)</a><span>(07/27 13:34)</span><br>·<a href=http://news.sohu.com/20110727/n314694236.shtml target=_blank>四川阿坝州锰渣污染涪江 重庆启动应急监测</a><span>(07/27 13:19)</span><br>·<a href=http://news.sohu.com/20110727/n314693908.shtml target=_blank>温家宝签署国务院令 新个税法实施条例9月施行</a><span>(07/27 13:14)</span><br>·<a href=http://news.sohu.com/20110727/n314693420.shtml target=_blank>中美签署反垄断合作谅解备忘录 加强6方面合作</a><span>(07/27 13:08)</span><br>·<a href=http://news.sohu.com/20110727/n314690443.shtml target=_blank>石家庄数百户居民多年陷用水之困 水费亏欠严重</a><span>(07/27 12:35)</span><br>·<a href=http://news.sohu.com/20110727/n314689898.shtml target=_blank>新疆阿拉尔遭20年一遇大冰雹 果农损失惨重(图)</a><span>(07/27 12:20)</span><br>·<a href=http://news.sohu.com/20110727/n314688217.shtml target=_blank>河北乐亭海滩遭漏油污染 扇贝死亡率超50%(图)</a><span>(07/27 12:05)</span><br>·<a href=http://news.sohu.com/20110727/n314687949.shtml target=_blank>上海地铁4号线一检票机故障 25名乘客被多扣1元</a><span>(07/27 12:04)</span><br>·<a href=http://news.sohu.com/20110727/n314688094.shtml target=_blank>河北一水泥厂放炮震裂民居 村民讨说法被殴住院</a><span>(07/27 11:58)</span><br>·<a href=http://news.sohu.com/20110727/n314687928.shtml target=_blank>北京东北六环发生5车相撞严重车祸 伤亡暂不明</a><span>(07/27 11:55)</span><br>·<a href=http://news.sohu.com/20110727/n314687316.shtml target=_blank>太原捕获3名入室盗贼 开锁最多五分钟不留痕迹</a><span>(07/27 11:54)</span><br>·<a href=http://news.sohu.com/20110727/n314687624.shtml target=_blank>贵阳规定出租司机若营运时吸烟 乘客可拒付车费</a><span>(07/27 11:53)</span><br>·<a href=http://news.sohu.com/20110727/n314686885.shtml target=_blank>中美正式签署反垄断和反托拉斯合作谅解备忘录</a><span>(07/27 11:43)</span><br>·<a href=http://news.sohu.com/20110727/n314686113.shtml target=_blank>上半年逾半数省份GDP增幅超13% 京沪增速后两名</a><span>(07/27 11:42)</span><br>·<a href=http://news.sohu.com/20110727/n314686174.shtml target=_blank>沪指探底回升微涨1点 金融股领跌</a><span>(07/27 11:41)</span><br>·<a href=http://news.sohu.com/20110727/n314686111.shtml target=_blank>香港去年全球吸引外资排名升至第3位</a><span>(07/27 11:39)</span><br>·<a href=http://news.sohu.com/20110727/n314685699.shtml target=_blank>上半年香港黑客入侵报告升15% 手机成新目标</a><span>(07/27 11:36)</span><br>·<a href=http://news.sohu.com/20110727/n314685700.shtml target=_blank>上海2300多辆长途客运车安装“千里眼”保平安</a><span>(07/27 11:36)</span><br>·<a href=http://news.sohu.com/20110727/n314686622.shtml target=_blank>沪指午盘收复2700点 新能源电池股活跃</a><span>(07/27 11:32)</span><br>·<a href=http://news.sohu.com/20110727/n314685401.shtml target=_blank>马景毅：唐僧徒弟猪八戒是什么样的一个人</a><span>(07/27 11:32)</span><br>·<a href=http://news.sohu.com/20110727/n314685402.shtml target=_blank>福建居民赴金马澎地区个人游29日正式启动</a><span>(07/27 11:31)</span><br>·<a href=http://news.sohu.com/20110727/n314684919.shtml target=_blank>福建居民赴金门马祖澎湖地区个人游29日将启动</a><span>(07/27 11:28)</span><br>·<a href=http://news.sohu.com/20110727/n314684544.shtml target=_blank>王晨会见巴西总统府新闻部长沙加斯</a><span>(07/27 11:27)</span><br>·<a href=http://news.sohu.com/20110727/n314685991.shtml target=_blank>上半年物流总费用占GDP比重18% 超西方发达国家</a><span>(07/27 11:22)</span><br>·<a href=http://news.sohu.com/20110727/n314684799.shtml target=_blank>湖南永州新田遭特大旱灾 消防官兵送水为民解难</a><span>(07/27 11:21)</span><br>·<a href=http://news.sohu.com/20110727/n314683292.shtml target=_blank>郑州环城高速收费8月起最低降至1元</a><span>(07/27 11:19)</span><br>·<a href=http://news.sohu.com/20110727/n314682721.shtml target=_blank>新一代“瘦肉精”事件续:福建龙海加强行业监管</a><span>(07/27 11:16)</span><br>·<a href=http://news.sohu.com/20110727/n314697463.shtml target=_blank>台湾宜兰外海27日凌晨发生3.8级地震 未有灾情</a><span>(07/27 11:16)</span><br>·<a href=http://news.sohu.com/20110727/n314682181.shtml target=_blank>绵阳水源污染政府公告：自来水勿饮 可洗衣洗澡</a><span>(07/27 11:14)</span><br>·<a href=http://news.sohu.com/20110727/n314682170.shtml target=_blank>北京口岸出入境人员突破1000万大关</a><span>(07/27 11:12)</span><br>·<a href=http://news.sohu.com/20110727/n314698264.shtml target=_blank>从家庭账本看物价变化：100元钱少买了多少东西</a><span>(07/27 11:12)</span><br>·<a href=http://news.sohu.com/20110727/n314682073.shtml target=_blank>重庆百岁老人近千名　其中78名获百岁健康之星</a><span>(07/27 11:11)</span><br>·<a href=http://news.sohu.com/20110727/n314684826.shtml target=_blank>香港居民深圳置业锐减50% 数量跌至10年新低</a><span>(07/27 11:11)</span><br>·<a href=http://news.sohu.com/20110727/n314682313.shtml target=_blank>贵州安顺食物中毒事件两名犯罪嫌疑人被刑拘</a><span>(07/27 11:10)</span><br>·<a href=http://news.sohu.com/20110727/n314682602.shtml target=_blank>港府派六千元诱发电话骗案 银行提醒注意风险</a><span>(07/27 11:10)</span><br>
+
+</td>
+  </tr>
+  <tr>
+   </td>
+  </tr>
+  <tr><td>
+   	 
+  </td></tr>
+  <tr height=25><td align=right class=newsblue1>
+<table><tr><td nowrap><a href='/1/0903/61/subject212846158.shtml'>首页</a>&nbsp;<a href='#' onclick='javascript:if(!isIndex){go(curPage-1)};return false;'>上一页</a>&nbsp;<a href='#' onclick='javascript:go(curPage+1);return false;'>下一页</a>&nbsp;<a href='#' onclick='javascript:go(maxPage);return false;'>末页</a>&nbsp;
+<span id="pagingIndex"></span>&nbsp;转到<input name="pagenav" id="pagenav" type="text" size="2" onkeypress="javaScript:if(event.keyCode==13){go(this.value);}">页 <a href="#" onclick="javascript:go(document.getElementById('pagenav').value);return false;">Go</a>
+<script language="JavaScript">
+	var indexUrl = '/1/0903/61/subject212846158.shtml';
+	var docUrl = document.location.href;
+	var maxPage = 4675;
+	var curPage = 1;
+	var isIndex = false;
+	var showPages = 100;
+	var end = docUrl.lastIndexOf("/");
+	if(end > 0){
+		var realDocUrl = docUrl.substring(end);
+		var lastToken = realDocUrl.lastIndexOf("_");
+		var lastSuffix = realDocUrl.lastIndexOf(".shtml");
+		if( (realDocUrl)!= indexUrl && lastToken>0 && lastSuffix >0 && lastSuffix > lastToken ){
+			curPage = realDocUrl.substring(lastToken+1,lastSuffix);
+			curPage = maxPage-curPage+1;
+		}else{
+			isIndex = true;
+		}
+	}
+	if(isNaN(curPage)){
+		curPage = 1;
+	}
+	var index = "<span><b>"+curPage+"/"+(maxPage>showPages?showPages:maxPage)+"</b></span>";
+	document.getElementById("pagingIndex").innerHTML=index;
+	function go(page){
+		try{
+		var baseUrl = '/1/0903/61/subject212846158';
+		//var page = document.getElementById("pagenav").value;
+		var url = '';
+			if (page >0&&page <=showPages){
+				page = maxPage - page+1;
+				if(page <= 0 || page == maxPage ){
+					url = indexUrl;;			
+				}else{
+					url = baseUrl+'_'+page+'.shtml';			
+				}
+				document.location.href=url;
+				return true;
+			}else if(page == maxPage){
+				if(maxPage > showPages){
+					url = baseUrl+'_'+(maxPage-showPages+1)+'.shtml';			
+				}else{
+					url = baseUrl+'_1.shtml';			
+				}
+				document.location.href=url;
+				return true;
+			}else{
+				return false;
+			}
+			}catch(e){
+				alert("Sorry:"+e);
+			}
+		return false;
+	}
+</script>
+</td></tr></table> 	 
+  </td></tr>
+
+</table>
+
+ 
+</td>
+<td width=10><br></td>
+<td width=160 valign=top align=center background=/wimages/bj02.gif>
+ 
+</td></tr>
+<tr><td colspan=2 height=5><img src=/wimages/c.gif width=1 height=1></td>
+</td>
+<td><img src=/wimages/di.gif border=0 width=160 height=5></td></tr>
+</table>
+<br>
+<!----------标准畈 开始 ------------>
+<table cellspacing=0 cellpadding=0 width=760 border=0 align=center>
+<tr><td align=center>
+<hr size=1>
+<a href="javascript:void(0)" onClick=this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.sohu.com');return false;>设置首页</a>
+- <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
+- <a href=http://up.sohu.com/ target=_blank>支付中心</a>
+- <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
+- <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
+- <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
+- <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
+- <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
+- <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
+- <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
+</td></tr>
+<tr>
+<td align=middle height=20><font class=ui_engl>Copyright &copy; 2011 Sohu.com Inc. All Rights Reserved.</font> 搜狐公司 <a 
+href="http://corp.sohu.com/s2007/copyright/" target=_blank>版权所有</a> 
+</td></tr>
+<tr>
+<td align=middle>搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a></td></tr>
+</table>
+<SCRIPT language=JavaScript src="http://js.sohu.com/pv.js"></SCRIPT>
+<script>webim_config={product:"sohu/blog"}</script>
+<script src="http://images.sohu.com/cs/sohuim/xiaozt/version/2.0/js/loader.sohu.js
+"></script>
+<script language="javascript" src="http://js.sohu.com/wrating0820.js"></script>
+<script language="javascript">
+var  _wratingId = null;
+try{
+_wratingId = _getAcc();
+}catch(e){}
+if(_wratingId !=null){
+document.write('<scr'+'ipt type="text/javascript" src="http://sohu.wrating.com/a1.js"></scr'+'ipt>');
+}
+</script>
+<script language="javascript">
+if(_wratingId !=null){
+document.write('<scr'+'ipt type="text/javascript">');
+document.write('var vjAcc="'+_wratingId+'";');
+document.write('var wrUrl="http://sohu.wrating.com/";');
+document.write('try{vjTrack();}catch(e){}');
+document.write('</scr'+'ipt>');
+}
+</script>
+<!--SOHU:FOOT-->
+<!----------标准畈 结束 ------------>
+</center>
+</body>
+</html>
+

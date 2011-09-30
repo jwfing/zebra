@@ -1,14 +1,15 @@
 Zebra
 
 ========== introduce ================
-Zebra is based on Blaine Cook's "starling" simple, distributed message queue, with added features and bulletproofing, as well as the scalability offered by actors and the JVM.
-
-Each server handles a set of reliable, ordered message queues. When you put a cluster of these servers together, with no cross communication, and pick a server at random whenever you do a set or get, you end up with a reliable, loosely ordered message queue.
-
-In many situations, loose ordering is sufficient. Dropping the requirement on cross communication makes it horizontally scale to infinity and beyond: no multicast, no clustering, no "elections", no coordination at all. No talking! Shhh!
+Zebra is a framework for vertical search, such as news/finance/sport.
+the architecture is as followed:
 
 ========== requirement ==============
-
+0, maven
+1, mmseg
+2, chardet
+3, onelab
+4, ...
 
 ========== dependencies ============
 

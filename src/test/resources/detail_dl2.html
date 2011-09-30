@@ -1,0 +1,1305 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<title>����װ���¡���������ʲô����_��������</title>
+<base target="_blank" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="expires" content="0" />
+<meta name="keywords" content="����װ���¡�" />
+<meta name="description" content="��Ƭ�������ܶ���Ȼ��Ʒ���࣬��֮ǰ�ġ���ñ�ӡ��͡�һ�뺣ˮһ����桷�������һ���Ͽɡ���һ����һ��ǰ������Ʒ�з�â��¶���ص㣬����һ���ϳ��׵���ҵ��·�ߣ�������һ������Ũ������ɫ�ʵİ���ϲ����¡�" />
+<meta name="author" content="����" />
+<meta name="Copyright" content="���װ�Ȩ����" />
+<link href="http://img1.cache.netease.com/ent/css07/style.css" rel="stylesheet" type="text/css" />
+<link href="http://img1.cache.netease.com/cnews/img09/channel_nav.css" rel="stylesheet" type="text/css"/>
+<link href="http://img1.cache.netease.com/ent/css09/endpage0910.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" media="screen" href="http://img1.cache.netease.com/common/css/common_nav_v1.0.3.css" />
+<script charset="gb2312" src="http://img3.cache.netease.com/cnews/js/ntes_jslib_1.x.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<style type="text/css">
+.daren-item, .msg-item { zoom: 1; margin: 8px 0; background: #FFF; overflow: hidden; font-size: 12px; padding: 10px 10px 10px 110px; border: 1px solid #d8d9d9; }
+.daren_w .daren-item, .daren_w .msg-item { margin: 0; }
+.avatar { width: 90px; display: inline; margin-left: -100px; float: left; }
+.avatar img { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #CCCCCC; height: 84px; padding: 2px; width: 84px; display: block; }
+.wb-article-folow, .wb-article-minFolow { margin: 6px auto 0; }
+.author-info, .status-info { color: #1e50a2; }
+.info-top { min-height: 72px; _height: 72px; }
+#endText a.author-name, a.author-name { vertical-align: bottom; text-decoration: none; font-size: 14px; font-weight: bold; color: #1e50a2; }
+.daren-icon { vertical-align: top; margin-left: 5px; display: inline-block; width: 19px; height: 19px; background: url(http://img1.cache.netease.com/t/2011/03/weibo_fe.gif) no-repeat 0 -8px; }
+.daren-icon {  *vertical-align: baseline; }
+.weibo-up-arr { background: url(http://img1.cache.netease.com/t/2011/03/weibo_fe.gif) no-repeat 0 -27px; font-size: 0; height: 8px; left: 16px; position: absolute; top: 18px; width: 11px; }
+#endText a.talk-to, .talk-to { margin-left: 5px; white-space: nowrap; color: #1e50a2; text-decoration: none; vertical-align: bottom; }
+#endText a.talk-to:visited, .talk-to:visited { color: #1e50a2; }
+#endText a.talk-to:hover, .talk-to:hover { text-decoration: underline; color: #1e50a2; }
+.followers { line-height: 24px; color: #636363; }
+.status, .reason { color: #000; line-height: 1.5em; }
+.status-link, #endText .status-link a { text-decoration: none; color: #ba2636; }
+.option-item { text-align: right; color: #999999; }
+#endText .option-item a, .option-item a { color: #8ba4cd; text-decoration: none; }
+#endText .option-item a:hover, .option-item a:hover { text-decoration: underline; }
+.daren-keyword { position: relative; }
+.daren_w { display: none; background: url(http://img1.cache.netease.com/t/2011/03/weibo_fe.gif) no-repeat 0 -40px; padding-top: 24px; position: absolute; z-index: 9999; width: 264px; text-align: left; }
+.daren_w .daren-close { width: 9px; height: 8px; background: url(http://img1.cache.netease.com/t/2011/03/weibo_fe.gif) no-repeat 0 0; cursor: pointer; position: absolute; right: 8px; top: 32px; font-size: 0; }
+</style>
+<link href="http://static.t.126.net/frontend/project/plugin/css/article/shareRefer1.0.9.css" charset="utf-8" type="text/css" rel="stylesheet">
+<script charset="gb2312" src="http://img3.cache.netease.com/cnews/js/ntes_jslib_1.x.js" language="javascript" type="text/javascript"></script> 
+<script type="text/javascript" src="http://static.t.126.net/frontend/project/plugin/js/article/shareRefer2.0.0.js " charset="utf-8"></script>
+<script type="text/javascript">
+function getWeiboDaren() {
+	var html = [], user = userData,
+		userUrl = 'http://t.163.com/' + user.screenName + '?method=click&keyfrom=wenzhang_dr&sitechannel=ent';
+	html.push('<div class="daren-item">');
+	html.push('<div class="avatar">');
+	html.push('<a target="_blank" href="' + userUrl + '"><img src="' + user.headPic + '"></img></a>');
+	html.push('<a href="javascript:;" target="_self" hideFocus="true" class="wb-article-btn wb-article-folow" onclick="WbApp.WbFollow(\'' + user.screenName + '\',this,{followfrom:\'wenzhang_DR\',keyfrom:\'wenzhang_DR\',sitechannel:\'ent\'}); return false;">�ѹ�ע</a>');
+	html.push('</div><div class="author-info">');
+	html.push('<a target="_blank" class="author-name" href="' +userUrl + '">' + user.name + '</a>');
+	if(user.daren == true) {
+		html.push('<a class="daren-icon" href="http://t.163.com/rank/daren" title="����΢�� i ��֤"></a>');
+	}
+	html.push('<a class="talk-to" href="javascript:;" target="_self" onclick="WbApp.WbSay(\'' + user.name + '\',{keyfrom:\'wenzhang_DR\',sitechannel:\'ent\'}); return false;">��Ta˵</a><br />');
+	html.push('<span class="followers">' + user.follower + '�˹�ע��</span></div>');
+	html.push('<div class="reason">' + user.reason + '</div></div>');
+	return html.join('');
+}
+// ΢����Ϣ
+function getWeiboMsg(data) {
+	var html = [], user = data.user, 
+		userUrl = 'http://t.163.com/' + user.screenName + '?method=click&keyfrom=wenzhang_mr&sitechannel=ent',
+		tweetUrl = 'http://t.163.com/' + user.screenName + '/status/' + data.tweetId + '?method=click&keyfrom=wenzhang_mr&sitechannel=ent';
+	html.push('<div class="msg-item"><div class="avatar">');
+	html.push('<a target="_blank" href="' + userUrl + '"><img src="' + user.headPic + '"></img></a>');
+	html.push('<a href="javascript:;" target="_self" hideFocus="true" class="wb-article-btn wb-article-folow" onclick="WbApp.WbFollow(\'' + user.screenName + '\',this,{followfrom:\'wenzhang_DR\',keyfrom:\'wenzhang_DR\',sitechannel:\'ent\'}); return false;">�ѹ�ע</a></div>');
+	html.push('<div class="status-info"><div class="info-top">');
+	html.push('<a target="_blank" class="author-name" href="' + userUrl + '">' + user.name + '</a>');
+	if(user.daren == true) {
+		html.push('<a class="daren-icon" href="http://t.163.com/rank/daren" title="����΢�� i ��֤"></a>');
+	}
+	html.push('��<span class="status">' + data.tweet + '</span>');
+	html.push('<span class="status-link">[<a target="_blank" href="' + tweetUrl + '">�鿴΢��</a>]</span></div>');
+	html.push('<div class="option-item"><a href="javascript:;" target="_self" onclick="WbApp.WbRetweet(\'' + data.tweetId + '\',{keyfrom:\'wenzhang_DR\',sitechannel:\'ent\'}); return false;">ת��</a> | ');
+	html.push('<a href="javascript:;" target="_self" onclick="WbApp.WbComment(\'' + data.tweetId + '\',{keyfrom:\'wenzhang_DR\',sitechannel:\'ent\'}); return false;">����</a></div>');
+	html.push('</div></div>');
+	return html.join('');			
+}
+function renderDaren(data) {
+	document.write(getWeiboDaren());
+}
+function renderMsg(data) {
+	document.write(getWeiboMsg(data));
+}
+function getCoords(el) {
+	var box = el.getBoundingClientRect(),
+		doc = el.ownerDocument,
+		body = doc.body,
+		html = doc.documentElement,
+		clientTop = html.clientTop || body.clientTop || 0,
+		clientLeft = html.clientLeft || body.clientLeft || 0,
+		top = box.top + (self.pageYOffset || html.scrollTop || body.scrollTop) - clientTop,
+		left = box.left + (self.pageXOffset || html.scrollLeft || body.scrollLeft) - clientLeft;
+	return { 'top': top, 'left': left };
+};
+</script><!-- ���� -->
+<!--    some code  -->
+<div class="NTES-nav">
+	<span class="nav-link"><a href="http://www.163.com/">������ҳ</a>-<a href="http://news.163.com/">����</a>-<a href="http://sports.163.com/">����</a>-<a href="http://sports.163.com/nba/">NBA</a>-<a href="http://ent.163.com/">����</a>-<a href="http://money.163.com/">�ƾ�</a>-<a href="http://money.163.com/stock/">��Ʊ</a>-<a href="http://auto.163.com/" id="_link_auto">��</a>-<a href="http://tech.163.com/">�Ƽ�</a>-<a href="http://mobile.163.com/">�ֻ�</a>-<a href="http://lady.163.com/">Ů��</a>-<a href="http://bbs.163.com/">��̳</a>-<a href="http://v.163.com/">��Ƶ</a>-<a href="http://blog.163.com/">����</a>-<a href="http://house.163.com/" id="houseUrl">����</a>-<a id="homeUrl" href="http://home.163.com/">�Ҿ�</a>-<a href="http://edu.163.com/">����</a>-<a href="http://book.163.com/">����</a>-<a href="http://game.163.com/" id="_link_game">��Ϸ</a>|</span>
+	<div class="rightCon">
+		<div class="NTES-link code-num">
+			<span class="left"><a href="http://email.163.com/" class="cBlue">�������</a> - <a href="http://reg.163.com/" class="cBlue">ͨ��֤��¼</a> | </span><a href="http://t.163.com/?f=catopmicoblogmsg" class="NTES-nav-wbLogin">΢��</a>
+		</div>
+	</div>
+	<a href="http://www.163.com/rss" class="NTES-nav-rss">rss</a>
+</div>
+<script>
+//<![CDATA[
+NTES.ready( function($){
+	var P_INFO = NTES.cookie.get("P_INFO");
+	var S_INFO = NTES.cookie.get("S_INFO");
+	if(P_INFO){
+		var mailconfig = {
+			"163.com":"http://entry.mail.163.com/coremail/fcg/ntesdoor2?verifycookie=1&lightweight=1",
+			"126.com" : "http://entry.mail.126.com/cgi/ntesdoor?verifycookie=1&lightweight=1&style=-1",
+			"vip.126.com" : "http://reg.vip.126.com/enterMail.m",
+			"yeah.net" : "http://entry.yeah.net/cgi/ntesdoor?verifycookie=1&lightweight=1&style=-1",
+			"188" : "http://reg.mail.188.com/servlet/enter",
+			"vip.163.com" : "http://reg.vip.163.com/enterMail.m?enterVip=true-----------"
+		};
+		var passport =  P_INFO.substr(0, P_INFO.indexOf("|"));
+		var username =  passport.substr(0, P_INFO.indexOf("@"));
+		var logstate = P_INFO.split("|")[2];
+		var loginframe = "";
+		var url = "http://t.163.com/service/newMessage/" + passport + "/1/0/0/0/1";
+		var pspt = passport.length >= 6 ? passport.substr(0,6)+"��" : passport;
+		/@([^*]+)/.test(passport);
+		var logdomain = RegExp.$1;
+		if(P_INFO && S_INFO || logstate=="1") {
+			var entrylink_html = '<a href=\"http://reg.163.com/Main.jsp?username='+passport+'\">����ͨ��֤</a>';
+			if(mailconfig[logdomain] != undefined) {
+				entrylink_html += '<a href=\"'+mailconfig[logdomain]+'\">��������</a>';
+			}
+			if(logdomain == "popo.163.com" || mailconfig[logdomain] != undefined) {
+				entrylink_html += '<a href="http://blog.163.com/passportIn.do?entry=163">���벩��</a><a href="http://photo.163.com/?username='+passport+'\">�������</a>';
+			}
+			entrylink_html += '<a href="http://yuehui.163.com/">����Լ��</a><a href="http://t.163.com">����΢��</a>';
+			if(logdomain == "163.com" || logdomain == "126.com" || logdomain == "yeah.net") {
+				loginframe = '<iframe allowTransparency=\"true\" style=\"width:45px; height:20px; float:left; *margin-top:2px; vertical-align: middle;\" id=\"ifrmNtesMailInfo\" border=\"0\" src=\"http://p.mail.163.com/mailinfo/shownewmsg_www_0608.htm\" frameBorder=\"0\" scrolling=\"no\"></iframe>';
+			}
+			var login_html = '<div class=\"ntes-usercenter\"><div class=\"ntes-usercenter-logined\"><strong id=\"ntes_usercenter_name\" class=\"ntes-usercenter-name\" title=\"��ӭ�㣬'+passport+'\">'+pspt+'</strong></div><div id=\"ntes_usercenter_entry\" class=\"ntes-usercenter-entry\"><span class=\"user-entry\">'+entrylink_html+'</span></div></div><span class="left c-b3">(</span>'+loginframe+'<span class="left c-b3"> | </span><span id="wbLoginAfter"><a href="http://t.163.com/?f=catopmicoblogmsg" class="NTES-nav-wbLogin" style="color:#f6f6f6;" title="��������΢��">΢��</a></span><span class="left c-b3">) | </span><a class=\"ntes-usercenter-loginout left\" href=\"http://reg.163.com/Logout.jsp?username='+passport+'\" target=\"_self\">�˳�</a></div>';
+			$(".NTES-link")[0].innerHTML = login_html;
+			$("#ntes_usercenter_name").addEvent("click", function(e){
+				$("#ntes_usercenter_entry").style.display = $("#ntes_usercenter_entry").style.display == "block" ? "none" : "block";
+				e.preventDefault();
+				e.cancelBubble = true;
+				document.onclick = function(){
+					$("#ntes_usercenter_entry").style.display = "none";
+				}
+			})
+			NTES.ajax.importJs(url, function() {
+				if (typeof window.resultStatus != "undefined") {
+					if (NTES("#wbLoginAfter")) {
+						var userId = resultStatus.userId;
+						var wbName = resultStatus.name;
+						var wbNameMod = wbName.replace(/[^\x00-\xff]/g,"*?");
+						var xxlen = wbNameMod.substr(0,10).indexOf("*") < 0 ? 0 : wbNameMod.substr(0,10).match(/\*/ig).length;
+						var wbNameEnd = (wbNameMod.length <= 10) ? "" : "��";
+						var totalCount = (parseInt(resultStatus.htlCount) < 100) ? parseInt(resultStatus.htlCount) : "99";
+						var totalCountEnd = (parseInt(resultStatus.htlCount) < 100) ? totalCount : totalCount+"+";
+						if(xxlen > 0){
+							if(wbNameMod.substr(9,1) == "?"){
+								wbName = wbName.substr(0,10-xxlen) + wbNameEnd;
+							}else{
+								wbName = wbName.substr(0,9-xxlen) + wbNameEnd;
+							}
+						}else{
+							wbName = wbName.substr(0,10) + wbNameEnd;
+						}
+						if (totalCount > 0) {
+							NTES("#wbLoginAfter").innerHTML = "<a href='http://t.163.com/?f=catopmicoblogmsg.News' class='NTES-nav-wbMsg fB' style='color:#ba2636;' title='" + wbName + "����Ϣ��"+ totalCountEnd +"'>"+ totalCountEnd +"</a>";
+						}else{
+							NTES("#wbLoginAfter").innerHTML = "<a href='http://t.163.com/?f=catopmicoblogmsg.enter' class='NTES-nav-wbLogin' style='color:#f6f6f6;' title='��������΢��'>΢��</a>";
+						}
+						if(userId == 0){
+							NTES("#wbLoginAfter").innerHTML = "<a href='http://t.163.com/service/autoOpenAccount?autoFollow=1&needRedirect=1&f=catopmicoblogmsg.open' class='NTES-nav-wbLogin' style='color:#f6f6f6;' title='��ͨ����΢��'>΢��</a>";
+						}
+					};
+				};
+			}, "UTF-8");
+		};
+	}
+})
+//]]>
+</script>
+<div class="endArea">
+<span class="areaEnd"></span>
+<span class="blank9 blankW"></span>
+  <div class="colL">
+   <span class="gg590">
+    <iframe
+src="http://g.163.com/r?site=netease&affiliate=ent&cat=article&type=column590x150&location=1" width="590" height="150" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe>
+</span>
+<span class="blank9 blankW"></span>
+    <div class="path">
+	<span class="logo"><a href="http://ent.163.com/"><img src="http://img1.cache.netease.com/img09/logo/endpage/ent.png" alt="��������" width="70" height="27" /></a></span> <span class="crumb"><a href="http://www.163.com/">����</a> &gt; <a href="http://ent.163.com/">��������</a> &gt; <a href="http://ent.163.com/movie/">��Ӱ</a> &gt;  ����</span>
+<div class="zwr_search">
+<style type="text/css">
+.path .crumb { float:left;}
+.zwr_search {float:right; margin:9px 0 0; display:inline;}
+.zwr_search .select_box {background:url(http://img1.cache.netease.com/cnews/img10/zwrss_bg.gif) left -82px no-repeat; width:45px; height:18px; ove rflow:hidden; border:none; position:relative; text-align:left; cursor:pointer; float:left; margin-right:4px;}
+.zwr_search .select_box .select_list {display:block; position:absolute; width:3em; line-height:19px; left:0; top:0; background:#fff; display:none;}
+.zwr_search .select_box .search_site {height:18px; line-height:20px; padding-left:6px; float:left; overflow:hidden;}
+.zwr_search .select_box .select_list {width:43px; border:1px solid #B4B4B4;}
+.zwr_search .select_box {width:45px;}
+.zwr_search .select_box a {display:block; height:18px; text-indent:5px;}
+.zwr_search .select_box a:hover {background:#1E50A2; color:#fff; display:block; height:18px; text-decoration:none;}
+.zwr_search .select_box a.active {background:#1E50A2; color:#fff; display:block; height:18px; text-decoration:none;}
+.zwr_search .textBox {width:88px; height:18px; color:#7B7C7D; background:url(http://img1.cache.netease.com/cnews/img10/zwrss_bg.gif) left top no-repeat; border:none; float:left; line-height:18px; text-indent:3px;}
+.zwr_search .btn {overflow:hidden; width:41px; height:18px; background:url(http://img1.cache.netease.com/cnews/img10/zwrss_bg.gif) left -41px no-repeat; border:none; float:left; line-height:19px; font-size:12px; cursor:pointer;}
+.zwr_search form {float:left;}
+</style>
+  <form target="_blank" id="ytsearch_form" name="ytsearch_form" method="get" action="http://www.youdao.com/search">
+  <label><input type="text" class="textBox" value="������ؼ��" onfocus="javascript:if(this.value=='������ؼ��'){this.value='';this.style.color='#000'}" onblur="javascript:if(this.value==''){this.value='������ؼ��';this.style.color='#7B7C7D'}" id="ytsearch_input" name="q" autocomplete="off"/></label>
+  <input type="hidden" value="gbk" name="ue"/>
+  <input type="hidden" value="10" name="ttimesort" id="ttimesort"/>
+  <input type="hidden" value="163.page" name="keyfrom"/>
+  <input type="hidden" value="163.com" name="site"  id="tsearchsite"/>
+  <noscript>
+    <select name="site" class="left">
+      <option value="����" selected="selected">����</option>
+      <option value="">��ҳ</option>
+    </select>
+  </noscript>
+  <div id="tSelectKey" class="left"></div>
+  <input type="submit" class="btn" value="����" onclick="javascript:var input=document.getElementById('ytsearch_input');if(input.value=='������ؼ��'){input.value='';input.focus();input.style.color='#000';return false;} return true;"/>
+  </form>
+  <script type="text/javascript">
+//<![CDATA[
+        (function NTES_Guide(){
+            function Y_T(id){
+                return document.getElementById(id);
+            }
+            function clicktselect(e){
+                e = e || window.event;
+                e.cancelBubble = true;
+                var name = this.innerHTML;
+                var txt = document.createTextNode(name);
+                selected.removeChild(selected.firstChild);
+                selected.appendChild(txt);
+                select_main.style.display = "none";
+                var title = this.getAttribute("title");
+                if (title == "����") {
+                  Y_T("ttimesort").value="10";
+                  Y_T("tsearchsite").value="163.com";
+                } else {
+                  Y_T("ttimesort").value="0";
+                  Y_T("tsearchsite").value="";
+                }
+            }
+            function at_mouseover () {
+                this.className = "active";
+            }
+            function at_mouseout () {
+                this.className = "";
+            }
+            Y_T("tSelectKey").innerHTML = '<div id="select_area_yt" class="select_box"><span id="selected_yt" class="search_site">����</span><div id="select_main_yt" class="select_list"><a title="����">����</a><a title="��ҳ">��ҳ</a></div></div>';
+            var select_area = Y_T("select_area_yt"), 
+            selected = Y_T("selected_yt"), 
+            select_main = Y_T("select_main_yt"), 
+            select_list = select_main.getElementsByTagName("a"), 
+            len = select_list.length;
+            select_area.onclick = select_main.onmouseover = function(){
+                select_main.style.display = "block";
+            }
+            select_main.onmouseout = function(){
+                select_main.style.display = "none";
+            }
+            
+            for (var i = 0; i < len; i++) {
+                select_list[i].onclick = clicktselect;
+                select_list[i].onmouseover = at_mouseover;
+                select_list[i].onmouseout = at_mouseout;
+            }
+        })();
+//]]>
+</script>
+</div>
+	</div>
+    <span class="colEnd"></span>
+	<div class="bg_endPage_blue clearfix">
+    <div class="endContent">
+      <h1 id="h1title">����װ���¡���������ʲô����</h1>
+      <span class="info" style="display:block;">2011-06-30 08:00:40����Դ: <a href=# target=_blank>��������</a>��<a href="#" id="endpageUrl1" class="cDRed">��<span id="replycounttop">0</span>�˲���</a> <a href="http://help.3g.163.com/">�ֻ�����</a>
+
+<div class="wb-article-sharewraper wb-article-sharewraper-sm" id="wb-article-sharewraper-sm">
+</div>
+<script language="javascript" type="text/javascript"   charset="utf-8">
+    (function() {
+        var options = {
+            sourceUrl: "http://ent.163.com/",
+            source: encodeURIComponent("��������"),
+            title: encodeURIComponent("����װ���¡���������ʲô����"),
+            link: encodeURIComponent(document.location.href)
+        };
+        NTES.ready(
+        function() {
+            WbApp.initShareTipsSm(options,"wb-article-sharewraper-sm");
+        });
+    })();
+</script>
+      </span>
+            <p class="summary">��Ƭ�������ܶ���Ȼ��Ʒ���࣬��֮ǰ�ġ���ñ�ӡ��͡�һ�뺣ˮһ����桷�������һ���Ͽɡ���һ����һ��ǰ������Ʒ�з�â��¶���ص㣬����һ���ϳ��׵���ҵ��·�ߣ�������һ������Ũ������ɫ�ʵİ���ϲ����¡�</p>
+      <span class="blank12"></span>
+      <div id="endText">
+        <p><strong>����<a href="http://tuan.163.com/?tag=%E5%A8%B1%E4%B9%90" title="����">����</a>6��30�ձ���</strong>&nbsp;�ڡ���ɫ����<a href="http://data.ent.163.com/movie/product/0000fPUQ.html" title="����ΰҵ" target="_blank">������ΰҵ��</a><a href="http://ent.163.com/special/necom09/" target="_blank"><span style="color:#FF0000;font-weight: bold;text-decoration: none;">(Ӱ��)</span></a>��ǿ��֮�£���һ����<a href="http://data.ent.163.com/movie/product/000BGWcK.html" title="��װ����" target="_blank">����װ���¡�</a>������ӭͷ���ϣ�����������ɼΡ���Ƭ����<a href=http://data.ent.163.com/star/product/00000PaU.html>���ܶ�</a>��Ȼ��Ʒ���࣬��֮ǰ�ġ���ñ�ӡ��͡�һ�뺣ˮһ����桷�������һ���Ͽɡ���һ����һ��ǰ������Ʒ�з�â��¶���ص㣬����һ���ϳ��׵���ҵ��·�ߣ�������һ������Ũ������ɫ�ʵİ���ϲ����£����ǰ����Ʒ�������Ũ���������Եķ������ص���ȥ��Զ����Ҳ�������ٴΡ��������ա������Σ�Ҳ֤�����Լ�������ҵƬ���͵İ���������</p>
+<p>������Ϥ�պ���Ӱ�Ĺ�����˵����һ������װ���¡����������ⷽ��Ƿ�Ů���Ƕ���̽�����������ѵĻ����������ձ�ӰƬ<a href=http://data.ent.163.com/tv/product/00000JGP.html>�����顷</a>��Ӱ�ӣ���ӰƬ�С�����Ůǿ���Ľ�ɫ���������Ե��ߵ���һ�������Ӱ���ҵ�Ұ��Ů�ѡ���·�ߡ����ǣ��ⲿӰƬ���ܿɹ���Ǻܺõİ����˵����й�����Ů�ĸ���״̬��û����ΪӰƬ�Ĺ�����������������ʵ�ʡ�ӰƬ�г��ֵġ���װ���¡���һ���̶��ϴ���˵�������ڶ�ʣ��ʣŮ����ʵ��״��������ӰƬ��Ƭ��ȡ���ڵ���������е�һ��������Ϸ��Ҳ�͸������������ڵ����ġ���Ҫ���ǣ�ӰƬ�ж��ڸ������������ڶ�������ν��ǳ�ġ�һ�����顱�����ǡ��ҹ�������������ӡ��İ���ϲ�����ű��ʵĲ�ͬ��ӰƬ�е�һ��������Ů��ΪżȻ�ߵ�һ��ȴ�ڲ��ϻ������������������еĸ��飬�����������ճɾ�������Ҫ���ǣ������˶��ڱ˴˵��ദ���ҵ����Լ������������ֺ��Ҹ���</p>
+<p>ӰƬ�еĻƲ����ݵĳ�����һ����ͨ��Ա�����ڹ�����ѹ����ǰ�ĸо��ǡ�û�����壬Ҳû����˼��������¶��ͻȻ�����򳹵׸ı������������ľ��ƽӹ����һ����һ�εĶ����Ȼ�ó���ͷʹ���ѣ�������ȴ����һ����һ�εġ����ࡱ������ᵽһ�ֱ������ӵ����Ϻͳ��׷��ɵ����顣���ң���Ϊһ�������������ˣ���Ҳ����һ����һ�εĶ�����¶�ġ��չˡ�����ᵽ���Լ��Ĵ��ڵ���������Ķ�ʡ�</p>
+<p><div class="gg200x300">
+<iframe src="http://g.163.com/r?site=netease&affiliate=ent&cat=article&type=tvscreen200x300&location=1" width="200" height="300" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div><p>���ڽ�һ�ࣨ<a userid="2422669835513746032" class="daren-keyword">΢��</a>�����ݵ���¶���ԣ�����ĵ�ż��������װ����Լ�������Ӱ��һ����Ҫ���ڡ���Ȼһ��ʼ���ɷ�����¶���ڳ����С����á������ɣ������ڳ��ڵĽ����У�Ҳ�ǻƲ��������������ý�һ���ǿ�����ʹ������������ѡ��ڽ�����¶��һ�ο��ߵ������ʵ�������ָ�����õ����֡���Ȼ��¶��Ϊ���ĵ����ζ�ѡ�����뿪���ģ�������ңԶ����¡��ķ��ɽ���ϣ�������ﻹ�������ų��ġ���һ���̶��ϣ��������Լ��������������������¶������¶Ҳ��������߳��˷�ζ�������������������໥��Ҫ��ο��ĸ��飬��������İ��顣(��/��֮Ӱ)</p>
+(������Դ����������  )
+<a href="http://ent.163.com/"><img src="http://img1.cache.netease.com/ent/newimg/arc_icon.gif" alt="�߼���" width="11" height="10" border="0" class="icon" /></a>
+      </div>
+<!-- ��ҳ -->
+      <span class="blank12"></span>
+<!-- ���˻�洫�ݹ����� --><div class="endMore">
+    <span class="dotline"></span>
+    <span class="left f14px cBlue">
+        <a href="#" id="endpageUrl2">����<strong class="cDRed" id="replycount001">0</strong>�˲��롿</a></span>
+    <span class="c-weiBo-display">
+        
+<style>
+.endMore {overflow:visible;}
+</style>
+<div class="wb-article-sharewraper" id="wb-article-sharewraper" style="margin-top:10px;">
+</div>
+<script language="javascript" type="text/javascript"   charset="utf-8">
+    (function() {
+        var options = {
+            sourceUrl: "http://ent.163.com/",
+            source: encodeURIComponent("��������"),
+            title: encodeURIComponent("����װ���¡���������ʲô����"),
+            link: encodeURIComponent(document.location.href)
+        };
+        NTES.ready(
+         function() {
+            WbApp.initShareTips(options,"wb-article-sharewraper");
+        });
+    })();
+</script>
+
+    </span>
+    <span id="IEHtml"></span>
+    <span class="dotline"></span>
+</div>      <span class="blank12"></span>
+<div class="wb-wraper" id="wb-wraper"></div>
+<script type="text/javascript">
+NTES.ready(function(){
+	WbApp.createFollowSelectedHtml("wb-wraper","0003");
+});
+</script>      <span class="blank12"></span>
+      <span class="dotline"></span>
+      <span class="blank12"></span>
+<!-- �����ֶ����� -->
+      <div class="titleBar1 ui_s1">
+        <h2>���� <strong class="cBlue"> <a href="http://news.youdao.com/search?keyfrom=news.163&site=163.com&suser=user163&ue=gbk&q=����װ���¡�">����װ���¡�</a> </strong> ��</h2>
+        <ul class="tagList left" id="menuBar_endpage">
+          <li class="on"><a>����</a></li>
+        </ul>
+      </div>
+      <div class="content tab" id="endpage_tab">
+        <ul class="f14blu normal on">
+          <li><a href="http://ent.163.com/11/0630/08/77PHU9JS000300B1.html#from=relevant">����װ���¡���������ʲô����</a> <span class="cDGray f12px">2011/06/30</span></li>
+          <li><a href="http://ent.163.com/11/0630/07/77PGSCLA00032DGD.html#from=relevant">����װ���¡��ɺ���Ʋ���Ʊ����ҩ</a> <span class="cDGray f12px">2011/06/30</span></li>
+          <li><a href="http://ent.163.com/11/0630/05/77PAN9ET00032DGD.html#from=relevant">�ν�κȺ��������װ���¡�</a> <span class="cDGray f12px">2011/06/30</span></li>
+          <li><a href="http://ent.163.com/11/0629/09/77N5H9II000300B1.html#from=relevant">����װ���¡���һ�����ٱ� ����ϲ�������</a> <span class="cDGray f12px">2011/06/29</span></li>
+          <li><a href="http://ent.163.com/11/0629/06/77MRK9DC00032DGD.html#from=relevant">����86968758��ѿ�����װ���¡�</a> <span class="cDGray f12px">2011/06/29</span></li>
+        </ul>
+      </div>
+      <span class="blank9"></span>
+	  </div>
+      <span class="blank3"></span>
+<div class="endContent">
+<!-- youdao search box begin -->
+<style type="text/css">
+.endYoDao{ clear:both; margin:0 auto; width:542px; text-align:left; height:50px;}
+.endYoDao input{height:16px; border:1px solid #dcdddd; font-size:12px; background:#fff; width:185px; margin:0 0 0 5px;}
+.endYoDao input:hover{ border:1px solid #9CC9E4; background:#F7FCFF;}
+.endYoDao button{ margin:0 0 0 6px; font-size:12px; cursor:pointer; clear:both;}
+.endYoDao img{margin:3px 0 0;}
+.endYoDao  h3{ padding: 0 0 0 6px; line-height:25px; clear:both; text-align:left;}
+.endYoDao .search .select_box {background:url(http://img1.cache.netease.com/cnews/img09/ntes_yd_img.gif) left -80px no-repeat; width:45px; height:20px; border:none; position:relative; text-align:left; cursor:pointer; float:left; margin-right:4px; z-index:1000;}
+.endYoDao .search .select_box .select_list {display:block; position:absolute; width:3em; line-height:19px; left:0; top:0; background:#fff; display:none;}
+.endYoDao .search .select_box .search_site {height:18px; line-height:20px; padding-left:6px; float:left; overflow:hidden;}
+.endYoDao .search .select_box .select_list {width:43px; border:1px solid #B4B4B4;}
+.endYoDao .search .select_box {width:45px;}
+.endYoDao .search .select_box a {display:block; height:18px; text-indent:5px;}
+.endYoDao .search .select_box a:hover {background:#1E50A2; color:#fff; display:block; height:18px; text-decoration:none;}
+.endYoDao .search .select_box a.active {background:#1E50A2; color:#fff; display:block; height:18px; text-decoration:none;}
+.endYoDao .search .textBox {width:160px; height:20px; color:#7B7C7D; background:url(http://img1.cache.netease.com/cnews/img09/ntes_yd_img.gif) left top no-repeat; border:none; float:left; line-height:18px; text-indent:3px; padding-top:2px;}
+.endYoDao .search .btn {overflow:hidden; width:60px; height:20px; background:url(http://img1.cache.netease.com/cnews/img09/ntes_yd_img.gif) left -40px no-repeat; border:none; float:left; line-height:19px; font-size:12px; cursor:pointer;}
+.endYoDao .search form {float:left;}
+.endYoDao .key{float:left; padding:0 0 0 15px; line-height:25px;}
+.endYoDao .key a{ color:#1E50A2; text-decoration:underline;}
+.endYoDao .key a:hover{ color:#BA2636;}
+</style>
+<div class="endYoDao">
+<h3>������������</h3>
+<div class="search">
+  <form target="_blank" id="ydsearch_form" name="ydsearch_form" method="get" action="http://www.youdao.com/search">
+  <label><input type="text" class="textBox" value="������ؼ��" onfocus="javascript:if(this.value=='������ؼ��'){this.value='';this.style.color='#000'}" onblur="javascript:if(this.value==''){this.value='������ؼ��';this.style.color='#7B7C7D'}" id="ydsearch_input" name="q" autocomplete="off"/></label>
+  <input type="hidden" value="gbk" name="ue"/>
+  <input type="hidden" value="10" name="timesort" id="timesort"/>
+  <input type="hidden" value="163.page" name="keyfrom"/>
+  <input type="hidden" value="163.com" name="site"  id="searchsite"/>
+  <noscript>
+    <select name="site" class="left">
+      <option value="����" selected="selected">����</option>
+      <option value="">��ҳ</option>
+    </select>
+  </noscript>
+  <div id="divSelectKey" class="left"></div>
+  <input type="submit" class="btn" value="����" onclick="javascript:var input=document.getElementById('ydsearch_input');if(input.value=='������ؼ��'){input.value='';input.focus();input.style.color='#000';return false;} return true;"/>
+  </form>
+  <script type="text/javascript">
+//<![CDATA[
+        (function NTES_Nav(){
+            function Y_G(id){
+                return document.getElementById(id);
+            }
+            function clickselect(e){
+                e = e || window.event;
+                e.cancelBubble = true;
+                var name = this.innerHTML;
+                var txt = document.createTextNode(name);
+                selected.removeChild(selected.firstChild);
+                selected.appendChild(txt);
+                select_main.style.display = "none";
+                var title = this.getAttribute("title");
+                if (title == "����") {
+                  Y_G("timesort").value="10";
+                  Y_G("searchsite").value="163.com";
+                } else {
+                  Y_G("timesort").value="0";
+                  Y_G("searchsite").value="";
+                }
+            }
+            function a_mouseover () {
+                this.className = "active";
+            }
+            function a_mouseout () {
+                this.className = "";
+            }
+            Y_G("divSelectKey").innerHTML = '<div id="select_area_yd" class="select_box"><span id="selected_yd" class="search_site">����</span><div id="select_main_yd" class="select_list"><a title="����">����</a><a title="��ҳ">��ҳ</a></div></div>';
+            var select_area = Y_G("select_area_yd"), 
+            selected = Y_G("selected_yd"), 
+            select_main = Y_G("select_main_yd"), 
+            select_list = select_main.getElementsByTagName("a"), 
+            len = select_list.length;
+            select_area.onclick = select_main.onmouseover = function(){
+                select_main.style.display = "block";
+            }
+            select_main.onmouseout = function(){
+                select_main.style.display = "none";
+            }
+            
+            for (var i = 0; i < len; i++) {
+                select_list[i].onclick = clickselect;
+                select_list[i].onmouseover = a_mouseover;
+                select_list[i].onmouseout = a_mouseout;
+            }
+        })();
+//]]>
+</script>
+</div>  
+<div class="left"><a href="http://www.youdao.com/"><img height="17" border="0" width="89" title="�е�" src="http://img1.cache.netease.com/cnews/img07/yodao.gif"/></a></div>
+<div class="key" id="key"></div>
+</div>
+<script type="text/javascript">
+var ydwords = new Array(
+"�Ű�֥1.2��ǩԼ"
+, "��ǫ��ģ"
+, "�����¹��⳥"
+, "������ÿ�"
+, "5�ھ޽�Ԥ��"
+, "�ϵ»���"
+, "ζǧ������"
+, "������Ƹ��Ϣ"
+, "�������齻��"
+, "�ؼۻ�Ʊ"
+);
+var ydwi=0;
+var ydwlengthLimit = 13;
+function ydwShow() {
+  var html = "";
+  var len = 0;
+  var i = ydwi;
+  while (true) {
+    if (i >= ydwords.length) {
+      i=0;
+    }
+    var kw = ydwords[i];
+    if (kw.length > ydwlengthLimit) {
+      i++;
+      if (i == ydwi) {
+        break;
+      }
+      continue;
+    }
+    len += kw.length;
+    if (len > ydwlengthLimit) {
+      ydwi = i;
+      break;
+    }
+    if (window.encodeURIComponent) {
+      var eq = encodeURIComponent(kw);
+    } else {
+      var eq = kw;
+    }
+    html += "<a target='_blank' href='http://www.youdao.com/search?q=" + eq + "&keyfrom=163.page.hotword'>" + kw + "</a>&nbsp;";
+    len++;
+    i++;
+    if (i == ydwi) {
+      break;
+    }
+  }
+  document.getElementById("key").innerHTML = html;
+  var t = setTimeout("ydwShow()", 5000);
+}
+//var t = setTimeout("ydwShow()", 1);
+</script>
+<!-- youdao search box end -->
+
+<span class="blank3"></span>
+<div id="ead_ad_14"></div>
+<script language="javascript" src="http://impservice.youdao.com/imp/req_ads_v3.js"></script>
+<span class="blank9"></span>
+</div>
+	<span class="gg560">
+<!-- <script type="text/javascript">
+var banner_rdm02t=Math.random();
+banner_rdm02t=Math.ceil(banner_rdm02t*3);
+if(banner_rdm02t==1){
+document.write('<embed src="http://img1.126.net/channel4/009570/wld560120_0713.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="560" height="120" wmode=opaque></embed>');
+}
+</script> -->
+</span>
+	<span class="blank9"></span>
+	</div>
+    <span class="colEnd"></span>
+	<span class="blank9 blankW"></span> 
+<script type="text/javascript" language="javascript">//<![CDATA[
+var isShowComments = true,tieChannel = "ent",isStrict = true;
+//]]></script>
+<!-- Tie Begin -->
+<link href="http://img1.cache.netease.com/tie/css/tieanywhere2.2.3.css" rel="stylesheet" type="text/css" />
+<div id="tieArea" class="tie-area">	
+	<div class="tie-hidden">
+		<iframe name="tie-ajax-get"></iframe>
+		<form name="tie-ajax-post" action="" method="post" target="tie-ajax-get"></form>
+	</div>
+	<div class="tie-show">
+		<div class="tie-titlebar">
+			<strong>������</strong>
+			<a class="tieLink" target="_blank" href="">��<span class="cDRed tieCount"></span>�˲���<span class="cDRed">(����鿴)</span></a>
+		</div>
+		<div class="tie-data"><p class="tie-tips">�����ȡ��...</p></div>
+	</div>
+	
+	<div class="tie-post">
+		<div class="tie-titlebar" >
+			<strong>������</strong>
+			<a class="tieLink" target="_blank" href="">��<span class="cDRed tieCount"></span>�˲���<span class="cDRed">(����鿴)</span></a>
+		</div>
+        <div class="tie-author">
+        	<div class="tie-author-nickname"><a href="#" class="tie-author-tologin">�����¼</a> | <label>�ǳƣ�</label><input name="nickname" type="text" class="tie-textbox" /></div>
+            <form method="post" action="https://reg.163.com/logins.jsp" class="tie-author-login" target="_self">
+				<a href="http://news.163.com/special/00013GHE/commenthelp.html" class="howToUseTie">[���ʹ�ø���]</a>
+            	<span class="tie-author-toname"><a href="#">�ǳ�</a> |</span>
+                <label>����ͨ��֤��<input type="text" class="tie-textbox" name="username" /></label>
+                <label>���룺<input type="password" class="tie-textbox" name="password" /></label>
+				<label><input type="checkbox" name="savelogin" value="1" checked="checked" /> <span>�Զ���¼</span></label>
+                <input type="submit" class="tie-button tie-login-button" value="�� ¼" />
+                <a href="http://reg.163.com/reg/reg.jsp?product=tie&url=" class="tie-reg">ע��</a>
+                <input type="hidden" value="search" name="product" /><input type="hidden" value="1" name="type" /><input type="hidden" name="url" />
+            </form>
+			<div class="tie-author-logon">
+								<a href="#" class="tie-myposts" target="_blank"><strong class="tie-username"></strong></a>&nbsp;���� | <a href="#" target="_self" class="tie-changename">�޸��ǳ�</a> | <a href="#" target="_blank" class="tie-myposts">�ҵ����׸���</a> | <a href="http://t.163.com/" target="_blank" class="tie-myTinyBlog">�ҵ�����΢�� <sup class="cDRed"><img src="http://comment.news.163.com/images/newicon.png" width="18" height="7" alt="new!" /></sup></a> | <a target="_self" href="#" class="tie-logout">�˳�</a>
+			</div>
+        </div>
+        <form class="tie-postform" action="http://comment.news.163.com/reply/dopost.jsp" method="post" target="_blank">
+            <textarea name="body" class="tie-textarea" cols="80" rows="8">���������¼����</textarea>
+            <div class="send">
+                <p>�������۽���������˿�����������������ͬ����۵��֤ʵ��������</p>
+                <div class="right">
+                    <input type="hidden" name="board" />
+                    <input type="hidden" name="username" />
+                    <input type="hidden" name="threadid" />
+                    <input type="hidden" name="url" />
+                    <div class="syntinyblog">
+                    	<label class="fB"><input name="isTinyBlogSyn" type="checkbox" checked="checked" value="1" />ͬ����΢��</label>
+                        <div class="tinyblogTips">
+                        	<div class="tinyblogTips-body">
+                                <span class="tinyblogTips-login">��������ͬ����΢��������¼�������飡</span>
+                                <span class="tinyblogTips-logon">��ѡ�������û�п�ͨ΢����ϵͳ���Զ�Ϊ��</span>
+                                <span class="tinyblogTips-close">�ر�</span>
+                            </div>
+                        </div>
+                    </div>
+					<input type="submit" class="tie-submit" value="���Ϸ���" />
+                </div>
+            </div>
+        </form>
+    </div>
+		
+    <div class="tie-dialog tie-nicknamedialog borderShade">
+        <div class="tie-dialog-titlebar">
+			<span class="tie-dialog-title">�޸��ǳ�</span>
+			<a href="#" class="tie-dialog-close" target="_self"></a>
+		</div>
+        <div class="tie-dialog-body">
+            <form action="http://comment.news.163.com/reply/alterNickname.jsp" method="post" target="tie-ajax-get">
+                <input name="nickname" type="text" class="tie-textbox" maxlength="12" />
+                <input type="submit" class="tie-submit" value="ȷ ��" />
+                <label>�����ǳ��޸ĺ���̳�ǳ�Ҳ���Ŷ</label>
+            </form>
+        </div>
+		<span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c6"></span><span class="c7"></span><span class="c8"></span><span class="c9"></span>
+    </div>
+    <div class="tie-dialog tie-quotedialog borderShade">
+        <div class="tie-dialog-titlebar">
+			<span class="tie-dialog-title">��¥�ظ�</span>
+			<a href="#" target="_self" class="tie-dialog-close"></a>
+		</div>
+        <div class="tie-dialog-body">
+            <div class="tie-author">
+           		<div class="tie-author-nickname"><a href="#" class="tie-author-tologin">�����¼</a> | <label>�ǳƣ�</label><input name="nickname" type="text" class="tie-textbox" /></div>
+                <form method="post" action="https://reg.163.com/logins.jsp" class="tie-author-login" target="_self">
+                    <span class="tie-author-toname"><a href="#">�ǳ�</a> |</span>
+                    <label>����ͨ��֤��<input type="text" class="tie-textbox" name="username" /></label>
+                    <label>���룺<input type="password" class="tie-textbox" name="password" /></label>
+					<label><input type="checkbox" name="savelogin" value="1" checked="checked" /> <span>�Զ���¼</span></label>
+                    <input type="hidden" value="tie" name="product" /><input type="hidden" value="1" name="type" /><input type="hidden" value="" name="url" /><input type="submit" class="tie-button tie-login-button" value="�� ¼" />
+                    <a href="http://reg.163.com/reg/reg.jsp?product=tie&url=" class="tie-reg">ע��</a>
+                </form>
+                <div class="tie-author-logon">
+					<a target="_blank" class="tie-myposts" href=""><strong class="tie-username"></strong></a> ���� | <a target="_self" href="#" class="tie-logout">�˳�</a>
+				</div>
+            </div>
+            <form class="tie-postform" action="http://comment.news.163.com/reply/dopost.jsp" method="post" target="_blank">
+                <textarea name="body" rows="8" cols="80" class="tie-textarea">���������¼����</textarea>
+                <div class="tie-postform-sub">
+                    <div class="syntinyblog">
+                    	<label class="fB"><input name="isTinyBlogSyn" type="checkbox" checked="checked" value="1" />ͬ����΢��</label>
+                        <div class="tinyblogTips">
+                        	<div class="tinyblogTips-body">
+                                <span class="tinyblogTips-login">��������ͬ����΢��������¼�������飡</span>
+                                <span class="tinyblogTips-logon">��ѡ�������û�п�ͨ΢����ϵͳ���Զ�Ϊ��</span>
+                                <span class="tinyblogTips-close">�ر�</span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="tie-submit" value="���Ϸ���" />
+                    <input type="hidden" name="username"/>
+                    <input name="board" type="hidden" />
+                    <input name="threadid" type="hidden" />
+                    <input name="url" type="hidden" />
+                    <input name="quote" type="hidden" />
+                </div>
+            </form>
+        </div>
+		<span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c6"></span><span class="c7"></span><span class="c8"></span><span class="c9"></span>
+    </div>
+    <div class="tie-dialog tie-repostdialog borderShade">
+        <div class="tie-dialog-titlebar">
+			<span class="tie-dialog-title">�����ղ�</span>
+			<a href="#" target="_self" class="tie-dialog-close"></a>
+		</div>
+        <div class="tie-dialog-body">
+            <p class="tie-repostdialog-tips">
+				<span class="success">���Ƴɹ�����CTRL+V���͸���ѡ���̳�򲩿͡�</span>
+				<span class="failed">��������ƣ��븴�����Ӻͱ������ѡ���̳�򲩿͡�</span>
+			</p>
+            <p class="tie-repostdialog-content"><span class="tie-repostdialog-title"></span><br/><a href="" class="tie-repostdialog-url"></a></p>
+            <div style="text-align: center;"><input type="button" class="tie-repostdialog-confirm tie-dialog-close" value="" /></div>
+        </div>
+		<span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c6"></span><span class="c7"></span><span class="c8"></span><span class="c9"></span>
+    </div>
+</div>
+<script type="text/javascript" src="http://img1.cache.netease.com/cnews/js/ntes_jslib_1.x.js"></script>
+<script type="text/javascript" src="http://img1.cache.netease.com/tie/js/tieanywhere/tieanywhere2.3.5-min.js"></script>
+<!--
+0 0
+0 $tools.parseInt($diggCount)
+0
+-->
+<script type="text/javascript">//<![CDATA[
+(function($) {
+    var tieArea = new tieAnywhere.HotTieArea($("#tieArea"), "77PHU9JS000300B1", "ent2_bbs", tieChannel, isStrict);
+    tieArea[isShowComments ? "showPage" : "initView"]();
+    var replyCount = 0,
+        totalCount = 0,
+        totalElem = $("span.tieTotalCount, strong.tieTotalCount");
+
+    (totalElem.length < 1) && (replyCount = totalCount);
+    totalElem.attr("innerHTML", totalCount);
+    $("span.tieCount, strong.tieCount").attr("innerHTML", replyCount);
+    $("#replycounttop, #replycount001, #replycountbottom").attr("innerHTML", replyCount);
+})(NTES);
+//]]></script>
+	<span class="blank9 blankW"></span>
+	<span class="colEnd"></span>
+	<div class="bg_endPage clearfix">
+    <div class="endContent"><div class="titleBar1 ui_s1"><h2 class="fB">��������48Сʱ��������</h2><span class="cDRed f14px"><a href="http://m.163.com/newsapp/" title="�ֻ�Ҳ�ܿ�����">�ֻ�Ҳ�ܿ�����</a></span></div>
+	<div class="content">
+	<ol class="f14blu">
+	<li><a href="http://ent.163.com/11/0730/08/7A6QBI8O00032DGD.html">����Ƭ����ʧ�� ��������ӳ45��Ʊ������4��</a> <span class="f12px cDGray">����<span class="cDRed">766</span>��</span></li>
+	<li><a href="http://ent.163.com/11/0729/06/7A43ES8L00032DGD.html">�������й�� ���Ѳ���������һ����ȫϯ</a> <span class="f12px cDGray">����<span class="cDRed">603</span>��</span></li>
+	<li><a href="http://ent.163.com/11/0729/00/7A3DPTCG00031H2L.html">�Ű�֥�򽫼����¹�˾ ǩԼ5�����1.2��</a> <span class="f12px cDGray">����<span class="cDRed">501</span>��</span></li>
+	<li><a href="http://ent.163.com/11/0729/07/7A46TMJA00031H2L.html">����S�������� ��С��΢��͸¶������:��������</a> <span class="f12px cDGray">����<span class="cDRed">429</span>��</span></li>
+	<li><a href="http://ent.163.com/11/0729/10/7A4ENTEQ00031H2L.html">�������ɷ������ں��ּ�Ϊ���� Ϊ��Ŀ���컰��</a> <span class="f12px cDGray">����<span class="cDRed">412</span>��</span></li>
+	</ol>
+	</div>
+	<span class="blank12"></span></div>
+	<span class="blank6"></span>
+	<!-- span class="gg560">
+<embed src="http://img1.126.net/channel7/006390/6390_560150_03t_091229.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="560" height="150" wmode=opaque></embed>
+</span -->
+<!-- <span class="gg560">
+<embed src="http://img1.126.net/channel7/007652/7652_560150_03t_101129.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="560" height="150" wmode=opaque></embed> 
+</span> -->
+	<div class="endContent">
+	<div class="titleBar1 ui_s1"><h2 class="fB">��������ͼƬ�Ƽ�</h2></div>
+	<span class="blank9"></span>
+	<div class="imgList1p3">
+	<ul>
+      <li><a href="http://ent.163.com/photoview/00AJ0003/50168.html#p=7A4GBD1P00AJ0003"><img src="http://img4.cache.netease.com/ent/2011/7/29/20110729140349e1374.jpg" alt="��ᰵ�ʱ����־����" width="120" height="90" /></a><cite><a href="http://ent.163.com/photoview/00AJ0003/50168.html#p=7A4GBD1P00AJ0003">��ᰵ�ʱ����־����</a></cite></li>
+      <li><a href="http://ent.163.com/photoview/00AJ0003/50165.html#p=7A4CSNCV00AJ0003"><img src="http://img3.cache.netease.com/ent/2011/7/29/20110729114135eb50d.png" alt="������������д��" width="120" height="90" /></a><cite><a href="http://ent.163.com/photoview/00AJ0003/50165.html#p=7A4CSNCV00AJ0003">������������д��</a></cite></li>
+      <li><a href="http://ent.163.com/photoview/00AJ0003/50196.html#p=7A4IDN8500AJ0003"><img src="http://img4.cache.netease.com/ent/2011/7/29/20110729143159f9c01.png" alt="��ǧԴ���������ʹ" width="120" height="90" /></a><cite><a href="http://ent.163.com/photoview/00AJ0003/50196.html#p=7A4IDN8500AJ0003">��ǧԴ���������ʹ</a></cite></li>
+	</ul>
+	</div>
+	<span class="blank20"></span>
+	<span class="blank9"></span>
+	<a href="http://ent.163.com/" class="return">��������������ҳ</a>
+<script type="text/javascript">
+NTES.ready(function(NTES) {
+	function ShowDaren(ref, wrapper) {
+		var coords = getCoords(ref);
+		wrapper.style.display = 'none';
+		wrapper.style.top = coords.top + 'px';
+		wrapper.style.left = coords.left - 12 + 'px';
+		wrapper.style.display = 'block';
+	}
+	NTES.event.addEvent(NTES(".daren-keyword"), "mouseover", function() {
+		var self = this,
+			userid = this.getAttribute('userid'),
+			wrapperId = 'daren_w' + userid,
+			darenWrapper = document.getElementById(wrapperId);
+		if(darenWrapper) {
+			ShowDaren(self, darenWrapper);
+		} else {		
+			NTES.ajax.importJs('http://static.t.126.net/share/user/daren/' + userid + '.js', function() {				
+				darenWrapper = document.createElement('div');
+				darenWrapper.id = wrapperId;
+				darenWrapper.className = 'daren_w';
+				darenWrapper.innerHTML = '<div class="weibo-up-arr"></div><div class="daren-close" onclick="this.parentNode.style.display=\'none\'"></div>'
+					+ getWeiboDaren()
+					.replace('wb-article-folow', 'wb-article-minFolow') // �滻��ť��ʽ
+					.replace(/wenzhang_dr/g, 'wenzhang_hc'); // �滻����
+				darenWrapper.onmouseout = function(e) {
+					var evt = e? e: window.event,
+						target = evt.target? evt.target: evt.srcElement;
+				
+					if ( !evt.relatedTarget && evt.fromElement ) {
+						evt.relatedTarget = evt.fromElement == target ? evt.toElement : evt.fromElement;
+					}
+					var parent = evt.relatedTarget;
+					while ( parent && parent != this ) {
+						try { parent = parent.parentNode; }
+						catch(e) { parent = this; }
+					}
+					if( parent != this ){
+						this.style.display = 'none';
+					}
+				}
+				darenWrapper.onclick = function(e) {
+					var target;
+					e = e? e: window.event;
+					target = e.target? e.target: e.srcElement;
+					if(target.className.indexOf('talk-to') != -1) {
+						this.style.display = 'none';
+					}
+				}
+				document.body.appendChild(darenWrapper);
+				ShowDaren(self, darenWrapper);
+			}, 'utf-8');
+		}
+	});
+});
+</script>	<span class="blank12"></span>
+	</div>
+	<!-- 03������ -->
+<!-- �е�������3 -->
+	</div>
+	<span class="colEnd"></span>
+    </div>
+  <div class="colR">
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://news.163.com/">ͷ���Ƽ�</a></h2><span class="more"> <!-- ��ҳСbanner1 -->
+<iframe
+src="http://g.163.com/r?site=netease&affiliate=163&cat=article&type=banner260x20&location=1" width="260" height="20" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe></span></div>
+  <span class="blank9"></span>
+  <div class="content">
+	 <ul class="f12bla">
+       <li>��<a href="http://news.163.com/">����</a>��<a href="http://news.163.com/11/0730/07/7A6MQHVM00014JB6.html">Ų����Ѱ��ըǹ���������ߴ�6��</a></li>
+       <li>��<a href="http://ent.163.com/">����</a>��<a href="http://ent.163.com/11/0730/07/7A6OH1GF00032KMI.html">����S������ ������ŭ�������</a></li>
+       <li>��<a href="http://sports.163.com/">����</a>��<a href="http://sports.163.com/special/wangmenginjury/">��������:����ͣѵ�����к���</a></li>
+<li>��<a href="http://money.163.com/">�ƾ�</a>��<a href="http://money.163.com/11/0730/03/7A69FRD700253B0H.html#fr=newsend">�����������·�Բ� δ�漰�ⲿ������</a></li>
+       <li>��<a href="http://lady.163.com/">Ů��</a>��<a href="http://lady.163.com/special/sense/2010lady27.html">���ˣ�����ô֪������Ů����֮�£�</a></li>
+       <li>��<a href="http://auto.163.com/">��</a>��<a href="http://auto.163.com/photoview/2HTJ0008/142161.html">����ʪ��ϴ��(ͼ)</a> <a target="_blank" href="http://auto.163.com/photoview/2HTJ0008/142156.html">����80�󿪺�����Ѫ</a></li>
+       <li>��<a href="http://tech.163.com/">�Ƽ�</a>��<a href="http://tech.163.com/special/alioct/aliyhoo.html">�����Ż������֧�������Э��</a> <a target="_blank" href="http://tech.163.com/11/0730/07/7A6P2C1T000915BF.html"><em class='cDRed'>ȫ��</em></a></li>
+     </ul>
+  </div>
+  <span class="blank6"></span>
+  </div>
+  <span class="blank9"></span>
+  <div class="gg360">
+  <iframe src="http://g.163.com/r?site=netease&affiliate=ent&cat=article&type=tvscreen360x250&location=1" width="360" height="250" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div>
+<span class="blank9"></span>
+<div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://news.163.com/">�ȵ��Ƽ�</a></h2><span class="more"><!-- ��ҳС banner2 -->
+<iframe
+src="http://g.163.com/r?site=netease&affiliate=163&cat=article&type=banner260x20&location=2" width="260" height="20" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe></span></div>
+  <span class="blank9"></span>
+  <div class="content">
+	 <ul class="f12bla">
+       <li>��<a href="http://bbs.163.com/">��̳</a>��<a href="http://bbs.news.163.com/bbs/society/224117359.html">�̵��ٻ��ӳ�ȭ���ӣ�Ӧ����åɨ�س���</a></li>
+       <li>��<a href="http://mobile.163.com/">�ֻ�</a>��<a href="http://mobile.163.com/photoview/2ERI0011/14863.html">ChinaJoyֱ��:�ֻ���Ϸ�ܹ�ע ��ģԽ��Խ��</a></li>
+       <li>��<a href="http://digi.163.com/">����</a>��<a href="http://digi.163.com/photoview/2IJ70016/159576.html">����ɽկ��ʵ���ǣ�����X Mark I���������</a></li>
+       <li>��<a href="http://house.163.com/">����</a>��<a href="http://gz.house.163.com/special/gz_lstk0729/">����15�£���������ۼ� �Ϻ����ƻ���</a></li>
+       <li>��<a href="http://game.163.com/">��Ϸ</a>��<a href="http://game.163.com/11/0730/12/7A78NI2Q00314J6K.html">�����澭�ֳ���������</a> <a target="_blank" href="http://game.163.com/11/0730/11/7A753OAE00314K57.html">ͨ��SG���ŷֱ泧��</a></li>
+       <li>��<a href="http://book.163.com/">����</a>��<a href="http://data.book.163.com/book/home/009200010002/000BGfcO.html">��Ů��Ұ��</a> <a target="_blank" href="http://data.book.163.com/book/home/009200010002/000BGeaM.html">�������������ݴ���ͼ</a> <a target="_blank" href="http://data.book.163.com/book/home/009200010002/000BGfcY.html">��ɫ����</a> <a target="_blank" href="http://data.book.163.com/book/home/009200010019/000BGeXI.html">����</a></li>
+     </ul>
+  </div>
+  <span class="blank6"></span>
+  </div>
+  <span class="blank9"></span>
+  <div class="gg360">
+  <iframe src="http://g.163.com/r?site=netease&affiliate=ent&cat=article&type=logo360x150&location=1" width="360" height="150" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div>
+<span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/rank/">����24Сʱ������а�</a></h2></div>
+  <div class="rankTitle">
+  <div class="title"><!-- 260x25 -->
+<!-- <embed src="http://img1.126.net/channel7/009905/9905_26025_110706.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="260" height="25" wmode=opaque></embed> --></div><div class="num">�����</div>
+  </div>
+  <span class="blank3"></span>
+  <div class="content">
+  <ul class="rankList">
+    <li><span class="td_L"><span class="front">1</span><a href="http://ent.163.com/11/0729/03/7A3N1GFI00031GVS.html" title="С�������޺��ݡ�ӣ�ҡ� �Ա�ɽ������ʶ����">С�������޺��ݡ�ӣ�ҡ� �Ա�ɽ������ʶ����</a></span><span class="td_R">1793811</span></li>
+    <li><span class="td_L"><span class="front">2</span><a href="http://ent.163.com/11/0728/13/7A27PU6B00031H2L.html" title="��ѩ����������׷˼�� ��ɫ�԰׼�������">��ѩ����������׷˼�� ��ɫ�԰׼�������</a></span><span class="td_R">560347</span></li>
+    <li><span class="td_L"><span class="front">3</span><a href="http://ent.163.com/11/0729/07/7A46TMJA00031H2L.html" title="����S�������� ��С��΢��͸¶������:��������">����S�������� ��С��΢��͸¶������:������</a></span><span class="td_R">425541</span></li>
+    <li><span class="td_L"><span class="follow">4</span><a href="http://ent.163.com/11/0729/06/7A43ES8L00032DGD.html" title="�������й�� ���Ѳ���������һ����ȫϯ">�������й�� ���Ѳ���������һ����ȫϯ</a></span><span class="td_R">201364</span></li>
+    <li><span class="td_L"><span class="follow">5</span><a href="http://ent.163.com/11/0728/07/7A1J8L5J000300B1.html" title="�����ڡ���Ů���������� ��ٳ����֣ˬȺ������">�����ڡ���Ů���������� ��ٳ����֣ˬȺ������</a></span><span class="td_R">201050</span></li>
+    <li><span class="td_L"><span class="follow">6</span><a href="http://ent.163.com/11/0728/08/7A1LRBLV000300B1.html" title="�����ߴ�˵�����ؾ��� �����������޺���ɫ��">�����ߴ�˵�����ؾ��� �����������޺���ɫ��</a></span><span class="td_R">194402</span></li>
+    <li><span class="td_L"><span class="follow">7</span><a href="http://ent.163.com/11/0728/23/7A3ABJVD00032KMI.html" title="���»���Ƭ����ä�� ��֣������&quot;̸��&quot;">���»���Ƭ����ä�� ��֣������"̸��"</a></span><span class="td_R">184641</span></li>
+    <li><span class="td_L"><span class="follow">8</span><a href="http://ent.163.com/11/0729/04/7A3S1TTU00032DGD.html" title="�����ܷ����ҡ�����������ǰ�ܹԻ��仵">�����ܷ����ҡ�����������ǰ�ܹԻ��仵</a></span><span class="td_R">168314</span></li>
+    <li><span class="td_L"><span class="follow">9</span><a href="http://ent.163.com/11/0729/08/7A48JH3600031H0O.html" title="��������������� ����֪���罻��վɾ��">��������������� ����֪���罻��վɾ��</a></span><span class="td_R">148969</span></li>
+    <li><span class="td_L"><span class="follow">10</span><a href="http://ent.163.com/11/0729/00/7A3F9GMI00031H2L.html" title="��ѩ����ϯ����׷˼�� ���&quot;��ȥ���л����&quot;">��ѩ����ϯ����׷˼�� ���"��ȥ���л����"</a></span><span class="td_R">128256</span></li>
+   </ul>
+  </div>
+  <span class="blank6"></span>
+  </div>
+<!-- ��ͨ��2 -->
+<div class="gg360">
+<script type="text/javascript">
+var banner_rdm_02b=Math.random();
+banner_rdm_02b=Math.ceil(banner_rdm_02b*3);
+if(banner_rdm_02b==1){
+document.write('<embed src="http://img1.126.net/channel4/008985/1haodian360150_0718.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>');  
+}
+if(banner_rdm_02b==2){
+document.write('<scr'+'ipt language="JavaScript" src="http://smcommon.allyes.com/smcreative/flash_fx.js"></scr'+'ipt>');
+document.write('<scr'+'ipt language="JavaScript" src="http://smartmedia.allyes.com/main/s?user=samplesite|testchannel|banner2&db=smartmedia&border=0&local=yes&js=ie"></scr'+'ipt>');
+}
+if(banner_rdm_02b==3){
+document.write('<embed src="http://img1.126.net/channel7/009955/9955_360150_02b_110730.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>');  
+}
+</script>
+</div><span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/chat/">���ַ�̸</a></h2></div>
+  <span class="blank9"></span>
+  <div class="content">
+     <ul class="f12bla">
+       <li><a href="http://ent.163.com/11/0722/08/79I95HD100031GVS.html#p=79GNHB7400B70003">���������ͣ��¡����顷���ĸ�90��С������</a></li>
+       <li><a href="http://ent.163.com/11/0721/18/79GOPRM900031H0O.html">��˼˼�����İ��Ÿ��� �����ܽ��׿�����</a></li>
+       <li><a href="http://ent.163.com/11/0722/08/79IA091000031GVS.html">������:�������ҿ���18������� ����Ϸ������</a></li>
+       <li><a href="http://ent.163.com/11/0715/01/78VGB7JL00031GVS.html">��"����"���ݵ��� С���ӳ���׼���ý���"��ש"</a></li>
+       <li><a href="http://ent.163.com/11/0713/23/78SLGA6N000300B1.html">��δ���顷���ݽ���:��СȽ�Լ��麣����Ӧ��</a></li>
+       <li><a href="http://ent.163.com/11/0712/22/78PVEQP5000300B1.html">ר����СȽ̸۳�ı�����:��ǰ���ҽ��Ѳ���</a></li>
+     </ul>
+  </div>
+  <span class="blank9"></span>
+  </div>
+<!-- ��ͨ��3 -->
+<span class="blank9"></span>
+<div class="gg360">
+<script type="text/javascript">
+var banner_rdm_03b=Math.random();
+banner_rdm_03b=Math.ceil(banner_rdm_03b*3);
+if(banner_rdm_03b==1){
+document.write('<iframe src="http://img1.126.net/channel7/009758/0721/right.html" width="360" height="150" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>');  
+}
+if(banner_rdm_03b==2){
+document.write('<embed src="http://img1.126.net/channel7/010039/010039_360150_03b_110726.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>');
+}
+</script>
+</div><span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/blog/">����</a> | <a href="http://bbs.ent.163.com/">��̳</a></h2></div>
+  <span class="blank9"></span>
+  <div class="content">
+	 <ul class="f12bla">
+       <li><a href="http://dashan3851.blog.163.com/blog/static/20210421201162991933465/?froment">��˭�ҿ������˺���������ɴ</a></li>
+       <li><a href="http://dashan3851.blog.163.com/blog/static/202104212011626113311370/?froment">��Ů�ǰ��崿˭�ڶ�ʩЧ򭣿</a></li>
+       <li><a href="http://w2china.blog.163.com/blog/static/6191721220116278423959/?froment">�ν���С����ֵ����ԭ��</a></li>
+       <li><a href="http://changchunguomao.blog.163.com/blog/static/84629531201162584421284/?froment">Ц�ǽ�������ǰ��������ع�</a></li>
+     </ul>
+	 <span class="blank9"></span>
+	 <span class="dotline"></span>
+	 <span class="blank9"></span>
+	 <ul class="f12bla">
+       <li>[<a href="http://bbs.ent.163.com/list/bagua.html">��������</a>] <a href="http://bbs.ent.163.com/bbs/bagua/221360463.html">���˼�е�Ů������ʱ��</a></li>
+       <li>[<a href="http://bbs.ent.163.com/list/bagua.html">��������</a>] <a href="http://bbs.ent.163.com/bbs/bagua/221264914.html">��һ��Ů�Ǳ�������Ǳ����</a></li>
+       <li>[<a href="http://bbs.ent.163.com/list/bagua.html">��������</a>] <a href="http://bbs.ent.163.com/bbs/bagua/221299205.html">����ʮ��Ů���ز������ؼ�</a></li>
+       <li>[<a href="http://bbs.ent.163.com/list/leiqu.html">������ͼ</a>] <a href="http://bbs.ent.163.com/bbs/leiqu/221334178.html">��СȽ���������ϼ����ݳ�</a></li>
+     </ul>
+  </div>
+  <span class="blank9"></span>
+  </div>
+<!-- ��ͨ��4 -->
+<span class="blank9"></span>
+<div class="gg360">
+<!-- <a href="http://hr.163.com/zhaopin2010Q1/"><img src="http://img2.126.net/xoimages/news/hr/2010/02/360x150.jpg" width="360" height="150"></a> -->
+<!-- ad-start -->
+<SCRIPT LANGUAGE="JavaScript">var dovimecount=1;var sinamvadflag0688="";function domvview36397(){var mvimg = new Image();mvimg.src = 'http://show.mediav.com/s?type=1&db=mediav&pub=118_5273_36441&cus=0_0_0_0_0&wh=360x150&btype=1&js=2';mvimg.onerror = (mvimg.onload=(mvimg.onabort=function(){mvimg = null;}));}function view_mvst36397(){if(typeof(mediav_fini36397)!="number" && dovimecount <60){dovimecount++;setTimeout("view_mvst36397()",50);}else if(typeof(mediav_fini36397)!="number" && dovimecount >=60){sinamvadflag0688=1;domvview36397();document.getElementById('mvdiv_36397').innerHTML="<a href='http://click.mediav.com/c?type=2&db=mediav&pub=118_5273_36441&cus=6_221_7916_11778_11778000&url=http://www.masamaso.com/interface.php?id=103351&url=http://www.masamaso.com?from=r_ROIwy_ny04btl_ftc' target='_blank'><img width='360' height='150' border='' alt='' src='http://img1.126.net/channel7/other/04b_forblank.jpg'></img></a>";}}view_mvst36397();</SCRIPT><div id="mvdiv_36397" name="mvdiv_36397"><SCRIPT LANGUAGE="JavaScript" src="http://show.mediav.com/s?type=1&db=mediav&pub=118_5263_36397&cus=0_0_0_0_0&wh=360x150&btype=1&js=1"></SCRIPT></div> 
+<!-- ad-end -->
+</div><span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/special/">����ר��</a></h2></div>
+  <div class="imgList1p1">
+  <div class="left">
+  <a href="http://ent.163.com/special/tingfengbozhilihun/"><img src="http://img4.cache.netease.com/ent/2011/5/30/201105301305018a6c0.jpg" alt="л�����Ű�֥�������" width="120" height="90" border="0" /></a>
+  <h6><a href="http://ent.163.com/special/tingfengbozhilihun/">л�����Ű�֥�������</a></h6>
+  </div>
+  <div class="right">
+  <ul class="f12bla">
+       <li><a href="http://ent.163.com/special/transformers3/">�����ν��3��</a></li>
+       <li><a href="http://ent.163.com/special/wuxia/">��������</a></li>
+       <li><a href="http://ent.163.com/special/xhms/">��ѩ�����ȡ�</a></li>
+       <li><a href="http://ent.163.com/special/jdwy/">������ΰҵ��</a></li>
+       <li><a href="http://ent.163.com/special/22ndgma/">��22��̨�����</a></li>
+     </ul>
+  </div>
+  <span class="blank12"></span>
+  </div>
+  </div>
+<!-- ��ͨ��5 -->
+<span class="blank9"></span>
+<div class="gg360">
+<!-- <a href="http://yxp.163.com/photo/ep.html?sss=fromscb520"><img src="http://img2.126.net/xoimages/photo/20100512/yxp/x/360x150.jpg" width="360" height="150"></a> -->
+<script type="text/javascript">
+var banner_rdm=Math.random();
+banner5_rdm=Math.ceil(banner_rdm*2);
+if(banner5_rdm==1){
+document.write('<embed src="http://img1.126.net/channel7/008978/8978_360150_05b_110729a.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>'); 
+}
+if(banner5_rdm==2){
+document.write('<embed src="http://img1.126.net/channel7/008978/8978_360150_05b_110729b.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>'); 
+}
+</script>
+</div><span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/">�����Ƽ�</a></h2></div>
+	<ul class="picList">
+ 	<li><a href="http://ent.163.com/photoview/00AJ0003/50216.html#p=7A6S0SIH00AJ0003"><img src="http://img3.cache.netease.com/ent/2011/7/30/20110730091934484d2.png" alt="����Я�����������Ь" width="120" height="90" border="0" /></a><h6><a href="http://ent.163.com/photoview/00AJ0003/50216.html#p=7A6S0SIH00AJ0003">����Я�����������Ь</a></h6></li>
+ 	<li><a href="http://ent.163.com/photoview/00AJ0003/50214.html#p=7A66QA2500AJ0003"><img src="http://img4.cache.netease.com/ent/2011/7/30/2011073009222816e09.png" alt="��־������������" width="120" height="90" border="0" /></a><h6><a href="http://ent.163.com/photoview/00AJ0003/50214.html#p=7A66QA2500AJ0003">��־������������</a></h6></li>
+	</ul>
+	<span class="blank20"></span>
+  </div>
+<!-- ��ͨ��6 -->
+<span class="blank9"></span>
+<div class="gg360">
+<!-- <a href="http://help.3g.163.com/box/"><img src="http://img2.126.net/xoimages/mobile/20091125/l/360x150.jpg" width="360" height="150"></a> -->
+<script type="text/javascript">
+var banner_rdm=Math.random();
+banner_rdm=Math.ceil(banner_rdm*2);
+if(banner_rdm==1){
+document.write('<embed src="http://img1.126.net/channel1/8978_360300_0730c.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>'); 
+}
+if(banner_rdm==2){
+document.write('<embed src="http://img1.126.net/channel7/008978/8978_360150_06b_110729b.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="360" height="150" wmode=opaque></embed>'); 
+}
+</script>
+</div>  <span class="blank9"></span>
+  <div class="rightContent">
+  <div id="ead_ad_15"></div>
+  <script language="javascript" src="http://impservice2.youdao.com/imp/req_right.js"></script>
+  <span class="blank9"></span>
+  </div>
+  <!-- span class="blank9"></span -->
+<!-- �ҵ�������1 -->
+<span class="blank9"></span>
+<div class="rightContent" style="width:auto;">
+<iframe
+src="http://img1.126.net/channel1/html/tb_360300_0929.html" width="360" height="300" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe>
+</div><!-- �ҵ�������2 -->
+<span class="blank9"></span>
+<div class="gg360">
+<iframe
+src="http://img1.126.net/channel4/009675/pinyou0718.html" width="360" height="150" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe>
+</div><!-- ��ƵCPM -->
+<!-- ��������������1/2 -->
+<script type="text/javascript">
+	var GDS2_240120_Src1 = "http://img1.126.net/channel2/009928/009928_100300_0729.swf";//url of AD
+	var GDS2_240120_Src2 = "";//url of AD
+	var fc_rdm=Math.random();
+	var GDS2_240120_Src="";
+	var GDS2_240120_Width = 100;//width of AD
+	var GDS2_240120_Height = 300;//height of AD
+	var GDS2_urls = "";
+if (fc_rdm>0.5){GDS2_240120_Src = GDS2_240120_Src1;}else{GDS2_240120_Src = GDS2_240120_Src2;}
+if(!GDS2_240120_Src==""){document.write('<scr'+'ipt language="JavaScript" src="http://img1.126.net/channel1/js/style2.js"></scr'+'ipt>');}
+</script>
+<!-- ��ҳ�����������5���� -->
+<!-- script type="text/javascript">
+	var  GDS3_Src=[];
+	GDS3_Src.push("http://img1.126.net/channel2/009933/pizzahut100300_110713yule.swf");
+	GDS3_Src.push("http://img1.126.net/channel2/009933/pizzahut100300_110713yule.swf");
+	GDS3_Src.push("http://img1.126.net/channel2/009933/pizzahut100300_110713yule.swf");
+	GDS3_Src.push("http://img1.126.net/channel2/009933/pizzahut100300_110713yule.swf");
+        GDS3_Src.push("http://img1.126.net/channel2/009933/pizzahut100300_110713yule.swf");
+	//���²�Ҫ�޸�
+	var  GDS3_Num=5;
+	var  GDS3_rdm=Math.floor(Math.random()*GDS3_Num);
+	if(window.screen.width>1180 && GDS3_Src[GDS3_rdm] && GDS3_Src[GDS3_rdm]!="" ){
+		var GDS3_240120_Width = 100;//width of AD
+		var GDS3_240120_Height = 300;//height of AD
+		var GDS3_240120_Src = GDS3_Src[GDS3_rdm];//url of AD
+		var GDS3_urls = " ";
+		document.write('<scr'+'ipt type="text/javascript" src="http://img1.126.net/channel1/js/style_left.js"></scr'+'ipt>');
+	}
+</script -->
+<!-- ��ҳ�����������5���� -->
+<!-- �ҵ���Ƶ���� --><!-- ����Ƶע��CPM -->
+<script language=javascript>
+var richam=1;
+</script>
+<!-- �ײ� ��Ƶ -->
+<!-- ��ҳ���� -->
+<!-- ��ҳ���� -->
+<!-- ���banner -->
+<script type="text/javascript"  src="http://img1.126.net/channel7/insert560120_110303.js"></script>
+<script type="text/javascript">
+var banner_rdm4=Math.random();
+banner_rdm4=Math.ceil(banner_rdm4*3);
+if(banner_rdm4==1){
+new InsertAd("9827moonbasa","flash","http://img1.126.net/channel7/009810/560120_110721.swf");
+}else{
+new InsertAd("qianwu","flash","http://img1.126.net/channel7/008990/8990_560120_110728.swf");
+}
+</script>
+<!-- ���banner -->
+<!-- ���˻����ִ���start -->
+<script type="text/javascript" src="http://img2.126.net/ntesrich/f.js"></script>
+<script type="text/javascript">
+if(typeof(richam)=="undefined"){
+document.write('<scri'+'pt language="JavaScript" src="http://img2.126.net/ntesrich/2011/0711/all/hd-3-727.js"></scri'+'pt>');
+}else{ //delay 45s
+document.write('<scri'+'pt language="JavaScript" src="http://img2.126.net/ntesrich/2011/0711/all/hd-yanchi45-727.js"></scri'+'pt>');
+}
+</script>
+<!-- ���˻����ִ���end -->
+<script type="text/javascript">//<![CDATA[
+ac_as_id = 72769;
+ac_click_track_url = "";ac_format = 0;ac_mode = 1;
+ac_width = 280;ac_height = 210;
+//]]></script>
+<script type="text/javascript" src="http://static.acs86.com/g.js"></script><span class="blank9"></span>
+  <div class="rightContent">
+  <div class="titleBar1 ui_sr"><h2><a href="http://ent.163.com/video/">������Ƶ�Ƽ�</a></h2></div>
+	<ul class="picList">
+ 	<li><a href="http://v.ent.163.com/video/2011/7/V/I/V79AFHCVI.html"><img src="http://img4.cache.netease.com/ent/2011/7/30/201107302222566d645.jpg" alt="��ǫ20��Ů�ѹ�������" width="120" height="90" border="0" /></a><h6><a href="http://v.ent.163.com/video/2011/7/V/I/V79AFHCVI.html">��ǫ20��Ů�ѹ�������</a></h6></li>
+ 	<li><a href="http://v.ent.163.com/video/2011/7/V/I/V79AFHCVI.html"><img src="http://img3.cache.netease.com/ent/2011/7/30/20110730221700db74a.jpg" alt="�컳���⾭���˱���" width="120" height="90" border="0" /></a><h6><a href="http://v.ent.163.com/video/2011/7/V/I/V79AFHCVI.html">�컳���⾭���˱���</a></h6></li>
+	</ul>
+	<span class="blank20"></span>
+  </div>
+<div id="crossiframe"></div>
+<script>
+(function () {
+	var demo = {
+		id : "crossiframe",
+		width : 360,
+		height : 195,
+		obj : [{
+			name :"news",
+			url:"http://news.163.com/special/acrossthechannel/"
+		},{
+			name:"ent",
+			url:"http://ent.163.com/special/acrossthechannel/"
+		},{
+			name:"sports",
+			url:"http://sports.163.com/special/acrossthechannel/"
+		}
+	]};
+	if(document.getElementById(demo.id) != null){
+		var domain = window.location.host.split(".")[0];
+		var len = demo.obj.length;
+		var arr = [];
+		var j = 0;
+		for(var i=0;i<len;i++){
+			if(domain != demo.obj[i].name){
+				arr[j] = demo.obj[i].url;
+				j++;
+			}
+		};
+		var src = arr[Math.floor(Math.random()*arr.length)];
+		var html = "<iframe src='" + src +"' width='" + demo.width +"' height='" + demo.height +"' frameborder='0' border='0' marginwidth='0' marginheight='0' scrolling='no'></iframe>";
+		document.getElementById(demo.id).innerHTML = html;
+	}
+})();
+</script>
+ </div>
+</div>
+<span class="blank9"></span>
+<div class="END_nav_">
+<span class="nav_link"><a href="http://www.163.com/">������ҳ</a>-<a href="http://news.163.com/">����</a>-<a href="http://sports.163.com/">����</a>-<a href="http://ent.163.com/">����</a>-<a href="http://money.163.com/">�ƾ�</a>-<a href="http://auto.163.com/">��</a>-<a href="http://tech.163.com/">�Ƽ�</a>-<a href="http://digi.163.com/">����</a>-<a href="http://mobile.163.com/">�ֻ�</a>-<a href="http://lady.163.com/">Ů��</a>-<a href="http://game.163.com/">��Ϸ</a>-<a href="http://bbs.163.com/">��̳</a>-<a href="http://v.163.com/">��Ƶ</a>-<a href="http://blog.163.com/">����</a>-<a href="http://gz.house.163.com/" id="houseUrl2">����</a>-<a id="homeUrl2" href="http://home.163.com/">�Ҿ�</a>-<a href="http://m.163.com/">Ӧ��</a>-<a href="http://t.163.com/">΢��</a></span>
+  <div class="top_search">
+    <form target="_blank" id="formtop" name="nisearch_top" method="get" action="http://news.yodao.com/search">
+      <input type="hidden" value="news.163" name="keyfrom"/>
+      <input type="hidden" value="user163" name="suser"/>
+      <input type="hidden" value="gbk" name="ue"/>
+      <label><span class="hidden">����</span>
+      <input type="text" class="textBox" value="������ؼ��" onfocus="this.value=''" id="searchInput_top" name="q"/>
+      </label>
+      <noscript>
+      <select name="site" class="left">
+        <option value="����" selected="selected">����</option>
+        <option value="">��ҳ</option>
+      </select>
+      </noscript>
+      <div id="divSelect2" class="left"> </div>
+      <input type="submit" class="btn" value="����" name="Submit"/>
+      <input type="hidden" value="page" id="in" name="in"/>
+    </form>
+    <a href="http://news.163.com/special/00011K6L/rss.html"><img width="26" height="14" border="0" alt="Rss" class="rss" src="http://img1.cache.netease.com/cnews/img07/rss.gif" style="width: 26px; height: 14px;"/></a></div>
+</div>
+<span class="blank9"></span>
+<!-- ���� -->
+<script charset="gb2312" src="http://img1.cache.netease.com/cnews/js/ntes_jslib_1.x.js" language="javascript" type="text/javascript"></script>
+<div class="foot">
+<a href="http://t.163.com/zt/feedback">�����</a>��
+��������:ent163baoliao#163.com #��Ϊ@
+<a href="http://bbs.ent.163.com/list/entjianyi.html ">���������������</a> 
+<div class="text"></div>
+<a href="http://corp.163.com/">About NetEase</a> - <a href="http://gb.corp.163.com/gb/about/overview.html">��˾���</a> - <a href="http://gb.corp.163.com/gb/contactus.html">��ϵ����</a> - <a href="http://corp.163.com/gb/job/job.html">��Ƹ��Ϣ</a> - <a href="http://help.163.com/">�ͻ�����</a> - <a href="http://gb.corp.163.com/gb/legal.html">��˽����</a> - <a href="http://emarketing.biz.163.com/">����Ӫ��</a> - <a href="http://sitemap.163.com/">��վ��ͼ</a><br />
+���׹�˾��Ȩ����<br />
+
+<span class="cRed">&copy;1997-2011</span>
+</div>
+<script src="http://img1.cache.netease.com/cnews/js/ntes_jslib_1.x.js" language="javascript" type="text/javascript" charset="gb2312"></script>
+<script language="JavaScript" type="text/javascript">
+ //<![CDATA[	
+        (function END_Nav(){
+            function clickselect2(e){
+                e = e || window.event;
+                e.cancelBubble = true;
+                var name = this.innerHTML;
+                var txt = document.createTextNode(name);
+                selected2.removeChild(selected2.firstChild);
+                selected2.appendChild(txt);
+                select_main2.style.display = "none";
+                var title = this.getAttribute("title");
+                NTES("#siteName2").value = title;
+                if (title == "����") {
+				document.nisearch_top.action = "http://news.yodao.com/search";
+				}
+				else {document.nisearch_top.action = "http://www.yodao.com/search";
+				}
+            }
+            function a_mouseover2 () {
+                this.className = "active";
+            }
+            function a_mouseout2 () {
+                this.className = "";
+            }
+            
+            if (NTES("#divSelect2")){            
+	            NTES("#divSelect2").innerHTML = '<input id="siteName2" type="hidden" value="����" name="site" /><div id="select_area2" class="select_box"><span id="selected2" class="search_site">����</span><div id="select_main2" class="select_list"><a title="����">����</a><a title="">��ҳ</a></div></div>';	            
+	            var select_area2 = NTES("#select_area2"), selected2 = NTES("#selected2"), select_main2 = NTES("#select_main2"), select_list2 = select_main2.getElementsByTagName("a"), len2 = select_list2.length;	            
+	            select_area2.onclick = select_main2.onmouseover = function(){
+	                select_main2.style.display = "block";
+	            }           
+	            select_main2.onmouseout = function(){
+	                select_main2.style.display = "none";
+	            }
+	            for (var i = 0; i < len2; i++) {
+	                select_list2[i].onclick = clickselect2;
+	                select_list2[i].onmouseover = a_mouseover2;
+	                select_list2[i].onmouseout = a_mouseout2;
+	            }
+            }
+        })();
+			//var endpage_tab = new NTES.ui.Slide(NTES("#menuBar_endpage > li"), NTES("#endpage_tab > ul"), "on", "mouseover"); // �Ƽ������л�
+			function changeProduct(type){
+	if(NTES("#query").value=="" || NTES("#query").value.length==0)
+	{
+		alert("������ؼ���!");
+		return false;
+	}
+	var SoForm = NTES("#yodaoForm");
+	var vsite = NTES("#ydsite");
+    if(type==2){
+		vsite.value="";
+		SoForm.action="http://www.youdao.com/search";
+	}else if(type==1){
+		vsite.value="����";
+		SoForm.action="http://news.youdao.com/search";
+	}
+	SoForm.submit();
+	return true;
+}
+            //�������
+            var EndPage = function(){
+            }
+            if (NTES("#h1title")) {
+				var getTitle = NTES("#h1title").innerHTML.replace(/["']+/g,'');
+			}
+				else {
+				// alert ("��ȡ����ʧ��");
+			}
+                EndPage.clearField = function(){
+                if (NTES("#inputWord").value == EndPage.tip) {
+                NTES("#inputWord").value = "";
+                }
+            }
+            EndPage.mail = function(){
+                try {
+                    var RightMailAgent = new ActiveXObject("FlashMailShell.FlashMailIEExt");
+                } 
+                catch (e) {
+                    window.open("http://fm.163.com/commend.html?tab=5?yjzf100201", "")
+                }
+                var str = NTES("#endText").innerHTML;
+                str = str.replace(/<\/?(?:embed|object|param)[^>]*>/ig, "");
+				str += "<br /><br />";
+				str += '����Ҳ��ͺ��ѷ��?��������?��\<a href=\"http:\/\/dl.163.com\/NxMail\/Update\/installer\/flashmail-2.0beta.exe\"\>����������\<\/a\>,���Ķ�\<a href=\"http:\/\/fm.163.com\/introduce.html?yjzf100201\"\>�����ʽ���\<\/a\>��';
+				
+				if (RightMailAgent != null) {
+                    RightMailAgent.addSubject("��ĺ����Ƽ����¡�"+getTitle+"��");
+                    RightMailAgent.addContent(str);
+                }
+            }
+            EndPage.copyUrl = function(){
+                var cbc = "";
+                cbc += getTitle +'\r\n' + document.URL;
+                window.clipboardData.setData("Text", cbc);
+                NTES("#IECopyUrl").innerHTML = "<span class=\"cDRed\">�Ѹ���</span>";
+            }
+           
+		   //��ʼ�� 
+            if (NTES.browser.msie) {
+                NTES("#IEHtml").innerHTML = "\<span class=\"right cDGray\"\>\<span class=\"copyLink\" id=\"IECopyUrl\" title=\"������Ʊ��������\" style=\"background: url(http:\/\/img1.cache.netease.com\/cnews\/css09\/bg_n1.gif\) no-repeat scroll left -362px transparent; padding: 2px 0pt 2px 23px;\"\>\<a style=\"cursor:pointer; text-decoration:none;\"\>������ַ\<\/a\>\<\/span\> \<a href=\"mailto:\" class=\"mail\" id=\"IEMailSend\" title=\"��Ҳ��ͺ��ѷ��?��������?������������(���ֱ�ӿ�����)\" style=\"background: url(http:\/\/img1.cache.netease.com\/cnews\/css09\/bg_n1.gif) no-repeat scroll -154px -363px transparent; padding: 2px 0pt 2px 23px;\"\>������ת��\<\/a\>\<\/span\>";
+                NTES("#IEMailSend").addEvent("click", function(e){
+                    EndPage.mail();
+                    e.preventDefault();
+                });
+                NTES("#IECopyUrl").addEvent("click", function(e){
+                    EndPage.copyUrl();
+                    e.preventDefault();
+                });
+            }
+            //]]>
+        </script>
+<script type="text/javascript" src="http://temp.163.com/special/00804IKH/mainjs.js"></script><!-- �ײ����� -->
+<!-- START WRating v1.0 -->
+<script type="text/javascript" src="http://163.wrating.com/a1.js">
+</script>
+<script type="text/javascript">
+var vjAcc="860010-0504010000";
+var wrUrl="http://163.wrating.com/";
+vjTrack("");
+</script>
+<noscript><img src="http://163.wrating.com/a.gif?a=&c=860010-0504010000" width="1" height="1"/></noscript>
+<!-- END WRating v1.0 -->
+<script src="http://analytics.163.com/ntes.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+    _ntes_nacc = "ent"; //վ��ID��
+    neteaseTracker();
+    </script>
+</body>
+</html>

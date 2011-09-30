@@ -1,0 +1,8 @@
+<rules-template>
+ <site>
+  <regurl>finance.sina.com.cn</regurl>
+  <tag>div id=artibody class=blkContainerSblkCon</tag>
+  <beginPattern></beginPattern>
+  <endPattern></endPattern>
+ </site>
+</rules-template>

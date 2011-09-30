@@ -1,0 +1,14 @@
+<rules-template>
+ <site>
+  <regurl>finance.sina.com.cn</regurl>
+  <tag>h1</tag>
+  <attributes>
+   <attribute>
+    <key>id</key>
+    <value>artibodyTitle</value>
+   </attribute>
+  </attributes>
+  <beginPattern></beginPattern>
+  <endPattern></endPattern>
+ </site>
+</rules-template>
