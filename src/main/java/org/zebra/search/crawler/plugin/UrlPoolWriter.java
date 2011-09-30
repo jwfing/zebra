@@ -10,12 +10,6 @@ import org.zebra.search.crawler.common.*;
 public class UrlPoolWriter implements Processor{
 	private static final Logger logger = Logger.getLogger(UrlPoolWriter.class);
     private UrlAppender appender = UrlAppender.getInstance();
-//	public UrlAppender getAppender() {
-//		return appender;
-//	}
-//	public void setAppender(UrlAppender appender) {
-//		this.appender = appender;
-//	}
     
 	public boolean initialize() {
 		return true;

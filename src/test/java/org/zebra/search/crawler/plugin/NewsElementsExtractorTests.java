@@ -22,7 +22,7 @@ import com.sun.org.apache.xpath.internal.operations.Div;
 
 public class NewsElementsExtractorTests extends PluginTestBase {
 	public NewsElementsExtractorTests() {
-		super("./7BIHQEKD00253B0H.html");
+		super("./testdata/163_7BIHQEKD00253B0H.html");
 	}
 	public void testTravelHTML() {
 		String pageSource = "<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Transitional//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd>"
@@ -97,7 +97,6 @@ public class NewsElementsExtractorTests extends PluginTestBase {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		;
 	}
 
 	public void testExtractMainText() {
@@ -107,7 +106,7 @@ public class NewsElementsExtractorTests extends PluginTestBase {
 		if (!result) {
 			fail("failed to process htmlparser");
 		}
-		NewsMainTextExtractor extractor = new NewsMainTextExtractor();
+		MainTextExtractor extractor = new MainTextExtractor();
 		NodeList nodeList = (NodeList) context
 				.getVariable(ProcessorUtil.COMMON_PROP_NODELIST);
 		if (nodeList == null) {

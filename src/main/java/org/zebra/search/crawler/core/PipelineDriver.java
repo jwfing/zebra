@@ -59,7 +59,7 @@ public class PipelineDriver{
 		urlGenerator.initialize();
 		DeduperClient deduper = new DeduperClient();
 		deduper.initialize();
-		NewsElementExtractor extractor = new NewsElementExtractor();
+		NewsElementsExtractor extractor = new NewsElementsExtractor();
 		extractor.initialize();
 		DummyProcessor dummy = new DummyProcessor();
 		dummy.initialize();
@@ -76,9 +76,9 @@ public class PipelineDriver{
 		seedChain.addProcessor(dummy);
 		ProcessorChain contentChain = new ProcessorChain();
 //		contentChain.addProcessor(convertor);
-//		contentChain.addProcessor(parser);
-//		contentChain.addProcessor(extractor);
-		contentChain.addProcessor(dummy);
+		contentChain.addProcessor(parser);
+		contentChain.addProcessor(extractor);
+//		contentChain.addProcessor(dummy);
 
 		this.dispatcher.addChain(ProcessDirectory.LIST_PAGE, seedChain);
 		this.dispatcher.addChain(ProcessDirectory.CONTENT_PAGE, contentChain);

@@ -59,4 +59,10 @@ public class HashDeduper implements Deduper {
     	logger.warn("no implements this method");
     	return false;
     }
+    public boolean isFull() {
+    	return false;
+    }
+    public void clear() {
+    	;
+    }
 }

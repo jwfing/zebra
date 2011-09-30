@@ -7,7 +7,7 @@ import org.zebra.search.crawler.util.ProcessorUtil;
 
 public class LinkFollowerTests extends PluginTestBase {
 	public LinkFollowerTests() {
-		super("./vCB.html");
+		super("./testdata/vCB.html");
 	}
 
 	public void testContentPage() {
@@ -32,7 +32,7 @@ public class LinkFollowerTests extends PluginTestBase {
 	}
 	public void testReportDocument() {
 		Context context = new Context();
-		NewsReportExtractor follower = new NewsReportExtractor();
+		NewsAttachmentExtractor follower = new NewsAttachmentExtractor();
 		DocumentParser parser = new DocumentParser();
 		boolean result = parser.process(doc, context);
 		if (!result) {
