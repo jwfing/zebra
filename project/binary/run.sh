@@ -1,8 +1,8 @@
 VA=$JAVA_HOME/bin/java
 JAVA=java
 JAVA_HEAP_MAX=-Xmx512m 
-CLASSPATH=${CLASSPATH}:./
-for f in ../lib/*.jar; do
+CLASSPATH=${CLASSPATH}:./crawler-1.0-SNAPSHOT.jar
+for f in ./dependency/*.jar; do
   CLASSPATH=${CLASSPATH}:$f;
 done
 
