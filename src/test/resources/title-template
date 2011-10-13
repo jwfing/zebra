@@ -1,13 +1,7 @@
 <rules-template>
  <site>
   <regurl>finance.sina.com.cn</regurl>
-  <tag>span</tag>
-  <attributes>
-   <attribute>
-    <key>id</key>
-    <value>pub_date</value>
-   </attribute>
-  </attributes>
+  <tag>h1 id=artibodyTitle</tag>
   <beginPattern></beginPattern>
   <endPattern></endPattern>
  </site>
