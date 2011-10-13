@@ -2,8 +2,12 @@ package org.zebra.search.crawler.core;
 
 import java.util.List;
 
+import org.springframework.context.*;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import org.zebra.search.crawler.common.CrawlDocument;
 import org.zebra.search.crawler.common.Context;
+import org.zebra.search.crawler.common.Processor;
 import org.zebra.search.crawler.common.UrlInfo;
 import org.zebra.search.crawler.fetcher.HttpClientFetcher;
 import org.zebra.search.crawler.plugin.DocumentParser;
@@ -12,7 +16,7 @@ import org.zebra.search.crawler.util.ProcessorUtil;
 
 import junit.framework.TestCase;
 
-public class PipelineDriverTests extends TestCase{
+public class PipelineDriverTests extends TestCase {
 	private HttpClientFetcher fetcher = new HttpClientFetcher();
 	private static boolean initialized = false;
 	protected String url = "http://money.163.com/special/002534M5/review.html";
@@ -27,6 +31,11 @@ public class PipelineDriverTests extends TestCase{
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
+	}
+
+	public void testConfig() {
+		PipelineDriver driver = new PipelineDriver();
+		driver.initialize();
 	}
 
 	public void testDOMParser() {
@@ -49,9 +58,11 @@ public class PipelineDriverTests extends TestCase{
 		if (!result) {
 			fail("failed to follow links");
 		}
-		List<UrlInfo> outlinks = (List<UrlInfo>)context.getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
-    	for (UrlInfo link : outlinks) {
+		List<UrlInfo> outlinks = (List<UrlInfo>) context
+				.getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
+		for (UrlInfo link : outlinks) {
 			System.out.println(link.getUrl());
 		}
 	}
+
 }

@@ -13,6 +13,9 @@ public class ProcessorChain {
     public void setProcessors(List<Processor> list) {
     	this.processors = list;
     }
+    public List<Processor> getProcessors() {
+    	return this.processors;
+    }
     public void addProcessor(Processor processor) {
     	this.processors.add(processor);
     }

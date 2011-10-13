@@ -1,13 +1,7 @@
 <rules-template>
  <site>
-  <regurl>news.163.com</regurl>
-  <tag>timezone id=abc class=fehai</tag>
-  <beginPattern>世界时</beginPattern>
-  <endPattern>编辑</endPattern>
- </site>
- <site>
-  <regurl>finance.sohu.com</regurl>
-  <tag>div</tag>
+  <regurl>finance.sina.com.cn</regurl>
+  <tag>span id=pub_date</tag>
   <beginPattern></beginPattern>
   <endPattern></endPattern>
  </site>

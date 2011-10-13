@@ -100,7 +100,7 @@ public class ConfigurableTemplate {
 			    logger.info("rule item: " + item.toString());
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.warn("failed to load config file: " + path + ", cause: " + ex.getMessage());
 			return false;
 		}
 		return true;

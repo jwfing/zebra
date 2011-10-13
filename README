@@ -1,22 +1,34 @@
 Zebra
 
 ========== introduce ================
-Zebra is a framework for vertical search, such as news/finance/sport.
-the architecture is as followed:
+zebra是一个网络爬虫的框架，包括如下几个部分：
+1，urlPool，是待抓取的url池，可累积；
+2，allocator，是url分配器，从urlPool中获取待抓取的url集合，然后按照一定算法分配给fetcher去进行实际抓取；
+3，fetcher，从allocator处获得url 列表，进行实际抓取，抓取下来的doc会进入pipeline流程——具体处理逻辑可由各应用自
+   己定义的plugin实现；
+4，deduper，供网页去重使用的一个service，以避免多次抓取相同的网页；
+5，metrics，运行过程中的状态监控service
+6，plugin，pipeline的插件，各应用可自己定义。zebra框架对网页处理的流程如下：
+   a，支持5中不同类型的document：LIST/CONTENT/USR1/USR2/USR3。LIST类型表示document是列表页，一般而言我们还
+     需要对它进行linkfollow；CONTENT类型表示document是内容页，我们可以直接提取自己感兴趣的数据；USR1/USR2/USR3
+     提供给用户进行自定义使用。
+   b，对于每种类型的document集合，用户可以指定一个processor chain来进行处理，该chain中的processor则是用户自己
+     实现的。
+   pipeline插件的设置可以通过zebra-pipeline.xml的文件来完成，内部通过spring框架进行创建容器和对象。
+7，clustering，特定的插件，实现了中文文本聚类的基本算法；
+
 
 ========== requirement ==============
-0, maven
-1, mmseg
-2, chardet
-3, onelab
-4, ...
+zebra采用maven进行代码管理，主要依赖于如下几个模块：
+1, onelab/hadoop，主要用到了里面的bloomfilter来去重网页；
+2, httpclient，用来抓取实际的网页
+3, mmseg，用来进行中文分词
+4, chardet，用来检测编码并转换
 
-========== dependencies ============
+========== compile & install     =============
+1，在开始编译之前，请在zebra根目录下运行env.init脚本，以将charsetdet/mmseg两个jar文件安装到本地maven repo。
+2，可以使用mvn eclipse:eclipse命令来生成可导入eclipse的工程文件。
+注意：初次编译的时候因为maven要下载大量的依赖库，所以耗时较长，请保持网络通畅且耐心等待。
 
 
-========== install     =============
-For more information about what it is and how to use it, check out the included guide.
 
-Zebra has a mailing list here: kestrel-talk@googlegroups.com http://groups.google.com/group/kestrel-talk
-
-Author's address: Robey Pointer <robeypointer@gmail.com>

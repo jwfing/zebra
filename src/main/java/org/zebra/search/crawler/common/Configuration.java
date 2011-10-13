@@ -28,29 +28,20 @@ public class Configuration {
 	public static final String CONST_LEVEL_SUFFIX = ".level";
 	public static final String CONST_INTERVAL_SUFFIX = ".interval";
 
-	private static final Logger logger = Logger.getLogger(Configuration.class.getName());
 	private static Properties prop = new Properties();
 
-	public boolean initialize(String filename) {
-		try {
-			prop.load(Configuration.class.getClassLoader()
-					.getResourceAsStream(filename));
-		} catch (Exception e) {
-			prop = null;
-			logger.warn("WARNING: Could not find zebra_crawler.properties file in class path. I will use the default values.");
-			return false;
-		}
-		return true;
-	}
-	
 	static {
 		try {
 			prop.load(Configuration.class.getClassLoader()
-					.getResourceAsStream("zebra_crawler.properties"));
+					.getResourceAsStream("./zebra_crawler.properties"));
 		} catch (Exception e) {
 			prop = null;
-			System.err.println("WARNING: Could not find zebra_crawler.properties file in class path. I will use the default values.");
+			System.err.println("WARNING: Could not find ./zebra_crawler.properties file in class path. I will use the default values.");
 		}
+	}
+	
+	public boolean initialize(String filename) {
+		return true;
 	}
 	
 	public static String getStringProperty(String key, String defaultValue) {

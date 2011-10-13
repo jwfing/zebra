@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.zebra.search.crawler.fetcher.*;
 import org.zebra.search.crawler.common.*;
 import org.zebra.search.crawler.plugin.*;
@@ -45,46 +47,51 @@ public class PipelineDriver{
 
 	public void initialize() {
 		this.threadNum = Configuration.getIntProperty(Configuration.PATH_PIPELINE_THREADS, 1);
-		this.dispatcher = new Dispatcher();
-		ProcessorEntry entry = new NewsProcessorEntry();
-		this.dispatcher.setEntry(entry);
-
-		CharsetConvertor convertor = new CharsetConvertor();
-		convertor.initialize();
-		DocumentParser parser = new DocumentParser();
-		parser.initialize();
-		LinkFollower follower = new LinkFollower();
-		follower.initialize();
-		UrlPoolWriter urlGenerator = new UrlPoolWriter();
-		urlGenerator.initialize();
-		DeduperClient deduper = new DeduperClient();
-		deduper.initialize();
-		NewsElementsExtractor extractor = new NewsElementsExtractor();
-		extractor.initialize();
-		DummyProcessor dummy = new DummyProcessor();
-		dummy.initialize();
-		RulesetFilter filter = new RulesetFilter();
-		filter.initialize();
-
-		ProcessorChain seedChain = new ProcessorChain();
-//		seedChain.addProcessor(convertor);
-		seedChain.addProcessor(parser);
-		seedChain.addProcessor(follower);
-		seedChain.addProcessor(filter);
-		seedChain.addProcessor(deduper);
-		seedChain.addProcessor(urlGenerator);
-		seedChain.addProcessor(dummy);
-		ProcessorChain contentChain = new ProcessorChain();
-//		contentChain.addProcessor(convertor);
-		contentChain.addProcessor(parser);
-		contentChain.addProcessor(extractor);
-//		contentChain.addProcessor(dummy);
-
-		this.dispatcher.addChain(ProcessDirectory.LIST_PAGE, seedChain);
-		this.dispatcher.addChain(ProcessDirectory.CONTENT_PAGE, contentChain);
+		try {
+			ApplicationContext appContext = new ClassPathXmlApplicationContext(
+					"./conf/pipeline_config.xml");
+			this.dispatcher = (Dispatcher) appContext.getBean("dispatcher");
+			ProcessorChain chain = (ProcessorChain) appContext
+					.getBean("listChain");
+			if (chain != null && chain.size() > 0) {
+				dispatcher.addChain(ProcessDirectory.LIST_PAGE, chain);
+				for (Processor temp : chain.getProcessors()) {
+					logger.info("add processor " + temp.getName() + " to LISTPAGE_CHAIN");
+				}
+			}
+			chain = (ProcessorChain) appContext.getBean("contentChain");
+			if (chain != null && chain.size() > 0) {
+				dispatcher.addChain(ProcessDirectory.CONTENT_PAGE, chain);
+				for (Processor temp : chain.getProcessors()) {
+					logger.info("add processor " + temp.getName() + " to CONTENTPAGE_CHAIN");
+				}
+			}
+			chain = (ProcessorChain) appContext.getBean("usr1Chain");
+			if (chain != null && chain.size() > 0) {
+				dispatcher.addChain(ProcessDirectory.USR1_PAGE, chain);
+				for (Processor temp : chain.getProcessors()) {
+					logger.info("add processor " + temp.getName() + " to USR1PAGE_CHAIN");
+				}
+			}
+			chain = (ProcessorChain) appContext.getBean("usr2Chain");
+			if (chain != null && chain.size() > 0) {
+				dispatcher.addChain(ProcessDirectory.USE2_PAGE, chain);
+				for (Processor temp : chain.getProcessors()) {
+					logger.info("add processor " + temp.getName() + " to USR2PAGE_CHAIN");
+				}
+			}
+			chain = (ProcessorChain) appContext.getBean("usr3Chain");
+			if (chain != null && chain.size() > 0) {
+				dispatcher.addChain(ProcessDirectory.USE3_PAGE, chain);
+				for (Processor temp : chain.getProcessors()) {
+					logger.info("add processor " + temp.getName() + " to USR3PAGE_CHAIN");
+				}
+			}
+		} catch (Exception ex) {
+			logger.fatal("failed to load ./conf/pipeline_config.xml, cause: " + ex.getMessage());
+		}
+		
 		logger.info("pipeline driver initialized. threadNum=" + this.threadNum);
-
-		// TODO: initialize java-bean defined in service-process-chain.xml
 	}
 	public void destroy() {
 		for (Thread thread : threads) {
