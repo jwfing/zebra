@@ -1,6 +1,6 @@
 Zebra
 
-========== introduce ================
+========================================= introduce =========================================
 zebra是一个网络爬虫的框架，包括如下几个部分：
 1，urlPool，是待抓取的url池，可累积；
 2，allocator，是url分配器，从urlPool中获取待抓取的url集合，然后按照一定算法分配给fetcher去进行实际抓取；
@@ -18,17 +18,56 @@ zebra是一个网络爬虫的框架，包括如下几个部分：
 7，clustering，特定的插件，实现了中文文本聚类的基本算法；
 
 
-========== requirement ==============
+========================================= requirement =========================================
 zebra采用maven进行代码管理，主要依赖于如下几个模块：
 1, onelab/hadoop，主要用到了里面的bloomfilter来去重网页；
 2, httpclient，用来抓取实际的网页
 3, mmseg，用来进行中文分词
 4, chardet，用来检测编码并转换
 
-========== compile & install     =============
+
+========================================= compile & install ===================================
 1，在开始编译之前，请在zebra根目录下运行env.init脚本，以将charsetdet/mmseg两个jar文件安装到本地maven repo。
 2，可以使用mvn eclipse:eclipse命令来生成可导入eclipse的工程文件。
 注意：初次编译的时候因为maven要下载大量的依赖库，所以耗时较长，请保持网络通畅且耐心等待。
-
+3，可以通过mvn package来打包jar文件。注意：
+   还可以通过mvn package -Dmaven.test.skip=true来跳过单元测试代码。
+4，通过mvn dependency:copy-dependencies来拷贝所有依赖的jar包。
+5，至此，在target下面我们可以得到如下的目录结构：
+   target
+    |- classes
+    |    |- log4j.properties
+    |    |- zebra_crawler.properties
+    |    |- pipeline_config.xml
+    |    |- maintext-template
+    |    |- publisher-template
+    |    |- time-template
+    |    |- title-template
+    |    |- org
+    |- crawler-1.0-SNAPSHOT.jar
+    |- dependency
+    |- maven-archiver
+    |- test-classes
+6，在zebra跟目录下，进入project/binary目录，执行如下操作：
+   6.1，cp -r ../../target/dependency ./
+   6.2，cp ../../target/crawler-1.0-SNAPSHOT.jar ./
+   6.3, cp ../../target/classes/log4j.properties ../../target/classes/zebra_crawler.properties ./
+   6.4, mkdir conf
+   6.5, cp ../../target/classes/pipeline_config.xml ../../target/classes/*-template conf/
+7，至此，在project/binary目录下我们可以看到如下目录结构：
+   $ZEBRA/project/binary/
+                  |-- conf
+                  |   |-- maintext-template
+                  |   |-- pipeline_config.xml
+                  |   |-- publisher-template
+                  |   |-- time-template
+                  |   `-- title-template
+                  |-- crawler-1.0-SNAPSHOT.jar
+                  |-- dependency
+                  |-- log4j.properties
+                  |-- run.sh
+                  `-- zebra_crawler.properties
+8，在project/binary目录下运行如下命令即可启动crawler：
+   ./run.sh
 
 
