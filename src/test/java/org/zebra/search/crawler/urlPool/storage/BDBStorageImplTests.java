@@ -53,15 +53,15 @@ public class BDBStorageImplTests extends TestCase{
 	public void testSelect() {
 		testAddRepeatUrls();
 		testAddOnceUrls();
-		List<UrlInfo> urls = this.impl.selectFromRepeatUrls(8, 100);
+		List<UrlInfo> urls = this.impl.selectFromRepeatUrls(8, 0, 100);
 		if (null != urls && urls.size() > 0) {
 			fail();
 		}
-		urls = this.impl.selectFromOnceUrls(4);
+		urls = this.impl.selectFromOnceUrls(0, 4);
 		if (null == urls || urls.size() != 4) {
 			fail();
 		}
-		urls = this.impl.selectFromOnceUrls(40);
+		urls = this.impl.selectFromOnceUrls(0, 40);
 		if (null == urls || urls.size() != 10) {
 			fail();
 		}
@@ -74,11 +74,11 @@ public class BDBStorageImplTests extends TestCase{
 		}
 		ret = this.impl.dropUrls(this.repeatUrls, Constants.UrlType.ONCE);
 		
-		List<UrlInfo> urls = this.impl.selectFromRepeatUrls(9, 20);
+		List<UrlInfo> urls = this.impl.selectFromRepeatUrls(9, 0, 20);
 		if (urls != null && urls.size() > 0) {
 			fail();
 		}
-		urls = this.impl.selectFromOnceUrls(20);
+		urls = this.impl.selectFromOnceUrls(0, 20);
 		if (urls == null || urls.size() <= 0) {
 			fail();
 		}
@@ -86,7 +86,7 @@ public class BDBStorageImplTests extends TestCase{
 		if (!ret) {
 			fail();
 		}
-		urls = this.impl.selectFromOnceUrls(20);
+		urls = this.impl.selectFromOnceUrls(0, 20);
 		if (urls != null && urls.size() > 0) {
 			fail();
 		}

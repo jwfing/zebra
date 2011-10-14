@@ -38,4 +38,14 @@ public class UrlInfo {
     public Map<String, Object> getFeatures() {
     	return this.features;
     }
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(this.url);
+    	Set<Map.Entry<String, Object> > entries = this.features.entrySet();
+    	
+    	for (Map.Entry<String, Object> entry : entries) {
+    		sb.append("\t" + entry.getKey() + "=" + entry.getValue().toString());
+    	}
+    	return sb.toString();
+    }
 }

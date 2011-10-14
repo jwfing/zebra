@@ -12,15 +12,15 @@ public class UrlSelector {
 	public void setStorage(UrlStorage storage) {
 		this.storage = storage;
 	}
-	public List<UrlInfo> retrieveRepeatUrls(int level, int maxCount) {
+	public List<UrlInfo> retrieveRepeatUrls(int level, int index, int maxCount) {
 		if (null != this.storage) {
-			return this.storage.selectFromRepeatUrls(level, maxCount);
+			return this.storage.selectFromRepeatUrls(level, index, maxCount);
 		}
 		return null;
 	}
-	public List<UrlInfo> retrieveOnceUrls(int maxCount, boolean deleteAfterRetrieve) {
+	public List<UrlInfo> retrieveOnceUrls(int maxCount, int index, boolean deleteAfterRetrieve) {
 		if (null != this.storage) {
-			List<UrlInfo> result = this.storage.selectFromOnceUrls(maxCount);
+			List<UrlInfo> result = this.storage.selectFromOnceUrls(index, maxCount);
 			if (deleteAfterRetrieve) {
 				this.storage.dropUrls(result, Constants.UrlType.ONCE);
 			}

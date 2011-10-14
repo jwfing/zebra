@@ -40,21 +40,21 @@ public class UrlSelectorTests extends TestCase {
 
 	public void testRetrieveOnceUrls() {
 		UrlSelector selector = new UrlSelector();
-		List<UrlInfo> result = selector.retrieveOnceUrls(100, false);
+		List<UrlInfo> result = selector.retrieveOnceUrls(100, 0, false);
 		if (null != result) {
 			fail("failed to retrieve once urls for un-initialized selector");
 		}
 		impl.addOnceUrls(this.onceUrls);
 		selector.setStorage(this.impl);
-		result = selector.retrieveOnceUrls(100, false);
+		result = selector.retrieveOnceUrls(100, 0, false);
 		if (null == result || result.size() != 10) {
 			fail("failed to retrieve once urls first-time");
 		}
-		result = selector.retrieveOnceUrls(6, true);
+		result = selector.retrieveOnceUrls(6, 0, true);
 		if (null == result || result.size() != 6) {
 			fail("failed to retrieve once urls second-time(delete flag: true)");
 		}
-		result = selector.retrieveOnceUrls(100, true);
+		result = selector.retrieveOnceUrls(100, 0, true);
 		if (null == result || result.size() != 4) {
 			fail("failed to retrieve once urls third-time(delete flag: true)");
 		}

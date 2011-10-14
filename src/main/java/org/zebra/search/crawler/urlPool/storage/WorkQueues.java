@@ -30,7 +30,7 @@ public class WorkQueues {
 		UrlSeedBinding = new URLTupleBinding();
 	}
 
-	public List<UrlSeed> get(int max) throws DatabaseException {
+	public List<UrlSeed> get(int index, int max) throws DatabaseException {
 		synchronized (mutex) {
 			int matches = 0;
 			List<UrlSeed> results = new ArrayList<UrlSeed>(max);
@@ -48,6 +48,11 @@ public class WorkQueues {
 			try {
 				cursor = urlsDB.openCursor(txn, null);
 				result = cursor.getFirst(key, value, null);
+				int skipCounter = 0;
+				while(skipCounter < index && result == OperationStatus.SUCCESS) {
+					result = cursor.getNext(key, value, null);
+					skipCounter++;
+				}
 
 				while (matches < max && result == OperationStatus.SUCCESS) {
 					if (value.getData().length > 0) {

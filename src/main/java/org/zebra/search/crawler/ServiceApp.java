@@ -19,26 +19,10 @@ import org.zebra.search.crawler.util.*;
  */
 public class ServiceApp {
 	private static final Logger logger = Logger.getLogger(ServiceApp.class);
-	private static String[] seedUrls = {
-		"http://money.163.com/special/g/00251LR5/gsxw.html",
-		"http://money.163.com/special/002534M5/review.html",
-		"http://roll.finance.sina.com.cn/finance/zq1/ssgs/index.shtml",
-		"http://business.sohu.com/gskb/",
-		"http://stock.hexun.com/gsxw/",
-		};
     public static void main( String[] args )
     {
-    	// add seed
     	UrlStorage storage = new BDBStorageImpl();
     	((BDBStorageImpl)storage).initialize();
-    	List<UrlInfo> seeds = new ArrayList<UrlInfo>();
-    	for (int i = 0; i < seedUrls.length; i++) {
-    		UrlInfo url = new UrlInfo(seedUrls[i]);
-    		url.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "seed");
-    		seeds.add(url);
-    	}
-    	storage.addRepeatUrls(seeds, 1);
-    	System.out.println("add repeat urls totalSize=" + seeds.size() + " level=1");
     	UrlSelector selector = new UrlSelector();
     	selector.setStorage(storage);
     	SeedCollection collection = SeedCollection.getInstance();

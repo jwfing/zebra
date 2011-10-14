@@ -121,10 +121,10 @@ public class BDBStorageImpl implements UrlStorage {
 		return true;
 	}
 
-	public List<UrlInfo> selectFromRepeatUrls(int level, int maxCount) {
+	public List<UrlInfo> selectFromRepeatUrls(int level, int index, int maxCount) {
 		if (null != this.repeatUrlDB) {
 			try {
-				List<UrlSeed> us = this.repeatUrlDB.get(maxCount);
+				List<UrlSeed> us = this.repeatUrlDB.get(index, maxCount);
 				logger.debug("get total " + us.size() + " urls from repeatDB");
 				List<UrlSeed> target = new ArrayList<UrlSeed>();
 				for (UrlSeed seed : us) {
@@ -146,10 +146,10 @@ public class BDBStorageImpl implements UrlStorage {
 		return null;
 	}
 
-	public List<UrlInfo> selectFromOnceUrls(int maxCount) {
+	public List<UrlInfo> selectFromOnceUrls(int index, int maxCount) {
 		if (null != this.onceUrlDB) {
 			try {
-				List<UrlSeed> us = this.onceUrlDB.get(maxCount);
+				List<UrlSeed> us = this.onceUrlDB.get(index, maxCount);
 				return convert2Infos(us);
 			} catch (DatabaseException e) {
 				e.printStackTrace();

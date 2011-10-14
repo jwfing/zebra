@@ -110,6 +110,7 @@ public final class UrlSeed implements Serializable {
 			value = kv.substring(pos + 1);
 			info.addFeature(key, value);
 		}
+		info.addFeature("level", seed.getLevel());
 
 		return info;
 	}

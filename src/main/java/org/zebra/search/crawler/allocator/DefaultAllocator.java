@@ -32,9 +32,9 @@ public class DefaultAllocator implements Allocator{
 				if (selector != null && collection != null) {
 					List<UrlInfo> urls = null;
 					if (isRepeat) {
-					    urls = selector.retrieveRepeatUrls(this.level, 10240); 
+					    urls = selector.retrieveRepeatUrls(this.level, 0, 1024); 
 					} else {
-						urls = selector.retrieveOnceUrls(1024, true);
+						urls = selector.retrieveOnceUrls(1024, 0, true);
 					}
 					if (null == urls || urls.size() == 0) {
 						logger.info("got nothing with level:" + this.level);

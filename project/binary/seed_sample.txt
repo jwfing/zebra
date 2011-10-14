@@ -1,0 +1,5 @@
+http://money.163.com/special/g/00251LR5/gsxw.html	flag=seed	level=1
+http://money.163.com/special/002534M5/review.html	flag=seed	level=1
+http://roll.finance.sina.com.cn/finance/zq1/ssgs/index.shtml	flag=seed	level=1
+http://business.sohu.com/gskb/	flag=seed	level=3
+http://stock.hexun.com/gsxw/	flag=seed	level=2
