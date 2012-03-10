@@ -15,30 +15,30 @@ import org.zebra.search.crawler.util.*;
 
 /**
  * Hello world!
- *
+ * 
  */
 public class ServiceApp {
-	private static final Logger logger = Logger.getLogger(ServiceApp.class);
-    public static void main( String[] args )
-    {
-    	UrlStorage storage = new BDBStorageImpl();
-    	((BDBStorageImpl)storage).initialize();
-    	UrlSelector selector = new UrlSelector();
-    	selector.setStorage(storage);
-    	SeedCollection collection = SeedCollection.getInstance();
-    	UrlAppender appender = UrlAppender.getInstance();
-    	appender.setStorage(storage);
+    private static final Logger logger = Logger.getLogger(ServiceApp.class);
 
-    	DefaultAllocator allocator = new DefaultAllocator();
-    	allocator.setCollection(collection);
-    	allocator.setSelector(selector);
-    	allocator.initialize();
+    public static void main(String[] args) {
+        UrlStorage storage = new BDBStorageImpl();
+        ((BDBStorageImpl) storage).initialize();
+        UrlSelector selector = new UrlSelector();
+        selector.setStorage(storage);
+        SeedCollection collection = SeedCollection.getInstance();
+        UrlAppender appender = UrlAppender.getInstance();
+        appender.setStorage(storage);
 
-    	FetcherController fetcherController = new FetcherController();
-    	fetcherController.initialize();
+        DefaultAllocator allocator = new DefaultAllocator();
+        allocator.setCollection(collection);
+        allocator.setSelector(selector);
+        allocator.initialize();
 
-    	PipelineDriver driver = new PipelineDriver();
+        PipelineDriver driver = new PipelineDriver();
         driver.initialize();
         driver.start();
+
+        FetcherController fetcherController = new FetcherController();
+        fetcherController.initialize();
     }
 }

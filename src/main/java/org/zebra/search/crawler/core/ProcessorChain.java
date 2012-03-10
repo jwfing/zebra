@@ -8,27 +8,39 @@ import org.zebra.search.crawler.common.CrawlDocument;
 import org.zebra.search.crawler.common.Processor;
 
 public class ProcessorChain {
-	private static final Logger logger = Logger.getLogger(ProcessorChain.class.getName());
+    private static final Logger logger = Logger.getLogger(ProcessorChain.class.getName());
     private List<Processor> processors = new ArrayList<Processor>();
+
     public void setProcessors(List<Processor> list) {
-    	this.processors = list;
+        this.processors = list;
     }
+
     public List<Processor> getProcessors() {
-    	return this.processors;
+        return this.processors;
     }
+
     public void addProcessor(Processor processor) {
-    	this.processors.add(processor);
+        this.processors.add(processor);
     }
+
     public boolean process(CrawlDocument doc, Context context) {
-    	for (Processor processor : processors) {
-    		if (!processor.process(doc, context)) {
-    			logger.warn("failed to process doc(" + doc.getUrl() + ") by processor(" + processor.getName() + ")");
-    			return false;
-    		}
-    	}
-    	return true;
+        for (Processor processor : processors) {
+            try {
+                if (!processor.process(doc, context)) {
+                    logger.warn("failed to process doc(" + doc.getUrl() + ") by processor("
+                            + processor.getName() + ")");
+                    return false;
+                }
+            } catch (Exception ex) {
+                logger.warn("failed to process doc(" + doc.getUrl() + ") by processor("
+                        + processor.getName() + ")" + ", exception=" + ex.getMessage());
+                return false;
+            }
+        }
+        return true;
     }
+
     public int size() {
-    	return this.processors.size();
+        return this.processors.size();
     }
 }

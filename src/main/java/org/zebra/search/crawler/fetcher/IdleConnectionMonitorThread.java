@@ -3,10 +3,10 @@ package org.zebra.search.crawler.fetcher;
 import java.util.concurrent.TimeUnit;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 
-public class IdleConnectionMonitorThread extends Thread{
+public class IdleConnectionMonitorThread extends Thread {
     private final ThreadSafeClientConnManager connMgr;
     private volatile boolean shutdown = false;
-    
+
     public IdleConnectionMonitorThread(ThreadSafeClientConnManager connMgr) {
         super("Connection Manager");
         this.connMgr = connMgr;
@@ -29,7 +29,7 @@ public class IdleConnectionMonitorThread extends Thread{
             // terminate
         }
     }
-    
+
     public void shutdown() {
         shutdown = true;
         synchronized (this) {

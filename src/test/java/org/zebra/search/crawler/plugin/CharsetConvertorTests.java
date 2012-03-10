@@ -27,9 +27,7 @@ public class CharsetConvertorTests extends TestCase {
 		if (null == doc || null == doc.getContentString()) {
 			fail("failed to fetch document");
 		}
-		System.out.println("content-length:" + doc.getContentString().length());
 		try {
-			System.out.println(doc.getContentString());
 		    File file = new File("./detail_dl1.html");
 		    FileOutputStream fos = new FileOutputStream(file);
 		    fos.write(doc.getContentBytes());
@@ -37,18 +35,13 @@ public class CharsetConvertorTests extends TestCase {
 		} catch (Exception ex) {
 			fail("failed to output local file.");
 		}
-//		String allContent = doc.getContentString();
-/*		String[] alllines = allContent.split("\n");
-		for (String line : alllines)
-		System.out.println(line);
-*/		Context context = new Context();
+		Context context = new Context();
 		CharsetConvertor convertor = new CharsetConvertor();
 		boolean result = convertor.process(doc, context);
 		if (!result) {
 			fail("failed to invoke convertor.process");
 		}
 		try {
-			System.out.println(doc.getContentString());
 		    File file = new File("./detail_dl2.html");
 		    FileOutputStream fos = new FileOutputStream(file);
 		    fos.write(doc.getContentBytes());

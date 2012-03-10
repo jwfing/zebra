@@ -2,6 +2,37 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://localhost:3306/crawler?characterEncoding=UTF-8"/>
+	    <property name="username" value="root"/>
+	    <property name="password" value=""/>
+	    <property name="maxActive" value="20"/>
+	    <property name="maxWait" value="5000"/>
+	    <property name="minIdle" value="3"/>
+	    <property name="maxIdle" value="10"/>
+	    <property name="validationQuery" value="SELECT 1"/>
+	    <property name="testOnBorrow" value="true"/>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>org.zebra.search.crawler.plugin.dbstorage.CommonDocument</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="documentDAO" class="org.zebra.search.crawler.plugin.dbstorage.HibernateDocumentDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
   
 	<bean id="processEntry" name="processEntry"
 		  class="org.zebra.search.crawler.plugin.NewsProcessorEntry" init-method="initialize" destroy-method="destroy">
@@ -26,11 +57,13 @@
 		  class="org.zebra.search.crawler.plugin.UrlPoolWriter" init-method="initialize" destroy-method="destroy">
 	</bean>
 	<bean id="extractor" name="extractor"
-		  class="org.zebra.search.crawler.plugin.NewsElementsExtractor" init-method="initialize" destroy-method="destroy">
+		  class="org.zebra.search.crawler.plugin.CommonArticleExtractor" init-method="initialize" destroy-method="destroy">
+	</bean>
+	<bean id="documentSaver" name="documentSaver"
+		  class="org.zebra.search.crawler.plugin.DocumentSaver" init-method="initialize" destroy-method="destroy">
+		  <property name="documentDao" ref="documentDAO"/>
 	</bean>
 
-
-    <!-- 你可以在这里指定多个processor chain：listchain, content chain, usr1 chain, usr2 chain, usr3 chain !-->
 	<bean id="listChain" name="listChain"
 		  class="org.zebra.search.crawler.core.ProcessorChain">
           <property name="processors">
@@ -49,6 +82,7 @@
           <list>
               <ref bean="documentParser"/>
               <ref bean="extractor"/>
+              <ref bean="documentSaver"/>
           </list>
           </property>
 	</bean>
@@ -65,11 +99,5 @@
 	<bean id="dispatcher" name="dispatcher"
 		  class="org.zebra.search.crawler.core.Dispatcher">
 		  <property name="entry" ref="processEntry"></property>
-    <!--  因为我不会配置map属性，所以在代码中用addChain函数来实现自动变化
-		  <property name="chains"> 
-              <map>
-              </map>
-          </property>
-    !-->
 	</bean>
 </beans>

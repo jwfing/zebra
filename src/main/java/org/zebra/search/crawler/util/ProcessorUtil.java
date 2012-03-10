@@ -23,6 +23,7 @@ public class ProcessorUtil {
 	public static final String COMMON_PROP_DEPTH = "depth";
 
 	public static final String COMMON_PROP_TITLE = "title";
+	public static final String COMMON_PROP_DESCRIPTION = "description";
 	public static final String COMMON_PROP_ARTICLETITLE = "articletitle";
 	public static final String COMMON_PROP_CRAWLTIME = "crawltime";
 	public static final String COMMON_PROP_PUBLISHTIME = "publishtime";
@@ -127,7 +128,16 @@ public class ProcessorUtil {
 		} catch (Exception ex) {
 			logger.warn("exception encountered @ ISO-8859-1, cause:" + ex.getMessage());
 		}
-		return "UTF-8";
+        encode = "UTF-8";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) {
+                String s1 = encode;
+                return s1;
+            }
+        } catch (Exception ex) {
+            logger.warn("exception encountered @ ISO-8859-1, cause:" + ex.getMessage());
+        }
+		return "Unknown";
 	}
 
 	/**
