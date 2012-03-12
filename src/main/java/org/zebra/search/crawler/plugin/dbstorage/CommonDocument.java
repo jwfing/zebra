@@ -14,12 +14,21 @@ import org.hibernate.annotations.*;
 @Entity
 @org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
 public class CommonDocument {
+    private static int MAX_URL_LEN = 256;
+    private static int MAX_TITLE_LEN = 256;
+    private static int MAX_DESC_LEN = 1024;
+    private static int MAX_ARTICLE_LEN = 2048;
+
     @Transient
     private static final long serialVersionUID = 3294254521331173014L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(nullable = false, length = 256, updatable = false, unique = true)
+    @Column(nullable = false, length = 64, updatable = false, unique = true)
+    private String urlMd5;
+    @Column(nullable = false, length = 256, updatable = false)
+    private String sourceUrl;
+    @Column(nullable = false, length = 256, updatable = false)
     private String url;
     private long downloadTime = 0l;
     @Column(length = 256)
@@ -40,6 +49,9 @@ public class CommonDocument {
 
     public void setTitle(String title) {
         this.title = title;
+        if (null != this.title && this.title.length() > MAX_TITLE_LEN) {
+            this.title = this.title.substring(0, MAX_TITLE_LEN - 1);
+        }
     }
 
     public String getDescription() {
@@ -48,6 +60,9 @@ public class CommonDocument {
 
     public void setDescription(String description) {
         this.description = description;
+        if (null != this.description && this.description.length() > MAX_DESC_LEN) {
+            this.description = this.description.substring(0, MAX_DESC_LEN - 1);
+        }
     }
 
     public String getArticleText() {
@@ -56,6 +71,9 @@ public class CommonDocument {
 
     public void setArticleText(String articleText) {
         this.articleText = articleText;
+        if (null != this.articleText && this.articleText.length() > MAX_ARTICLE_LEN) {
+            this.articleText = this.articleText.substring(0, MAX_ARTICLE_LEN);
+        }
     }
 
     public long getId() {
@@ -80,5 +98,17 @@ public class CommonDocument {
 
     public void setDownloadTime(long downloadTime) {
         this.downloadTime = downloadTime;
+    }
+    public String getUrlMd5() {
+        return urlMd5;
+    }
+    public void setUrlMd5(String urlMd5) {
+        this.urlMd5 = urlMd5;
+    }
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 }

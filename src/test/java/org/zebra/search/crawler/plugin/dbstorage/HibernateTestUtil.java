@@ -10,16 +10,16 @@ public class HibernateTestUtil {
             .setProperty("hibernate.connection.driver_class",
                     "com.mysql.jdbc.Driver")
             .setProperty("hibernate.connection.url",
-                    "jdbc:mysql://localhost/financeDB?useUnicode=true&characterEncoding=gb2312")
+                    "jdbc:mysql://localhost:3306/crawler?useUnicode=true&characterEncoding=UTF-8")
             .setProperty("hibernate.connection.username", "root")
-            .setProperty("hibernate.connection.password", "")
+            .setProperty("hibernate.connection.password", "bWy4$*5K")
             .setProperty("hibernate.connection.pool_size", "5")
             .setProperty("hibernate.connection.autocommit", "true")
             .setProperty("hibernate.show_sql", "true")
             .setProperty("format_sql", "false")
             .setProperty("hibernate.cache.provider_class",
                     "org.hibernate.cache.HashtableCacheProvider")
-            .setProperty("hibernate.hbm2ddl.auto", "create")
+            .setProperty("hibernate.hbm2ddl.auto", "update")
             .setProperty("hibernate.jdbc.batch_size", "10")
             .setProperty("hibernate.current_session_context_class", "thread");
     }

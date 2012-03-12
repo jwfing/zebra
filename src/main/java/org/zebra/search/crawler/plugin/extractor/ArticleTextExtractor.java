@@ -1,9 +1,11 @@
 package org.zebra.search.crawler.plugin.extractor;
 
 import java.io.ByteArrayInputStream;
+import java.net.URL;
 
 import org.zebra.search.crawler.common.Context;
 import org.zebra.search.crawler.common.CrawlDocument;
+import org.zebra.search.crawler.util.ProcessorUtil;
 
 import org.apache.log4j.Logger;
 import org.xml.sax.InputSource;
@@ -18,7 +20,11 @@ public class ArticleTextExtractor {
     private final Logger logger = Logger.getLogger(ArticleTextExtractor.class);
     public String extract(CrawlDocument doc, Context context) {
         try {
-            InputSource is = new InputSource(new ByteArrayInputStream(doc.getContentBytes()));
+            byte[] oldContentBytes = (byte[])context.getVariable(ProcessorUtil.COMMON_PROP_OLDCONTENT);
+            if (null == oldContentBytes) {
+                oldContentBytes = doc.getContentBytes();
+            }
+            InputSource is = new InputSource(new ByteArrayInputStream(oldContentBytes));
             BoilerpipeSAXInput in = new BoilerpipeSAXInput(is);
             TextDocument textDoc = in.getTextDocument();
             return ArticleExtractor.INSTANCE.getText(textDoc);
@@ -27,6 +33,9 @@ public class ArticleTextExtractor {
             return null;
         } catch (BoilerpipeProcessingException ex) {
             logger.warn("failed to parsing document. BoilerpipeProcessingException occurred. cause:" + ex.getMessage());
+            return null;
+        } catch (Exception ex) {
+            logger.warn("failed to parsing document. cause:" + ex.getMessage());
             return null;
         }
     }

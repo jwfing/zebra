@@ -21,6 +21,7 @@ public class ProcessorUtil {
 	public static final String COMMON_PROP_SEEDURL = "seedurl";
 	public static final String COMMON_PROP_FLAG = "flag";
 	public static final String COMMON_PROP_DEPTH = "depth";
+	public static final String COMMON_PROP_OLDCONTENT = "oldContent";
 
 	public static final String COMMON_PROP_TITLE = "title";
 	public static final String COMMON_PROP_DESCRIPTION = "description";
@@ -137,7 +138,7 @@ public class ProcessorUtil {
         } catch (Exception ex) {
             logger.warn("exception encountered @ ISO-8859-1, cause:" + ex.getMessage());
         }
-		return "Unknown";
+		return encode;
 	}
 
 	/**

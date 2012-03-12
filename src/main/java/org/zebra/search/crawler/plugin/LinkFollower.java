@@ -1,6 +1,7 @@
 package org.zebra.search.crawler.plugin;
 
 import java.io.ByteArrayInputStream;
+import java.io.StringBufferInputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -77,8 +78,10 @@ public class LinkFollower implements Processor {
                 i++;
             }
             if (i < content.length - 1) {
+                String contentString = new String(content, i, content.length - i, "utf-8");
+                contentString = contentString.trim();
                 SyndFeed feed = input.build(new InputStreamReader(
-                        new ByteArrayInputStream(content, i, content.length - i)));
+                        new ByteArrayInputStream(contentString.getBytes())));
                 List<SyndEntry> entries = feed.getEntries();
                 for (SyndEntry entry : entries) {
                     UrlInfo urlInfo = new UrlInfo(entry.getLink());

@@ -44,7 +44,7 @@ public class HttpClientFetcher implements Fetcher {
         HttpParams params = new BasicHttpParams();
         HttpProtocolParamBean paramsBean = new HttpProtocolParamBean(params);
         paramsBean.setVersion(HttpVersion.HTTP_1_1);
-        paramsBean.setContentCharset(GBK_CHARSET);
+        paramsBean.setContentCharset(GB2312_CHARSET);
         paramsBean.setUseExpectContinue(false);
 
         params.setParameter(HTTP_USERAGENT, Configuration.getStringProperty(
@@ -112,6 +112,7 @@ public class HttpClientFetcher implements Fetcher {
         doc.setUrlInfo(url);
         int fetchStatus = fetchViaHttpClient(url, doc);
         doc.setFetchStatus(fetchStatus);
+        doc.setFetchTime(new Date());
         return doc;
     }
 
@@ -190,12 +191,6 @@ public class HttpClientFetcher implements Fetcher {
                     logger.warn("document is too big. url=" + toFetchURL);
                     return FetchStatus.PageTooBig;
                 }
-                // if (size <= 0) {
-                // entity.consumeContent();
-                // logger.warn("failed to download document. url=" +
-                // toFetchURL);
-                // return FetchStatus.PageLoadError;
-                // }
 
                 boolean isBinary = false;
 
@@ -234,6 +229,7 @@ public class HttpClientFetcher implements Fetcher {
         } catch (IllegalStateException e) {
             // ignoring exceptions that occur because of not registering https
             // and other schemes
+            logger.warn("encounter exception. cause:" + e.getMessage() + " while fetching " + url.getUrl());
         } catch (Exception e) {
             if (e.getMessage() == null) {
                 logger.warn("Error while fetching " + url.getUrl());
@@ -248,7 +244,7 @@ public class HttpClientFetcher implements Fetcher {
                     get.abort();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.warn("encounter exception while consume http entiry. cause:" + e.getMessage());
             }
         }
         return FetchStatus.UnknownError;

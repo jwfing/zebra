@@ -21,6 +21,18 @@ public class CharsetConvertorTests extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
+	public void test() {
+        try {
+            String old = "测试字符转换 hello word";//默认环境，已是UTF-8编码
+            String gb = new String(old.getBytes("GBK"), "GBK");
+            System.out.println(""+gb); 
+            String u8 = new String(gb.getBytes("GBK"), "gb2312");
+            System.out.println(u8);// 没有乱码            
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }	    
+	}
+
 	public void testNewsPageDownload() {
 		UrlInfo url = new UrlInfo("http://ent.163.com/11/0630/08/77PHU9JS000300B1.html");
 		CrawlDocument doc = fetcher.fetchDocument(url);
@@ -28,7 +40,7 @@ public class CharsetConvertorTests extends TestCase {
 			fail("failed to fetch document");
 		}
 		try {
-		    File file = new File("./detail_dl1.html");
+		    File file = new File("./detail_gb2312.html");
 		    FileOutputStream fos = new FileOutputStream(file);
 		    fos.write(doc.getContentBytes());
 		    fos.close();
@@ -42,7 +54,7 @@ public class CharsetConvertorTests extends TestCase {
 			fail("failed to invoke convertor.process");
 		}
 		try {
-		    File file = new File("./detail_dl2.html");
+		    File file = new File("./detail_utf8.html");
 		    FileOutputStream fos = new FileOutputStream(file);
 		    fos.write(doc.getContentBytes());
 		    fos.close();

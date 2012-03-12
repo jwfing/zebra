@@ -16,17 +16,17 @@ public class BloomFilterDeduper implements Deduper {
 
     // on test, when size is 1250000 bits, the 53000th record confict
     public final static int DEFAULT_RATE = 1250000 / 50000;
-
     private int spaceRate = DEFAULT_RATE;
+
     private int size = 0;
     private int hashNum = 10;
     private AtomicCounter storeCounter = new AtomicCounter();
-    private Lock writeLock = null;
+    private Lock writeLock = new ReentrantLock();
     private org.onelab.filter.BloomFilter bloomFilter = null;
 
     public BloomFilterDeduper(int size) {
         this.size = size;
-        this.writeLock = new ReentrantLock();
+        this.bloomFilter = new org.onelab.filter.BloomFilter(this.size, this.hashNum);
     }
 
     public boolean isFull() {
@@ -36,7 +36,7 @@ public class BloomFilterDeduper implements Deduper {
     public void clear() {
         this.writeLock.lock();
         this.storeCounter.set(0);
-        this.bloomFilter = null;
+        this.bloomFilter = new org.onelab.filter.BloomFilter(this.size, this.hashNum);;
         this.writeLock.unlock();
     }
 
@@ -51,26 +51,12 @@ public class BloomFilterDeduper implements Deduper {
         return this.bloomFilter.membershipTest(key);
     }
 
-    protected void constructInerBloomfilter() {
-        this.writeLock.lock();
-        int actualNum = this.spaceRate * this.size;
-        if (actualNum <= 0) {
-            actualNum = Integer.MAX_VALUE - 1;
-        }
-        this.bloomFilter = new org.onelab.filter.BloomFilter(actualNum, this.hashNum);
-        this.writeLock.unlock();
-    }
-
     protected void store(String key) {
         if (null == key || key.length() <= 0) {
             return;
         }
 
         this.writeLock.lock();
-        if (this.storeCounter.get() <= 0) {
-            constructInerBloomfilter();
-        }
-
         Key inerKey = new Key(key.getBytes());
         this.bloomFilter.add(inerKey);
         this.writeLock.unlock();
@@ -105,6 +91,7 @@ public class BloomFilterDeduper implements Deduper {
     }
 
     public boolean deleteInvalidUrl(List<UrlInfo> urls) {
+        logger.warn("impossible path.");
         return false;
     }
 
@@ -117,17 +104,18 @@ public class BloomFilterDeduper implements Deduper {
         this.writeLock.lock();
         try {
             FileOutputStream fos = new FileOutputStream(file);
+            DataOutput dos = new DataOutputStream(fos);
             int storeNum = this.storeCounter.get();
-            fos.write(storeNum);
-            fos.write(this.size);
-            if (storeNum > 0) {
-                // BitSet bs = null;
-            }
+            dos.writeInt(storeNum);
+            dos.writeInt(this.size);
+            this.bloomFilter.write(dos);
+            fos.flush();
+            fos.close();
             result = true;
         } catch (FileNotFoundException ex) {
-            ;
+            logger.warn("failed to write file. cause:" + ex.getMessage());
         } catch (IOException ex) {
-            ;
+            logger.warn("failed to write file. cause:" + ex.getMessage());
         } finally {
             this.writeLock.unlock();
         }
@@ -138,7 +126,23 @@ public class BloomFilterDeduper implements Deduper {
         if (null == fileName || fileName.isEmpty()) {
             return false;
         }
-        File file = new File(fileName);
+        this.writeLock.lock();
+        try {
+            FileInputStream fis = new FileInputStream(fileName);
+            DataInput dis = new DataInputStream(fis);
+            int counter = dis.readInt();
+            this.size = dis.readInt();
+            this.storeCounter.set(counter);
+            this.bloomFilter.readFields(dis);
+            fis.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            logger.warn("failed to read file. cause:" + ex.getMessage());
+        } catch (IOException ex) {
+            logger.warn("failed to read file. cause:" + ex.getMessage());
+        } finally {
+            this.writeLock.unlock();
+        }
         return false;
     }
 }

@@ -9,7 +9,7 @@ import org.zebra.search.crawler.fetcher.HttpClientFetcher;
 
 public class CrawlDocument {
     private static final Logger logger = Logger.getLogger(CrawlDocument.class);
-    private static final String DEFAULT_CHARSET = "GB18030";
+    private static final String DEFAULT_CHARSET = "UTF-8";
 
     // private String contentString = "";
     private UrlInfo urlInfo = null;
@@ -32,7 +32,7 @@ public class CrawlDocument {
             return null;
         }
         try {
-            return new String(contentBytes, DEFAULT_CHARSET);
+            return new String(contentBytes);
         } catch (Exception ex) {
             return null;
         }

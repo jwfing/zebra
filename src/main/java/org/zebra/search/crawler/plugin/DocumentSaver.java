@@ -52,10 +52,12 @@ public class DocumentSaver implements Processor {
         String description = (String) context.getVariable(ProcessorUtil.COMMON_PROP_DESCRIPTION);
         String articleText = (String) context.getVariable(ProcessorUtil.COMMON_PROP_MAINBODY);
         document.setUrl(doc.getUrl());
+        document.setUrlMd5(org.zebra.search.crawler.util.StringUtil.computeMD5(doc.getUrl()));
+        document.setSourceUrl((String)doc.getUrlInfo().getFeature(ProcessorUtil.COMMON_PROP_SEEDURL));
         document.setTitle(title);
         document.setDescription(description);
         document.setArticleText(articleText);
-        document.setDownloadTime(new java.util.Date().getTime());
+        document.setDownloadTime(doc.getFetchTime().getTime());
         logger.debug("save document:" + document.toString());
         this.documentDao.save(document);
         return true;

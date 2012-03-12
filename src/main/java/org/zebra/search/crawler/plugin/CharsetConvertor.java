@@ -1,12 +1,18 @@
 package org.zebra.search.crawler.plugin;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.zebra.search.crawler.common.*;
 import org.zebra.search.crawler.util.ProcessorUtil;
 
 public class CharsetConvertor implements Processor {
     private final Logger logger = Logger.getLogger(UrlPoolWriter.class);
-    private static final String DEFAULT_TARGET_CHARSET = "UTF-8";
+    private static final String DEFAULT_TARGET_CHARSET = "utf-8";
     private String targetCharset = DEFAULT_TARGET_CHARSET;
 
     public String getTargetCharset() {
@@ -35,13 +41,18 @@ public class CharsetConvertor implements Processor {
             return false;
         }
 
-        String content = doc.getContentString();
-        String encoding = ProcessorUtil.getEncoding(content);
-        logger.debug("doc(" + doc.getUrl() + ") encoding is:" + encoding);
+        String encoding = doc.getFeature(ProcessorUtil.COMMON_PROP_CONTENTTYPE);
+        if (null != encoding) {
+           encoding = encoding.substring(encoding.indexOf("charset=") + "charset=".length());   
+        }
         try {
-            String result = new String(content.getBytes(/*encoding*/), this.targetCharset);
+            // convert to UTF-8
+            byte[] contentBytes = doc.getContentBytes();
+            String old = new String(contentBytes, encoding != null ? encoding: "utf-8");
+            String result = new String(old.getBytes(), this.targetCharset);
             doc.setContentString(result);
             doc.addFeature(ProcessorUtil.COMMON_PROP_ENCODING, encoding);
+            context.setVariable(ProcessorUtil.COMMON_PROP_OLDCONTENT, contentBytes);
             logger.info("convert doc(" + doc.getUrl() + ") content from " + encoding + " to "
                     + this.targetCharset);
         } catch (Exception ex) {
