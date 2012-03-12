@@ -28,21 +28,14 @@ import com.sun.syndication.io.SyndFeedInput;
 
 public class LinkFollower implements Processor {
     private final Logger logger = Logger.getLogger(LinkFollower.class);
-    // private static final String PREFIX_5C22 = "%5c%22";
-    // private static final int PREFIX_5C22_LEN = PREFIX_5C22.length();
-    // private static final String SUFFIX_PLUS = "+";
-    // private static final String SUFFIX_MINUS = "-";
     private static final String HTTP_PROCOTOL = "http://";
-    private static final String[] FORBIDDEN_TERMS = { "blog", "thread", "bbs", "forum", "download",
-            "javascript", "books", "copyright", "video", "music", "schedule", "picture", "comment",
+    private static final String[] FORBIDDEN_TERMS = { "bbs", "forum", "download",
+            "javascript", "copyright", "video", "schedule", "picture", "comment",
             "price", "about" };
-    private static final String[] OPTIONAL_TERMS = { "list", "index" };
 
     private static final String defaultEncoding = "GB2312";
     private static final String goodUrlType = "(html|shtml|htm|mht|shtm|aspx)";
 
-    private boolean rmSidFromUrl = true;
-    private String sidPattern = "&sid=\\w+$|\\?sid=\\w+$";
     private boolean deepFollow = false;
 
     public boolean isDeepFollow() {
@@ -80,8 +73,8 @@ public class LinkFollower implements Processor {
             if (i < content.length - 1) {
                 String contentString = new String(content, i, content.length - i, "utf-8");
                 contentString = contentString.trim();
-                SyndFeed feed = input.build(new InputStreamReader(
-                        new ByteArrayInputStream(contentString.getBytes())));
+                SyndFeed feed = input.build(new InputStreamReader(new ByteArrayInputStream(
+                        contentString.getBytes())));
                 List<SyndEntry> entries = feed.getEntries();
                 for (SyndEntry entry : entries) {
                     UrlInfo urlInfo = new UrlInfo(entry.getLink());
@@ -141,45 +134,12 @@ public class LinkFollower implements Processor {
                     // url equals the one of seed
                     continue;
                 }
-                // add by fengjw, delete urls which don't start with http://
-                if (!urlInfo.getUrl().startsWith(HTTP_PROCOTOL)) {
+                if (!isGoodType(urlInfo.getUrl())) {
                     continue;
                 }
-                // end add by fengjw
-
-                int parentDepth = 0;
-                // get the depth of the doc for followlink exp added by
-                // deepFollow
-                if (isDeepFollow()
-                        && doc.getUrlInfo().getFeature(ProcessorUtil.COMMON_PROP_DEPTH) != null) {
-                    parentDepth = Integer.valueOf((String) doc.getUrlInfo().getFeature(
-                            ProcessorUtil.COMMON_PROP_DEPTH));
-                }
-
-                // go depth 2 level at most, and "index" in url is necessary
-                // added by deepFollow
-                if (parentDepth > 0
-                        || (isDeepFollow() && isListPage(urlInfo.getUrl().toLowerCase()))) {
-                    if (!isNewsPage(urlInfo.getUrl().toLowerCase(), (parentDepth == 0))) {
-                        continue;
-                    }
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, currentUrlInfo.getUrl());
-                    if (parentDepth > 0) {
-                        urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
-                    } else {
-                        urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "seed");
-                    }
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_DEPTH,
-                            String.valueOf(parentDepth + 1));
-                    linkList.add(urlInfo);
-                } else {
-                    if (!isNewsPage(urlInfo.getUrl().toLowerCase(), false)) {
-                        continue;
-                    }
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, currentUrlInfo.getUrl());
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
-                    linkList.add(urlInfo);
-                }
+                urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, currentUrlInfo.getUrl());
+                urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
+                linkList.add(urlInfo);
             }
         } catch (Exception e) {
             this.logger.warn("exception occurred in linkFollow. cause: " + e.getMessage());
@@ -195,23 +155,20 @@ public class LinkFollower implements Processor {
         if (null == uri) {
             return false;
         }
-        if (uri.endsWith("/")) {
+        if (!uri.startsWith(HTTP_PROCOTOL)) {
             return false;
+        }
+        for (String forbiddenTerm : FORBIDDEN_TERMS) {
+            if (uri.indexOf(forbiddenTerm) != -1) {
+                return false;
+            }
         }
         int lastDotIndex = uri.lastIndexOf(".");
         if ((lastDotIndex <= 0)) {
             return true;
         }
-
         String ext = uri.substring(lastDotIndex + 1);
         return ext.matches(goodUrlType);
-    }
-
-    protected String removeSidFromUrl(String url) {
-        if ((url == null) || (url.length() == 0)) {
-            return url;
-        }
-        return url.replaceFirst(this.sidPattern, "");
     }
 
     protected URL genURL(String url) {
@@ -233,61 +190,11 @@ public class LinkFollower implements Processor {
         return nodeList.extractAllNodesThatMatch(orFilter, true);
     }
 
-    private boolean isListPage(String url) {
-        if (null == url) {
-            return false;
-        }
-        for (String forbiddenTerm : OPTIONAL_TERMS) {
-            if (url.indexOf(forbiddenTerm) != -1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean isNewsPage(String url, boolean enableList) {
-        if (null == url) {
-            return false;
-        }
-        if (url.indexOf("?") >= 0) {
-            return false;
-        }
-        if (url.lastIndexOf('/') == HTTP_PROCOTOL.length() - 1) {
-            // url depth equals 1
-            return false;
-        }
-        String restUrl = url.substring(1 + url.indexOf('/', HTTP_PROCOTOL.length()));// skip
-                                                                                     // host
-                                                                                     // part
-        String[] parts = restUrl.split("/");
-        if (parts.length > 2) {
-            // in order to enable urls as following:
-            // http://notebook.pconline.com.cn/price/bj/1106/2441208.html
-            // http://www.qhnews.com/index/system/2011/06/14/010387318.shtml
-            restUrl = restUrl.substring(parts[0].length() + 1);
-        }
-        for (String forbiddenTerm : FORBIDDEN_TERMS) {
-            if (restUrl.indexOf(forbiddenTerm) != -1) {
-                return false;
-            }
-        }
-        if (!enableList) {
-            for (String forbiddenTerm : OPTIONAL_TERMS) {
-                if (restUrl.indexOf(forbiddenTerm) != -1) {
-                    return false;
-                }
-            }
-        }
-
-        return isGoodType(url);
-    }
-
     private UrlInfo getLinkFromTag(Tag tag, URL parentUrl, String origEncoding) {
         String url = null;
         String tagName = tag.getTagName();
 
         if (tagName.equals("A")) {
-            LinkTag linktag = (LinkTag) tag;
             url = UrlUtil.getAbsoluteUrl(parentUrl, tag.getAttribute("href"));
         } else if (tagName.equals("AREA")) {
             url = UrlUtil.getAbsoluteUrl(parentUrl, tag.getAttribute("href"));
@@ -301,41 +208,9 @@ public class LinkFollower implements Processor {
             url = UrlUtil.getAbsoluteUrl(parentUrl, tag.getAttribute("src"));
         }
 
-        url = UrlUtil.getCanonicalURL(url);// normalizeUrl(url, origEncoding);
+        url = UrlUtil.getCanonicalURL(url);
         UrlInfo urlInfo = new UrlInfo(url);
 
         return urlInfo;
     }
-
-    /*
-     * protected String normalizeUrl(String url, String origEncoding) { if (url
-     * == null) { return url; } url = url.replaceAll("\\s+", "+"); url =
-     * urlEnc(url, origEncoding); url = urlSpecialDecode(url);
-     * 
-     * // add by fengjw if (url.endsWith(PREFIX_5C22)) { url = url.substring(0,
-     * url.length() - PREFIX_5C22_LEN); } if (url.endsWith(SUFFIX_MINUS)) { url
-     * = url.substring(0, url.length() - SUFFIX_MINUS.length()); } if
-     * (url.endsWith(SUFFIX_PLUS)) { url = url.substring(0, url.length() -
-     * SUFFIX_PLUS.length()); }
-     * 
-     * int invadIndex = url.indexOf(HTTP_PROCOTOL); if (invadIndex > 0) { url =
-     * url.substring(invadIndex); } // end end by fengjw invadIndex =
-     * url.indexOf("#"); if (invadIndex > 0) { url = url.substring(0,
-     * invadIndex); }
-     * 
-     * if (this.rmSidFromUrl) { url = removeSidFromUrl(url); } return url; }
-     * 
-     * private String urlSpecialDecode(String url) { if ((url == null) ||
-     * (url.length() == 0)) { return url; } url = url.replaceAll("&amp;", "&");
-     * return url; }
-     * 
-     * private String urlEnc(String u, String origEncoding) { StringBuffer r =
-     * new StringBuffer(); try { for (int i = 0; i < u.length(); ++i) { int n =
-     * u.codePointAt(i); char c = u.charAt(i);
-     * 
-     * if ((n >= 123) || (n <= 32) || (n == 92) || ((n >= 91) && (n <= 94)) ||
-     * (n == 96) || (n == 34)) r.append(URLEncoder.encode(String.valueOf(c),
-     * origEncoding)); else r.append(c); } } catch (Exception e) {
-     * this.logger.warn("", e); } return r.toString(); }
-     */
 }

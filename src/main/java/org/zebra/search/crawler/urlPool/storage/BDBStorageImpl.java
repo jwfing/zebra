@@ -125,8 +125,6 @@ public class BDBStorageImpl implements UrlStorage {
                 List<UrlSeed> target = new ArrayList<UrlSeed>();
                 for (UrlSeed seed : us) {
                     if (seed.getLevel() != level) {
-                        logger.debug("level is not match. srcUrl=" + seed.getUrl() + ", srcLevel="
-                                + seed.getLevel() + ", targetLevel=" + level);
                         continue;
                     }
                     target.add(seed);

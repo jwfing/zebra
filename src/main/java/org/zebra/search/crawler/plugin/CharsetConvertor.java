@@ -48,7 +48,12 @@ public class CharsetConvertor implements Processor {
         try {
             // convert to UTF-8
             byte[] contentBytes = doc.getContentBytes();
-            String old = new String(contentBytes, encoding != null ? encoding: "utf-8");
+            String old = null;
+            if (encoding != null) {
+                old = new String(contentBytes, encoding);
+            } else {
+                old = new String(contentBytes);
+            }
             String result = new String(old.getBytes(), this.targetCharset);
             doc.setContentString(result);
             doc.addFeature(ProcessorUtil.COMMON_PROP_ENCODING, encoding);
@@ -56,7 +61,7 @@ public class CharsetConvertor implements Processor {
             logger.info("convert doc(" + doc.getUrl() + ") content from " + encoding + " to "
                     + this.targetCharset);
         } catch (Exception ex) {
-            logger.warn("error ocurred for charset convertor. cause:" + ex.getMessage());
+            logger.warn("error ocurred for charset convertor for url=" + doc.getUrl() + ". cause:" + ex.getMessage());
             return false;
         }
         return true;
