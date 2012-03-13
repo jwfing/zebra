@@ -43,7 +43,11 @@ public class CharsetConvertor implements Processor {
 
         String encoding = doc.getFeature(ProcessorUtil.COMMON_PROP_CONTENTTYPE);
         if (null != encoding) {
-           encoding = encoding.substring(encoding.indexOf("charset=") + "charset=".length());   
+            if (encoding.indexOf("charset=") >= 0) { 
+               encoding = encoding.substring(encoding.indexOf("charset=") + "charset=".length());
+            } else {
+                encoding = null;
+            }
         }
         try {
             // convert to UTF-8

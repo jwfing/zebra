@@ -13,6 +13,7 @@ import org.zebra.search.crawler.fetcher.HttpClientFetcher;
 import org.zebra.search.crawler.plugin.CommonArticleExtractor;
 import org.zebra.search.crawler.plugin.DocumentParser;
 import org.zebra.search.crawler.plugin.LinkFollower;
+import org.zebra.search.crawler.plugin.CharsetConvertor;
 import org.zebra.search.crawler.util.ProcessorUtil;
 
 import junit.framework.TestCase;
@@ -34,6 +35,38 @@ public class PipelineDriverTests extends TestCase {
 		super.tearDown();
 	}
 
+	public void testEngagePage() {
+	    UrlInfo urlInfo = new UrlInfo("http://cn.engadget.com/forward/20183391/");
+        CrawlDocument doc = fetcher.fetchDocument(urlInfo);
+        if (null == doc || null == doc.getContentString()) {
+            fail("failed to fetch document");
+        }
+        CharsetConvertor convertor = new CharsetConvertor();
+        convertor.initialize();
+        DocumentParser parser = new DocumentParser();
+        parser.initialize();
+        LinkFollower follower = new LinkFollower();
+        follower.initialize();
+
+        Context context = new Context();
+        boolean result = convertor.process(doc, context);
+        if (!result) {
+            fail("failed to convert document");
+        }
+        result = parser.process(doc, context);
+        if (!result) {
+            fail("failed to parse document");
+        }
+        result = follower.process(doc, context);
+        if (!result) {
+            fail("failed to follow links");
+        }
+        List<UrlInfo> outlinks = (List<UrlInfo>) context
+                .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
+        for (UrlInfo link : outlinks) {
+            System.out.println(link.getUrl());
+        }
+	}
 	public void testRSSParser4ListPage() {
         UrlInfo urlInfo = new UrlInfo("http://songshuhui.net/archives/category/major/psychology/feed");
         CrawlDocument doc = fetcher.fetchDocument(urlInfo);
@@ -60,7 +93,7 @@ public class PipelineDriverTests extends TestCase {
             System.out.println(link.getUrl());
         }
 	}
-	/*
+
     public void testConfig() {
         PipelineDriver driver = new PipelineDriver();
         driver.initialize();
@@ -87,7 +120,7 @@ public class PipelineDriverTests extends TestCase {
         }
     }
 	public void testDOMParser() {
-		UrlInfo urlInfo = new UrlInfo(url);
+		UrlInfo urlInfo = new UrlInfo("http://live.ifanr.com");
 		CrawlDocument doc = fetcher.fetchDocument(urlInfo);
 		if (null == doc || null == doc.getContentString()) {
 			fail("failed to fetch document");
@@ -112,5 +145,4 @@ public class PipelineDriverTests extends TestCase {
 			System.out.println(link.getUrl());
 		}
 	}
-*/
 }

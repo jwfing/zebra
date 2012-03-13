@@ -47,7 +47,7 @@ public class FetcherController {
                     CrawlDocument doc = this.fetcher.fetchDocument(url);
                     if (null == doc) {
                         logger.warn("failed to fetch document. url=" + url.getUrl());
-                    } if (doc.getFetchStatus() != FetchStatus.OK) {
+                    } else if (doc.getFetchStatus() != FetchStatus.OK) {
                         logger.warn("failed to fetch document. url=" + url.getUrl() + ", fetchStatus=" + doc.getFetchStatus());
                     }else {
                         logger.debug("success to fetch document. url=" + url.getUrl());
@@ -76,7 +76,6 @@ public class FetcherController {
             thread.start();
             threads.add(thread);
             logger.info("create fetcher thread :" + i);
-            System.out.println("create fetcher thread :" + i);
         }
     }
 

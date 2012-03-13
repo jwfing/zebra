@@ -30,7 +30,10 @@ public class HTMLMetaExtractor {
             logger.debug("the node list is null");
             return result;
         }
-        String title = this.titleExtractor.extract(doc, context);
+        String title = null;//this.titleExtractor.extract(doc, context);
+//        if (null != title) {
+//            title = title.trim();
+//        }
         if (null == title || title.isEmpty()) {
             NodeFilter fileter = new TagNameFilter(ProcessorUtil.COMMON_PROP_TITLE);
             NodeList candidates = nodeList.extractAllNodesThatMatch(fileter, true);

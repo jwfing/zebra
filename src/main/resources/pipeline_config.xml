@@ -7,7 +7,7 @@
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 	    <property name="url" value="jdbc:mysql://localhost:3306/crawler?characterEncoding=UTF-8"/>
 	    <property name="username" value="root"/>
-	    <property name="password" value=""/>
+	    <property name="password" value="bWy4$*5K"/>
 	    <property name="maxActive" value="20"/>
 	    <property name="maxWait" value="5000"/>
 	    <property name="minIdle" value="3"/>
@@ -87,6 +87,10 @@
           <list>
               <ref bean="charsetConvertor"/>
               <ref bean="documentParser"/>
+              <ref bean="linkFollower"/>
+              <ref bean="filter"/>
+              <ref bean="deduperClient"/>
+              <ref bean="urlWriter"/>
               <ref bean="extractor"/>
               <ref bean="documentSaver"/>
           </list>

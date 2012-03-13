@@ -36,7 +36,7 @@ public class LinkFollower implements Processor {
     private static final String defaultEncoding = "GB2312";
     private static final String goodUrlType = "(html|shtml|htm|mht|shtm|aspx)";
 
-    private boolean deepFollow = false;
+    private boolean deepFollow = true;
 
     public boolean isDeepFollow() {
         return deepFollow;
@@ -112,13 +112,25 @@ public class LinkFollower implements Processor {
         String base = (String) doc.getFeature(ProcessorUtil.COMMON_PROP_BASE);
         if (null == base || base.isEmpty()) {
             base = doc.getUrl();
-            base = base.substring(0, base.lastIndexOf('/'));
         }
         URL baseUrl = UrlUtil.genURL(base);
         String origEncoding = defaultEncoding;
+        String flag = (String)currentUrlInfo.getFeature(ProcessorUtil.COMMON_PROP_FLAG);
+        boolean disableFollow = false;
+        if (null != flag && flag.equalsIgnoreCase("page")) {
+            Boolean disableFeature = (Boolean)currentUrlInfo.getFeature(ProcessorUtil.COMMON_PROP_DISABLEFOLLOW);
+            if (null != disableFeature) {
+                disableFollow = disableFeature.booleanValue();
+            }
+        }
+        
+        List<UrlInfo> linkList = new ArrayList<UrlInfo>();
+        if (disableFollow) {
+            context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, linkList);
+            return true;
+        }
 
         NodeList links = extractLinkNodes(nodeList);
-        List<UrlInfo> linkList = new ArrayList<UrlInfo>();
         try {
             for (NodeIterator i = links.elements(); i.hasMoreNodes();) {
                 Tag tag = (Tag) i.nextNode();
@@ -139,6 +151,10 @@ public class LinkFollower implements Processor {
                 }
                 urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, currentUrlInfo.getUrl());
                 urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
+                if (null != flag && flag.equalsIgnoreCase("page")) {
+                    // one level follow
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_DISABLEFOLLOW, new Boolean(true));
+                }
                 linkList.add(urlInfo);
             }
         } catch (Exception e) {
@@ -163,22 +179,14 @@ public class LinkFollower implements Processor {
                 return false;
             }
         }
-        int lastDotIndex = uri.lastIndexOf(".");
+        String[] parts = uri.split("/");
+        String last = parts[parts.length - 1];
+        int lastDotIndex = last.lastIndexOf(".");
         if ((lastDotIndex <= 0)) {
             return true;
         }
-        String ext = uri.substring(lastDotIndex + 1);
+        String ext = last.substring(lastDotIndex + 1);
         return ext.matches(goodUrlType);
-    }
-
-    protected URL genURL(String url) {
-        URL parentUrl = null;
-        try {
-            parentUrl = new URL(url);
-        } catch (MalformedURLException e1) {
-            return null;
-        }
-        return parentUrl;
     }
 
     private NodeList extractLinkNodes(NodeList nodeList) {
