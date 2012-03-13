@@ -8,6 +8,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.htmlparser.NodeFilter;
@@ -31,7 +33,7 @@ public class LinkFollower implements Processor {
     private static final String HTTP_PROCOTOL = "http://";
     private static final String[] FORBIDDEN_TERMS = { "bbs", "forum", "download",
             "javascript", "copyright", "video", "schedule", "picture", "comment",
-            "price", "about" };
+            "price", "about", "contact", "privacy", "forward", "email", "print"};
 
     private static final String defaultEncoding = "GB2312";
     private static final String goodUrlType = "(html|shtml|htm|mht|shtm|aspx)";
@@ -60,6 +62,20 @@ public class LinkFollower implements Processor {
         return this.getClass().getName();
     }
 
+    private void setOutlinks(CrawlDocument doc, Context context, List<UrlInfo> linkList) {
+        List<UrlInfo> finalResults = new ArrayList<UrlInfo>();
+        Set<String> urlMap = new HashSet<String>();
+        for (UrlInfo urlInfo : linkList) {
+            if (urlMap.contains(urlInfo.getUrl())) {
+                continue;
+            }
+            urlMap.add(urlInfo.getUrl());
+            finalResults.add(urlInfo);
+        }
+        context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, finalResults);
+        logger.info("link follow. docUrl=" + doc.getUrl() + ", outlinks=" + finalResults.size());
+    }
+
     private boolean processRSS(CrawlDocument doc, Context context) {
         byte[] content = doc.getContentBytes();
         List<UrlInfo> linkList = new ArrayList<UrlInfo>();
@@ -86,8 +102,7 @@ public class LinkFollower implements Processor {
         } catch (Exception ex) {
             logger.warn("exception occurred. cause:{}", ex);
         }
-        context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, linkList);
-        logger.info("link follow. docUrl=" + doc.getUrl() + ", outlinks=" + linkList.size());
+        setOutlinks(doc, context, linkList);
         return true;
     }
 
@@ -161,8 +176,7 @@ public class LinkFollower implements Processor {
             this.logger.warn("exception occurred in linkFollow. cause: " + e.getMessage());
         }
 
-        context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, linkList);
-        logger.info("link follow. docUrl=" + doc.getUrl() + ", outlinks=" + linkList.size());
+        setOutlinks(doc, context, linkList);
 
         return true;
     }

@@ -33,7 +33,7 @@ public class HttpClientFetcher implements Fetcher {
     private static final Logger logger = Logger.getLogger(HttpClientFetcher.class);
     private static ThreadSafeClientConnManager connectionManager = null;
     private static DefaultHttpClient httpclient = null;
-    public static final int MAX_DOWNLOAD_SIZE = 1024 * 1024 * 4;
+    public static final int MAX_DOWNLOAD_SIZE = 1024 * 1024 * 2;
     private static final boolean show404Pages = Configuration.getBooleanProperty(
             Configuration.PATH_FETCHER_SHOW404, false);
     private static final boolean ignoreIfBinary = Configuration.getBooleanProperty(

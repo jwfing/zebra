@@ -49,6 +49,7 @@ public class FetcherController {
                         logger.warn("failed to fetch document. url=" + url.getUrl());
                     } else if (doc.getFetchStatus() != FetchStatus.OK) {
                         logger.warn("failed to fetch document. url=" + url.getUrl() + ", fetchStatus=" + doc.getFetchStatus());
+                        doc = null;
                     }else {
                         logger.debug("success to fetch document. url=" + url.getUrl());
                         this.docCollection.offer(doc);

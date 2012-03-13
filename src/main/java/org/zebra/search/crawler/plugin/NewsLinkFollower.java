@@ -35,7 +35,7 @@ public class NewsLinkFollower implements Processor {
     private static final String HTTP_PROCOTOL = "http://";
     private static final String[] FORBIDDEN_TERMS = { "blog", "thread", "bbs", "forum", "download",
             "javascript", "books", "copyright", "video", "music", "schedule", "picture", "comment",
-            "price", "about" };
+            "price", "about", "contact", "privacy", "forward", "email", "print"};
     private static final String[] OPTIONAL_TERMS = { "list", "index" };
 
     private static final String defaultEncoding = "GB2312";

@@ -42,6 +42,7 @@ public class PipelineDriver {
                         logger.warn("failed to process doc. url=" + doc.getUrl());
                     }
                 }
+                doc = null;
             }
         }
     }

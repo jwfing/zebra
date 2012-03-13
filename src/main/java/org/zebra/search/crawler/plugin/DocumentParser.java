@@ -17,7 +17,7 @@ import org.zebra.search.crawler.util.ProcessorUtil;
 
 public class DocumentParser implements Processor {
     private final Logger logger = Logger.getLogger(DocumentParser.class);
-    private static final String defaultEncoding = "GB2312";
+    private static final String defaultEncoding = "utf-8";
 
     public boolean initialize() {
         return true;

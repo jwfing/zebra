@@ -24,6 +24,14 @@ public class CrawlDocumentCollection {
 	}
 
 	public boolean offer(CrawlDocument doc) {
+	    if (this.queue.size() > 1024) {
+	        try {
+	            logger.debug("too many document need to process, sleep 10s");
+	            Thread.sleep(10000);
+	        } catch (Exception ex) {
+	            ;
+	        }
+	    }
 		return this.queue.offer(doc);
 	}
 	public CrawlDocument poll() {

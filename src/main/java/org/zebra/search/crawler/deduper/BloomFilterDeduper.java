@@ -19,14 +19,14 @@ public class BloomFilterDeduper implements Deduper {
     private int spaceRate = DEFAULT_RATE;
 
     private int size = 0;
-    private int hashNum = 10;
+    private int hashNum = 17;
     private AtomicCounter storeCounter = new AtomicCounter();
     private Lock writeLock = new ReentrantLock();
     private org.onelab.filter.BloomFilter bloomFilter = null;
 
     public BloomFilterDeduper(int size) {
         this.size = size;
-        this.bloomFilter = new org.onelab.filter.BloomFilter(this.size, this.hashNum);
+        this.bloomFilter = new org.onelab.filter.BloomFilter(this.size * this.spaceRate, this.hashNum);
     }
 
     public boolean isFull() {
