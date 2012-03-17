@@ -25,6 +25,7 @@ public class BloomFilterDeduperTest extends TestCase {
             initialized = true;
         }
     }
+    /*
     public void test125K10() {
         BloomFilterDeduper deduper = new BloomFilterDeduper(1250000);
         HashDeduper hash = new HashDeduper();
@@ -78,4 +79,5 @@ public class BloomFilterDeduperTest extends TestCase {
             }
         }
     }
+    */
 }

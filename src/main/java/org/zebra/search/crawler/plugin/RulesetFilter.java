@@ -38,8 +38,8 @@ public class RulesetFilter implements Processor {
                     if (docHost.equalsIgnoreCase(itemHost)) {
                         reallinks.add(item);
                     } else {
-                        logger.debug("discard outlink due to host strict rule. docUrl=" + doc.getUrl()
-                                + ", outlink=" + item.getUrl());
+//                        logger.debug("discard outlink due to host strict rule. docUrl=" + doc.getUrl()
+//                                + ", outlink=" + item.getUrl());
                     }
                 }
                 context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, reallinks);

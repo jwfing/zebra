@@ -1,5 +1,6 @@
 package org.zebra.search.crawler.plugin;
 
+import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -9,8 +10,40 @@ import org.zebra.search.crawler.util.ProcessorUtil;
 import org.zebra.search.crawler.common.*;
 
 public class DeduperClient implements Processor {
+    private static final String CURRENT_CHECKPOINT = "./checkpoint/deduper.cur";
+    private static final String BACKUP_CHECKPOINT = "./checkpoint/deduper.backup";
+    private static final String TMP_CHECKPOINT = "./checkpoint/deduper.tmp";
     private final Logger logger = Logger.getLogger(DeduperClient.class);
     private Deduper deduper = new HashDeduper();
+    private CheckPointThread checkPointThread = null;
+
+    private class CheckPointThread extends Thread {
+        private int intervalMinutes = 5;
+
+        public void run() {
+            while (isAlive()) {
+                File tmpFile = new File(TMP_CHECKPOINT);
+                if (tmpFile.exists()) {
+                    tmpFile.delete();
+                }
+                boolean writeResult = deduper.checkpoint(TMP_CHECKPOINT);
+                if (writeResult) {
+                    File curFile = new File(CURRENT_CHECKPOINT);
+                    if (curFile.exists()) {
+                        curFile.renameTo(new File(BACKUP_CHECKPOINT));
+                    }
+                    tmpFile = new File(TMP_CHECKPOINT);
+                    tmpFile.renameTo(curFile);
+                    logger.info("successfully generated a checkpoint for HashDeduper");
+                }
+                try {
+                    sleep(this.intervalMinutes * 60000);
+                } catch (Exception ex) {
+                    logger.warn("exception encountered. cause:" + ex.getMessage());
+                }
+            }
+        }
+    }
 
     public Deduper getDeduper() {
         return deduper;
@@ -21,10 +54,28 @@ public class DeduperClient implements Processor {
     }
 
     public boolean initialize() {
+        File curFile = new File(CURRENT_CHECKPOINT);
+        if (curFile.exists()) {
+            this.deduper.reload(CURRENT_CHECKPOINT);
+        } else {
+            curFile = new File(BACKUP_CHECKPOINT);
+            if (curFile.exists()) {
+                this.deduper.reload(BACKUP_CHECKPOINT);
+            }
+        }
+        this.checkPointThread = new CheckPointThread();
+        this.checkPointThread.start();
         return true;
     }
 
     public boolean destroy() {
+        if (null != this.checkPointThread) {
+            try {
+                this.checkPointThread.join(3000);
+            } catch (Exception ex) {
+                logger.warn("failed to join checkpoint thread. cause:" + ex.getMessage());
+            }
+        }
         return true;
     }
 
