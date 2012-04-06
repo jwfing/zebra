@@ -79,6 +79,8 @@ public class LinkFollower implements Processor {
     private boolean processRSS(CrawlDocument doc, Context context) {
         byte[] content = doc.getContentBytes();
         List<UrlInfo> linkList = new ArrayList<UrlInfo>();
+        UrlInfo currentUrlInfo = doc.getUrlInfo();
+        String channel = (String)currentUrlInfo.getFeature(ProcessorUtil.COMMON_PROP_CHANNEL);
         try {
             SyndFeedInput input = new SyndFeedInput();
             // skip BOM char in prolog.
@@ -96,6 +98,7 @@ public class LinkFollower implements Processor {
                     UrlInfo urlInfo = new UrlInfo(entry.getLink());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, doc.getUrl());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_CHANNEL, channel);
                     linkList.add(urlInfo);
                 }
             }
@@ -124,6 +127,7 @@ public class LinkFollower implements Processor {
         }
 
         UrlInfo currentUrlInfo = doc.getUrlInfo();
+        String channel = (String)currentUrlInfo.getFeature(ProcessorUtil.COMMON_PROP_CHANNEL);
         String base = (String) doc.getFeature(ProcessorUtil.COMMON_PROP_BASE);
         if (null == base || base.isEmpty()) {
             base = doc.getUrl();
@@ -166,6 +170,7 @@ public class LinkFollower implements Processor {
                 }
                 urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, currentUrlInfo.getUrl());
                 urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
+                urlInfo.addFeature(ProcessorUtil.COMMON_PROP_CHANNEL, channel);
                 if (null != flag && flag.equalsIgnoreCase("page")) {
                     // one level follow
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_DISABLEFOLLOW, new Boolean(true));
@@ -230,6 +235,9 @@ public class LinkFollower implements Processor {
             url = UrlUtil.getAbsoluteUrl(parentUrl, tag.getAttribute("src"));
         }
 
+        if (null != url && url.indexOf('?') > 0) {
+            url = url.substring(0, url.indexOf('?'));
+        }
         url = UrlUtil.getCanonicalURL(url);
         UrlInfo urlInfo = new UrlInfo(url);
 

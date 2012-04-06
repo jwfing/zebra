@@ -15,7 +15,7 @@ public final class UrlSeed implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final String FEATURES_SEPERATOR = "\t";
 	private static final String KV_SEPERATOR = "=";
-	
+
 	@PrimaryKey
 	private String url = "";
 	private int level = 0;

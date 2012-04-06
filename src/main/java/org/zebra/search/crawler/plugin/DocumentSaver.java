@@ -58,6 +58,7 @@ public class DocumentSaver implements Processor {
         document.setDescription(description);
         document.setArticleText(articleText);
         document.setDownloadTime(doc.getFetchTime().getTime());
+        document.setChannel((String)doc.getUrlInfo().getFeature(ProcessorUtil.COMMON_PROP_CHANNEL));
         logger.debug("save document:" + document.toString());
         this.documentDao.save(document);
         return true;

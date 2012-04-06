@@ -65,6 +65,7 @@ public class ImportSeed {
 		    reader.close();
 		    freader.close();
 		} catch (Exception ex) {
+		    ex.printStackTrace();
 			logger.warn("failed to read localfile. path=" + localFile + ", cause=" + ex.getMessage());
 		}
 		return urlMaps;

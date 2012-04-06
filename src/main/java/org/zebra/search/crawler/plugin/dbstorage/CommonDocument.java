@@ -33,6 +33,8 @@ public class CommonDocument {
     private long downloadTime = 0l;
     @Column(length = 256)
     private String title = "";
+    @Column(length = 256)
+    private String channel = "";
     @Column(length = 1024)
     private String description = "";
     @Column(length = 2048)
@@ -54,6 +56,12 @@ public class CommonDocument {
         }
     }
 
+    public String getChannel() {
+        return channel;
+    }
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
     public String getDescription() {
         return description;
     }

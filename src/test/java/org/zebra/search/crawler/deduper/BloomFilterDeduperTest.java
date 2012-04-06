@@ -16,16 +16,19 @@ import org.zebra.search.crawler.util.ProcessorUtil;
 import junit.framework.TestCase;
 
 public class BloomFilterDeduperTest extends TestCase {
-    private HttpClientFetcher fetcher = new HttpClientFetcher();
+//    private HttpClientFetcher fetcher = new HttpClientFetcher();
     private static boolean initialized = false;
     protected void setUp() throws Exception {
         super.setUp();
-        if (!initialized) {
-            HttpClientFetcher.startConnectionMonitorThread();
-            initialized = true;
-        }
+//        if (!initialized) {
+//            HttpClientFetcher.startConnectionMonitorThread();
+//            initialized = true;
+//        }
     }
-    /*
+    public void testBasic() {
+        ;
+    }
+/*
     public void test125K10() {
         BloomFilterDeduper deduper = new BloomFilterDeduper(1250000);
         HashDeduper hash = new HashDeduper();
@@ -79,5 +82,5 @@ public class BloomFilterDeduperTest extends TestCase {
             }
         }
     }
-    */
+*/
 }
