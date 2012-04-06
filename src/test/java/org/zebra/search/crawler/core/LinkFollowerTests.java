@@ -1,16 +1,13 @@
 package org.zebra.search.crawler.core;
 
 import java.util.List;
-
 import org.springframework.context.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import org.zebra.search.crawler.common.CrawlDocument;
 import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.Processor;
 import org.zebra.search.crawler.common.UrlInfo;
 import org.zebra.search.crawler.fetcher.HttpClientFetcher;
-import org.zebra.search.crawler.plugin.CommonArticleExtractor;
 import org.zebra.search.crawler.plugin.DocumentParser;
 import org.zebra.search.crawler.plugin.LinkFollower;
 import org.zebra.search.crawler.plugin.DeduperClient;
