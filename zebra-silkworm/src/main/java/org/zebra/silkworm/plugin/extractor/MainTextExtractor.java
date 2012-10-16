@@ -19,9 +19,9 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;  
 import org.htmlparser.visitors.HtmlPage;  
 
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.util.ProcessorUtil;
+import org.zebra.common.Context;
+import org.zebra.common.CrawlDocument;
+import org.zebra.common.utils.ProcessorUtil;
 import org.zebra.silkworm.plugin.ConfigurableTemplate;
 
 public class MainTextExtractor extends SubNodeExtractor{

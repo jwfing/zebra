@@ -12,9 +12,9 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.Node;
 import org.htmlparser.nodes.TagNode;
 
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.util.ProcessorUtil;
+import org.zebra.common.Context;
+import org.zebra.common.CrawlDocument;
+import org.zebra.common.utils.ProcessorUtil;
 
 public class HTMLMetaExtractor {
     private final Logger logger = Logger.getLogger(HTMLMetaExtractor.class);

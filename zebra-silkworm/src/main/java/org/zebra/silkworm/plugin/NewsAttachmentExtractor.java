@@ -11,12 +11,9 @@ import org.htmlparser.filters.OrFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.common.Processor;
-import org.zebra.search.crawler.common.UrlInfo;
-import org.zebra.search.crawler.util.ProcessorUtil;
-import org.zebra.search.crawler.util.UrlUtil;
+import org.zebra.common.*;
+import org.zebra.common.flow.*;
+import org.zebra.common.utils.*;
 
 public class NewsAttachmentExtractor implements Processor{
 	private final Logger logger = Logger.getLogger(NewsAttachmentExtractor.class);

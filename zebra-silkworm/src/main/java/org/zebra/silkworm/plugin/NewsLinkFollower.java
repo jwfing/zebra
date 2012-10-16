@@ -18,9 +18,9 @@ import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
 
-import org.zebra.search.crawler.common.*;
-import org.zebra.search.crawler.util.UrlUtil;
-import org.zebra.search.crawler.util.ProcessorUtil;
+import org.zebra.common.*;
+import org.zebra.common.flow.*;
+import org.zebra.common.utils.*;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;

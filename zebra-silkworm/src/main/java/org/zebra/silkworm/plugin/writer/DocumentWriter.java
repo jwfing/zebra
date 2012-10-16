@@ -1,6 +1,6 @@
 package org.zebra.silkworm.plugin.writer;
 
-import org.zebra.search.crawler.common.*;
+import org.zebra.common.*;
 
 public class DocumentWriter {
     private WritableContent content = null;

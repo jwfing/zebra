@@ -1,10 +1,9 @@
 package org.zebra.silkworm.plugin;
 
 import org.apache.log4j.Logger;
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.common.Processor;
-import org.zebra.search.crawler.util.ProcessorUtil;
+import org.zebra.common.*;
+import org.zebra.common.flow.*;
+import org.zebra.common.utils.ProcessorUtil;
 import org.zebra.silkworm.plugin.extractor.*;
 
 public class NewsElementsExtractor implements Processor {

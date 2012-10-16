@@ -1,9 +1,8 @@
 package org.zebra.silkworm.plugin;
 
 import org.apache.log4j.Logger;
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.common.Processor;
+import org.zebra.common.*;
+import org.zebra.common.flow.*;
 
 public class NewTagImprinter implements Processor {
     private final Logger logger = Logger.getLogger(NewTagImprinter.class);

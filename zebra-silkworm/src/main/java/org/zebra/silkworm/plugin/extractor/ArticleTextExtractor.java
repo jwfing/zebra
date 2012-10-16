@@ -3,9 +3,9 @@ package org.zebra.silkworm.plugin.extractor;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.util.ProcessorUtil;
+import org.zebra.common.Context;
+import org.zebra.common.CrawlDocument;
+import org.zebra.common.utils.ProcessorUtil;
 
 import org.apache.log4j.Logger;
 import org.xml.sax.InputSource;

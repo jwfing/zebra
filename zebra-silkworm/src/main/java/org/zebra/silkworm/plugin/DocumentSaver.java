@@ -1,12 +1,11 @@
 package org.zebra.silkworm.plugin;
 
 import org.apache.log4j.Logger;
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.common.Processor;
-import org.zebra.search.crawler.util.ProcessorUtil;
-import org.zebra.silkworm.plugin.dbstorage.CommonDocument;
-import org.zebra.silkworm.plugin.dbstorage.DocumentDao;
+import org.zebra.common.*;
+import org.zebra.common.flow.*;
+import org.zebra.common.domain.*;
+import org.zebra.common.domain.dao.*;
+import org.zebra.common.utils.ProcessorUtil;
 
 public class DocumentSaver implements Processor {
     private static Logger logger = Logger.getLogger(DocumentSaver.class);
@@ -47,12 +46,12 @@ public class DocumentSaver implements Processor {
             logger.warn("internal error, documentDao is empty");
             return false;
         }
-        CommonDocument document = new CommonDocument();
+        Document document = new Document();
         String title = (String) context.getVariable(ProcessorUtil.COMMON_PROP_TITLE);
         String description = (String) context.getVariable(ProcessorUtil.COMMON_PROP_DESCRIPTION);
         String articleText = (String) context.getVariable(ProcessorUtil.COMMON_PROP_MAINBODY);
         document.setUrl(doc.getUrl());
-        document.setUrlMd5(org.zebra.search.crawler.util.StringUtil.computeMD5(doc.getUrl()));
+        document.setUrlMd5(org.zebra.common.utils.StringUtil.computeMD5(doc.getUrl()));
         document.setSourceUrl((String)doc.getUrlInfo().getFeature(ProcessorUtil.COMMON_PROP_SEEDURL));
         document.setTitle(title);
         document.setDescription(description);

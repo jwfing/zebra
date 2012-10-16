@@ -3,7 +3,7 @@ package org.zebra.silkworm.plugin.clustering;
 import java.util.*;
 import java.util.Map.Entry;
 
-import org.zebra.search.crawler.util.StringUtil;
+import org.zebra.common.utils.StringUtil;
 
 public class SimHashDigister {
     private final static long[] BITS = { 0x0001l << 0, 0x0001l << 1, 0x0001l << 2, 0x0001l << 3,

@@ -12,10 +12,8 @@ import org.htmlparser.nodes.TagNode;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.zebra.search.crawler.common.Context;
-import org.zebra.search.crawler.common.CrawlDocument;
-import org.zebra.search.crawler.util.ProcessorUtil;
-import org.zebra.search.crawler.util.UrlUtil;
+import org.zebra.common.*;
+import org.zebra.common.utils.*;
 import org.zebra.silkworm.plugin.ConfigurableTemplate.RuleItem;
 
 public class SubNodeExtractor {
