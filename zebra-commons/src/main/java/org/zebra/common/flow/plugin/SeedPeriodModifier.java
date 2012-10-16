@@ -1,0 +1,81 @@
+package org.zebra.common.flow.plugin;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.zebra.common.Context;
+import org.zebra.common.CrawlDocument;
+import org.zebra.common.UrlInfo;
+import org.zebra.common.flow.Processor;
+import org.zebra.common.utils.ProcessorUtil;
+import org.zebra.common.utils.StringUtil;
+import org.zebra.common.domain.dao.SeedDao;
+import org.zebra.common.domain.Seed;
+
+public class SeedPeriodModifier implements Processor {
+    private static final long MAX_PERIOD = 68400 * 30;  // a month
+    private static final long MIN_PERIOD = 300;         // 5 minutes
+    private static final Logger logger = Logger.getLogger(SeedPeriodModifier.class);
+    private SeedDao seedDao;
+
+    @Override
+    public boolean destroy() {
+        return false;
+    }
+
+    @Override
+    public String getName() {
+        return getClass().getName();
+    }
+
+    @Override
+    public boolean initialize() {
+        return true;
+    }
+
+    public SeedDao getSeedDao() {
+        return seedDao;
+    }
+
+    public void setSeedDao(SeedDao seedDao) {
+        this.seedDao = seedDao;
+    }
+
+    @Override
+    public boolean process(CrawlDocument doc, Context context) {
+        if (null == doc || null == context || null == this.seedDao) {
+            logger.warn("invalid parameter.");
+            return false;
+        }
+        String source = doc.getUrl();
+        String urlMd5 = StringUtil.computeMD5(source);
+        Seed seed = this.seedDao.loadByUrlmd5(urlMd5);
+        long now = System.currentTimeMillis() / 1000;
+        long newPeriod = 0;
+        long nextFetch = 0;
+        List<UrlInfo> outlinks = (List<UrlInfo>) context
+                .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
+        if (null == outlinks || outlinks.size() < 1) {
+            newPeriod = seed.getUpdatePeriod() * 2;
+            if (newPeriod > MAX_PERIOD) {
+                newPeriod = MAX_PERIOD;
+            }
+        } else {
+            newPeriod = seed.getUpdatePeriod() / 2;
+            if (newPeriod < MIN_PERIOD) {
+                newPeriod = MIN_PERIOD;
+            }
+        }
+        nextFetch = seed.getNextFetch() + newPeriod;
+        if (nextFetch < now) {
+            nextFetch = now + MIN_PERIOD;
+        }
+        seed.setNextFetch(nextFetch);
+        seed.setUpdatePeriod(newPeriod);
+        this.seedDao.update(seed);
+        logger.info("change seed url=" + doc.getUrl() + " newPeriod="
+                    + newPeriod + " nextFetch=" + nextFetch);
+        return true;
+    }
+
+}

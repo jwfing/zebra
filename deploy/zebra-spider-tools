@@ -1,0 +1,27 @@
+#! /bin/bash
+### BEGIN INIT INFO
+# Provides:     zebra-spider
+# Required-Start:   $syslog
+# Required-Stop:    $syslog
+# Should-Start:     $local_fs
+# Should-Stop:      $local_fs
+# Default-Start:    2 3 4 5
+# Default-Stop:     0 1 6
+# Short-Description:    zebra-spider - zebra spider
+# Description:      zebra-spider - zebra spider
+### END INIT INFO
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/opt/local/bin:$PATH
+
+APP_NAME="zebra-spider"
+APP_HOME="/var/backends/zebra-spider"
+JVM_HEAP_SIZE="-Xms536m -Xmx536m"
+
+JAVA=`which java`
+JARS="$APP_HOME/*:$APP_HOME/dependency/*:"
+CP=$JARS"${APP_HOME}/conf/"
+MAIN_CLASS="org.zebra.spider.tools.Console"
+JAVA_CONFIG="-Dfile.encoding=UTF-8 ${JVM_HEAP_SIZE} -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dnetworkaddress.cache.ttl=300  -Djava.net.preferIPv4Stack=true  -XX:+UseCompressedOops -Dlog4j.logdir=${LOG_DIR_ROOT} -Dlog4j.configuration=file:${APP_HOME}/conf/log4j.properties -cp $CP $MAIN_CLASS"
+
+$JAVA $JAVA_CONFIG $@
+

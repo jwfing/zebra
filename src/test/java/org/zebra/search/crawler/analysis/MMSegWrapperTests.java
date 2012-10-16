@@ -1,5 +1,7 @@
 package org.zebra.search.crawler.analysis;
 
+import org.zebra.search.crawler.plugin.analysis.MMSegWrapper;
+
 import junit.framework.TestCase;
 
 public class MMSegWrapperTests extends TestCase {

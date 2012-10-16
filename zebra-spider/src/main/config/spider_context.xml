@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://localhost:3306/zebra?characterEncoding=UTF-8"/>
+	    <property name="username" value="root"/>
+	    <property name="password" value="bWy4$*5K"/>
+	    <property name="maxActive" value="20"/>
+	    <property name="maxWait" value="5000"/>
+	    <property name="minIdle" value="3"/>
+	    <property name="maxIdle" value="10"/>
+	    <property name="validationQuery" value="SELECT 1"/>
+	    <property name="testOnBorrow" value="true"/>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>org.zebra.common.domain.Document</value>
+                <value>org.zebra.common.domain.Seed</value>
+				<value>org.zebra.common.domain.FollowedLink</value>
+            </list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="seedDAO" class="org.zebra.common.domain.dao.HibernateSeedDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+    <bean id="linkDAO" class="org.zebra.common.domain.dao.HibernateFollowedLinkDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+	<bean id="processEntry" name="processEntry"
+		  class="org.zebra.common.flow.DefaultProcessorEntry" init-method="initialize" destroy-method="destroy">
+	</bean>
+	<bean id="allocator" name="allocator" class="org.zebra.spider.DefaultAllocator" init-method="initialize" destroy-method="destroy">
+	    <property name="seedDao" ref="seedDAO" />
+	</bean>
+
+	<bean id="documentParser" name="documentParser"
+		  class="org.zebra.common.flow.plugin.DocumentParser" init-method="initialize" destroy-method="destroy">
+	</bean>
+	<bean id="linkFollower" name="linkFollower"
+		  class="org.zebra.spider.plugin.LinkFollower" init-method="initialize" destroy-method="destroy">
+	</bean>
+	<bean id="filter" name="filter"
+		  class="org.zebra.spider.plugin.RulesetFilter" init-method="initialize" destroy-method="destroy">
+	</bean>
+	<bean id="bloomFilter" name="bloomFilter"
+	      class="org.zebra.spider.dedup.BloomFilterDeduper">
+	      <constructor-arg type="int" value="1250000" />
+	</bean>
+	<bean id="deduperClient" name="deduperClient"
+		  class="org.zebra.spider.plugin.DeduperClient" init-method="initialize" destroy-method="destroy">
+		  <property name="deduper" ref="bloomFilter"/>
+	</bean>
+	<bean id="outlinkWriter" name="outlinkWriter"
+		  class="org.zebra.common.flow.plugin.OutlinkWriter" init-method="initialize" destroy-method="destroy">
+		  <property name="linkDao" ref="linkDAO" />
+	</bean>
+	<bean id="seedPeriodModifier" name="seedPeriodModifier"
+	    class="org.zebra.common.flow.plugin.SeedPeriodModifier" init-method="initialize" destroy-method="destroy">
+	    <property name="seedDao" ref="seedDAO" />
+	</bean>
+
+	<bean id="listChain" name="listChain"
+		  class="org.zebra.common.flow.ProcessorChain">
+          <property name="processors">
+          <list>
+              <ref bean="documentParser"/>
+              <ref bean="linkFollower"/>
+              <ref bean="filter"/>
+              <ref bean="deduperClient"/>
+              <ref bean="outlinkWriter"/>
+              <ref bean="seedPeriodModifier"/>
+          </list>
+          </property>
+	</bean>
+	<bean id="contentChain" name="contentChain"
+		  class="org.zebra.common.flow.ProcessorChain">
+	</bean>
+	<bean id="usr1Chain" name="usr1Chain"
+		  class="org.zebra.common.flow.ProcessorChain">
+	</bean>
+	<bean id="usr2Chain" name="usr2Chain"
+		  class="org.zebra.common.flow.ProcessorChain">
+	</bean>
+	<bean id="usr3Chain" name="usr3Chain"
+		  class="org.zebra.common.flow.ProcessorChain">
+	</bean>
+
+	<bean id="dispatcher" name="dispatcher"
+		  class="org.zebra.common.flow.Dispatcher">
+		  <property name="entry" ref="processEntry"></property>
+	</bean>
+</beans>

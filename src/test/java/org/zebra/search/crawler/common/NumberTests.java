@@ -2,8 +2,8 @@ package org.zebra.search.crawler.common;
 
 import junit.framework.TestCase;
 
-import org.zebra.search.crawler.analysis.MMSegWrapper;
-import org.zebra.search.crawler.clustering.*;
+import org.zebra.search.crawler.plugin.analysis.MMSegWrapper;
+import org.zebra.search.crawler.plugin.clustering.*;
 
 public class NumberTests extends TestCase {
 	protected void setUp() throws Exception {
