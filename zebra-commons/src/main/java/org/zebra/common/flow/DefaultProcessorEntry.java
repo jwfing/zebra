@@ -1,12 +1,13 @@
 package org.zebra.common.flow;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.Context;
 import org.zebra.common.CrawlDocument;
 import org.zebra.common.utils.ProcessorUtil;
 
 public class DefaultProcessorEntry implements ProcessorEntry {
-    private static final Logger logger = Logger.getLogger(DefaultProcessorEntry.class.getName());
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @Override
     public boolean initialize() {

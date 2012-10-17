@@ -8,11 +8,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.zebra.common.domain.Document;
 
 public class HibernateDocumentDao extends HibernateDaoSupport implements DocumentDao {
-    private static final Log LOG = LogFactory.getLog(HibernateDocumentDao.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     public Serializable save(Document doc) {
         return getHibernateTemplate().save(doc);
@@ -36,7 +38,7 @@ public class HibernateDocumentDao extends HibernateDaoSupport implements Documen
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }
@@ -61,7 +63,7 @@ public class HibernateDocumentDao extends HibernateDaoSupport implements Documen
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }
@@ -81,7 +83,7 @@ public class HibernateDocumentDao extends HibernateDaoSupport implements Documen
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }

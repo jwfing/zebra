@@ -4,12 +4,12 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.CrawlDocument;
 
 public class ProcessorUtil {
-	private static final Logger logger = Logger.getLogger(ProcessorUtil.class);
+    protected static final Logger logger = LoggerFactory.getLogger(ProcessorUtil.class.getName());
 
 	public static final String COMMON_PROP_CONTENTTYPE = "contenttype";
 	public static final String COMMON_PROP_ENCODING = "encoding";
@@ -54,7 +54,6 @@ public class ProcessorUtil {
 				charsetname = contenttype.substring(
 						index + flagString.length(), endIndex).trim();
 				if (!Charset.isSupported(charsetname)) {
-					logger.warn("charset(" + charsetname + ") isn't supported.");
 					charsetname = "";
 				}
 			}

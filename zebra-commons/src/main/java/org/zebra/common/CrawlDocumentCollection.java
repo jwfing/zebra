@@ -1,10 +1,14 @@
 package org.zebra.common;
 
-import org.apache.log4j.Logger;
-import java.util.concurrent.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.zebra.common.metrics.*;
 
-public class CrawlDocumentCollection {
-	private static final Logger logger = Logger.getLogger(CrawlDocumentCollection.class.getName());
+import java.util.concurrent.*;
+import java.util.*;
+
+public class CrawlDocumentCollection implements MetricsReporter{
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 	private static CrawlDocumentCollection instance = null;
 	private ConcurrentLinkedQueue<CrawlDocument> queue = new ConcurrentLinkedQueue<CrawlDocument>();
 
@@ -20,6 +24,12 @@ public class CrawlDocumentCollection {
 	}
 
 	private CrawlDocumentCollection() {
+	}
+
+	public List<Metrics> stat() {
+	    List<Metrics> stats = new ArrayList<Metrics>();
+	    stats.add(new Metrics("crawlDocCount", new Integer(this.queue.size()).toString()));
+	    return stats;
 	}
 
 	public boolean offer(CrawlDocument doc) {

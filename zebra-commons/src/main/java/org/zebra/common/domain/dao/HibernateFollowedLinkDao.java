@@ -3,16 +3,16 @@ package org.zebra.common.domain.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.zebra.common.domain.FollowedLink;
 import org.zebra.common.domain.Seed;
 
 public class HibernateFollowedLinkDao extends HibernateDaoSupport implements FollowedLinkDao {
-    private static final Log LOG = LogFactory.getLog(HibernateFollowedLinkDao.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @Override
     public void delete(FollowedLink link) {
@@ -40,7 +40,7 @@ public class HibernateFollowedLinkDao extends HibernateDaoSupport implements Fol
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }

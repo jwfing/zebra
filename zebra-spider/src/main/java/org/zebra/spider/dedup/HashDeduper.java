@@ -6,14 +6,15 @@ import java.util.Map.Entry;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.CrawlDocument;
 import org.zebra.common.UrlInfo;
 import org.zebra.common.http.Fetcher;
 import org.zebra.common.utils.StringUtil;
 
 public class HashDeduper implements Deduper {
-    private static final Logger logger = Logger.getLogger(HashDeduper.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     private ConcurrentHashMap<Long, Boolean> _dedupIDs = new ConcurrentHashMap<Long, Boolean>(
             1024 * 1024 * 2);// max size 2M

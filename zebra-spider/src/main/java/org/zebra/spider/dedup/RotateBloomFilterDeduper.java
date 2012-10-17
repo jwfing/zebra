@@ -3,11 +3,12 @@ package org.zebra.spider.dedup;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.UrlInfo;
 
 public class RotateBloomFilterDeduper implements Deduper {
-    private static final Logger logger = Logger.getLogger(RotateBloomFilterDeduper.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private final static int DEFAULT_ROTATE_NUM = 4;
     private int storeSize = 0;
     private int rotateNum = 0;

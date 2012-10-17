@@ -1,10 +1,11 @@
 package org.zebra.spider.tools;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.domain.dao.*;
 
 public class ClearSeed {
-	private static final Logger logger = Logger.getLogger(ClearSeed.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 	private SeedDao dao;
 	public ClearSeed(SeedDao dao) {
 	    this.dao = dao;

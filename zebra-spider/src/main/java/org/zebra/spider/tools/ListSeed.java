@@ -4,13 +4,14 @@ import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.domain.dao.SeedDao;
 import org.zebra.common.domain.Seed;
 import org.zebra.common.UrlInfo;
 
 public class ListSeed {
-	private static final Logger logger = Logger.getLogger(ImportSeed.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private SeedDao dao;
     public void setSeedDao(SeedDao dao) {
         this.dao = dao;
@@ -19,8 +20,8 @@ public class ListSeed {
     public ListSeed(SeedDao dao) {
         this.dao = dao;
     }
-	public int execute(String localFile) {
-		int maxCount = 1024;
+
+    public int execute(String localFile) {
 		List<UrlInfo> result = new ArrayList<UrlInfo>();
 		int offset = 0;
 		List<Seed> seeds = this.dao.getSeeds(0, offset, 1000);

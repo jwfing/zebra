@@ -26,56 +26,6 @@
           <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
-          <groupId>commons-configuration</groupId>
-          <artifactId>commons-configuration</artifactId>
-          <version>1.6</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-codec</groupId>
-          <artifactId>commons-codec</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-lang</groupId>
-          <artifactId>commons-lang</artifactId>
-          <version>2.4</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-          <version>1.1.1</version>
-      </dependency>     
-      <dependency>
-          <groupId>commons-digester</groupId>
-          <artifactId>commons-digester</artifactId>
-          <version>2.1</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-collections</groupId>
-          <artifactId>commons-collections</artifactId>
-          <version>3.2.1</version>
-      </dependency> 
-      <dependency>
-          <groupId>commons-beanutils</groupId>
-          <artifactId>commons-beanutils</artifactId>
-          <version>1.8.0</version>
-      </dependency> 
-      <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>mysql</groupId>
-          <artifactId>mysql-connector-java</artifactId>
-          <version>5.1.6</version>
-      </dependency>
-      <dependency>
           <groupId>org.apache.httpcomponents</groupId>
           <artifactId>httpclient</artifactId>
           <version>4.1.1</version>
@@ -85,105 +35,8 @@
           <artifactId>httpcore</artifactId>
           <version>4.1.1</version>
       </dependency>
-      <dependency>
-          <groupId>org.htmlparser</groupId>
-          <artifactId>htmlparser</artifactId>
-          <version>2.1</version>
-      </dependency>
-      <dependency>
-          <groupId>oro</groupId>
-          <artifactId>oro</artifactId>
-          <version>2.0.8</version>
-      </dependency>
-      <!-- Hibernate -->
-      <!--
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>com.springsource.org.hibernate</artifactId>
-            <version>3.3.1.GA</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        -->
-       <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate</artifactId>
-          <version>3.2.7.ga</version>
-       </dependency>
-       <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-commons-annotations</artifactId>
-          <version>3.3.0.ga</version>
-      </dependency>
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-annotations</artifactId>
-          <version>3.3.0.ga</version>
-      </dependency>
-
-      <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-          <version>1.0</version>
-      </dependency>
-      <dependency>
-          <groupId>javax.transaction</groupId>
-          <artifactId>jta</artifactId>
-          <version>1.1</version>
-      </dependency>
-
-         <!-- tika component for audio/video -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.5.2</version>
-        </dependency>
-
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-          <version>2.5.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-          <version>2.5.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-          <version>2.5.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-jdbc</artifactId>
-          <version>2.5.6</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-orm</artifactId>
-          <version>2.5.4</version>
-      </dependency>
-      <dependency>
-          <groupId>de.l3s.boilerpipe</groupId>
-          <artifactId>boilerpipe</artifactId>
-          <version>1.1.0</version>
-      </dependency>
+ 
+     <!--
       <dependency>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -244,6 +97,7 @@
           <version>2.3.2</version>
           <type>maven-plugin</type>
       </dependency>
+      -->
       <dependency>
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>

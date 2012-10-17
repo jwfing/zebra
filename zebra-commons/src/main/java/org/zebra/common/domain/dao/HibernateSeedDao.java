@@ -7,11 +7,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.zebra.common.domain.Seed;
 
 public class HibernateSeedDao extends HibernateDaoSupport implements SeedDao {
-    private static final Log LOG = LogFactory.getLog(HibernateSeedDao.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @Override
     public Serializable save(Seed seed) {
@@ -42,7 +44,7 @@ public class HibernateSeedDao extends HibernateDaoSupport implements SeedDao {
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }
@@ -64,7 +66,7 @@ public class HibernateSeedDao extends HibernateDaoSupport implements SeedDao {
             result = query.list();
             session.flush();
         } catch (Exception ex) {
-            LOG.warn(ex.getMessage());
+            logger.warn(ex.getMessage());
         } finally {
             session.close();
         }

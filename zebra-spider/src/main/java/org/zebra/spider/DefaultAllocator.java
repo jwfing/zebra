@@ -3,17 +3,19 @@ package org.zebra.spider;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.jsoup.helper.StringUtil;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.zebra.common.Configuration;
 import org.zebra.common.UrlInfo;
 import org.zebra.common.domain.dao.*;
 import org.zebra.common.domain.*;
+import org.zebra.common.utils.ProcessorUtil;
 
 @Component
 public class DefaultAllocator implements Allocator {
-    private static final Logger logger = Logger.getLogger(DefaultAllocator.class.getName());
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     private SeedDao seedDao = null;
     private SeedCollection collection = null;

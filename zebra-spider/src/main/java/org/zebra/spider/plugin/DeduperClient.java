@@ -4,7 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.spider.dedup.*;
 import org.zebra.spider.Constants;
 import org.zebra.common.utils.ProcessorUtil;
@@ -19,12 +20,12 @@ public class DeduperClient implements Processor {
     private static final String TMP_CHECKPOINT =
             Configuration.getStringProperty(Constants.PATH_DEDUP_CHECKPOINT_TMP, "./checkpoint/deduper.tmp");
 
-    private final Logger logger = Logger.getLogger(DeduperClient.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private Deduper deduper = new HashDeduper();
     private CheckPointThread checkPointThread = null;
 
     private class CheckPointThread extends Thread {
-        private int intervalMinutes = 5;
+        private int intervalMinutes = 15;
 
         public void run() {
             while (isAlive()) {
@@ -92,30 +93,33 @@ public class DeduperClient implements Processor {
     }
 
     public boolean process(CrawlDocument doc, Context context) {
-        if (null != doc && null != context && null != this.deduper) {
-            List<UrlInfo> outlinks = (List<UrlInfo>) context
-                    .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
-            if (outlinks != null && outlinks.size() > 0) {
-                List<Boolean> judgeResult = this.deduper.juegeDeduped(outlinks);
-                this.deduper.dedup(outlinks);
-                if (judgeResult != null && judgeResult.size() == outlinks.size()) {
-                    List<UrlInfo> reallinks = new ArrayList<UrlInfo>();
-                    for (int i = 0; i < outlinks.size(); i++) {
-                        if (!judgeResult.get(i)) {
-                            reallinks.add(outlinks.get(i));
-                        }
+        if (null == doc || null == context || null == this.deduper) {
+            return false;
+        }
+        if (doc.getFetchStatus() != FetchStatus.OK) {
+            return true;
+        }
+
+        List<UrlInfo> outlinks = (List<UrlInfo>) context
+                .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
+        if (outlinks != null && outlinks.size() > 0) {
+            List<Boolean> judgeResult = this.deduper.juegeDeduped(outlinks);
+            this.deduper.dedup(outlinks);
+            if (judgeResult != null && judgeResult.size() == outlinks.size()) {
+                List<UrlInfo> reallinks = new ArrayList<UrlInfo>();
+                for (int i = 0; i < outlinks.size(); i++) {
+                    if (!judgeResult.get(i)) {
+                        reallinks.add(outlinks.get(i));
                     }
-                    context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, reallinks);
-                    logger.info("dedup new link from " + outlinks.size() + " to "
-                            + reallinks.size() + " for document=" + doc.getUrl());
-                } else {
-                    logger.warn("deduper client is invalid");
                 }
+                context.setVariable(ProcessorUtil.COMMON_PROP_OUTLINKS, reallinks);
+                logger.info("dedup new link from " + outlinks.size() + " to "
+                        + reallinks.size() + " for document=" + doc.getUrl());
             } else {
-                logger.debug("doc(" + doc.getUrl() + ") has no outlinks");
+                logger.warn("deduper client is invalid");
             }
         } else {
-            logger.warn("interval error.");
+            logger.debug("doc(" + doc.getUrl() + ") has no outlinks");
         }
         return true;
     }

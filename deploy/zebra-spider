@@ -78,9 +78,9 @@ case "$1" in
         if running; then
             echo "Tired, kill -9 $APP_NAME daemon `cat $PID_DIR/pid`"
             kill -9 `cat $PID_DIR/pid`
-            pids=`jps |grep ContentFetcherApp |cut -d ' ' -f1 |tr '\n' ', '`
-            echo "Kill ContentFetcherApp $pids"
-            jps |grep ContentFetcherApp |cut -d ' ' -f1|xargs kill -9
+            pids=`jps |grep spider.ServiceApp |cut -d ' ' -f1 |tr '\n' ', '`
+            echo "Kill spider.ServiceApp $pids"
+            jps |grep spider.ServiceApp |cut -d ' ' -f1|xargs kill -9
             exit 0;
         fi
         ;;

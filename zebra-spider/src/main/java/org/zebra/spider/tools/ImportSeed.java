@@ -3,14 +3,15 @@ package org.zebra.spider.tools;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.domain.dao.SeedDao;
 import org.zebra.common.domain.Seed;
 import org.zebra.common.utils.StringUtil;
 import org.zebra.common.UrlInfo;
 
 public class ImportSeed {
-	private static final Logger logger = Logger.getLogger(ImportSeed.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private SeedDao dao;
     public void setSeedDao(SeedDao dao) {
         this.dao = dao;

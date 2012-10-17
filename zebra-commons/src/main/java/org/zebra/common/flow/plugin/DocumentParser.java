@@ -1,6 +1,6 @@
 package org.zebra.common.flow.plugin;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.OrFilter;
@@ -12,12 +12,13 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.Tag;
 import org.htmlparser.util.ParserException;
 
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.flow.*;
 import org.zebra.common.utils.ProcessorUtil;
 
 public class DocumentParser implements Processor {
-    private final Logger logger = Logger.getLogger(DocumentParser.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final String defaultEncoding = "utf-8";
 
     public boolean initialize() {
@@ -36,6 +37,9 @@ public class DocumentParser implements Processor {
         if (null == doc || null == context) {
             logger.warn("invalid parameter");
             return false;
+        }
+        if (doc.getFetchStatus() != FetchStatus.OK) {
+            return true;
         }
 
         // TODO: we can filter some doc with specificed mime-types

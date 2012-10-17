@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Tag;
 import org.htmlparser.filters.OrFilter;
@@ -16,6 +16,7 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
 
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.utils.*;
 import org.zebra.common.flow.*;
@@ -25,7 +26,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
 public class LinkFollower implements Processor {
-    private final Logger logger = Logger.getLogger(LinkFollower.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final String HTTP_PROCOTOL = "http://";
     private static final String[] FORBIDDEN_TERMS = { "bbs", "forum", "download",
             "javascript", "copyright", "video", "schedule", "picture", "comment",
@@ -109,6 +110,9 @@ public class LinkFollower implements Processor {
         if (null == doc || null == context) {
             logger.warn("invalid parameter");
             return false;
+        }
+        if (doc.getFetchStatus() != FetchStatus.OK) {
+            return true;
         }
 
         String contentType = doc.getFeature(ProcessorUtil.COMMON_PROP_CONTENTTYPE);

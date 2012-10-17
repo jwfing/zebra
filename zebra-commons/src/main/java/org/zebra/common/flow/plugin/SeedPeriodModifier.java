@@ -2,7 +2,8 @@ package org.zebra.common.flow.plugin;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.Context;
 import org.zebra.common.CrawlDocument;
 import org.zebra.common.UrlInfo;
@@ -13,9 +14,9 @@ import org.zebra.common.domain.dao.SeedDao;
 import org.zebra.common.domain.Seed;
 
 public class SeedPeriodModifier implements Processor {
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final long MAX_PERIOD = 68400 * 30;  // a month
     private static final long MIN_PERIOD = 300;         // 5 minutes
-    private static final Logger logger = Logger.getLogger(SeedPeriodModifier.class);
     private SeedDao seedDao;
 
     @Override

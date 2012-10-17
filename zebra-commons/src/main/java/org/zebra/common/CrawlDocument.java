@@ -4,12 +4,13 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.http.HttpClientFetcher;
 
 // document crawled by httpclient.
 public class CrawlDocument {
-    private static final Logger logger = Logger.getLogger(CrawlDocument.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final String DEFAULT_CHARSET = "UTF-8";
 
     private UrlInfo urlInfo = null;
@@ -50,7 +51,8 @@ public class CrawlDocument {
         if (null == is) {
             return false;
         }
-        if (size <= 0) {
+        this.isBinary = isBinary;
+        if (size <= 0 || size > HttpClientFetcher.MAX_DOWNLOAD_SIZE) {
             size = HttpClientFetcher.MAX_DOWNLOAD_SIZE;
         }
         boolean result = true;
@@ -63,7 +65,7 @@ public class CrawlDocument {
             int tmpSize = 0;
             while (readSize < size) {
                 tmpSize = is.read(contentBytes, readSize, size - readSize);
-                if (tmpSize < 0) {
+                if (tmpSize <= 0) {
                     break;
                 }
                 readSize += tmpSize;
@@ -78,7 +80,6 @@ public class CrawlDocument {
                 ex.printStackTrace();
             }
         }
-        this.isBinary = isBinary;
         return result;
     }
 

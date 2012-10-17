@@ -23,18 +23,17 @@ import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParamBean;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.utils.*;
 
 public class HttpClientFetcher implements Fetcher {
-    private static final Logger logger = Logger.getLogger(HttpClientFetcher.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static ThreadSafeClientConnManager connectionManager = null;
     private static DefaultHttpClient httpclient = null;
     public static final int MAX_DOWNLOAD_SIZE = Configuration.getIntProperty(
-            Configuration.PATH_FETCHER_MAXDOWNLOAD_SIZE, 8*1024*1024);
+            Configuration.PATH_FETCHER_MAXDOWNLOAD_SIZE, 4*1024*1024);
     private static final boolean show404Pages = Configuration.getBooleanProperty(
             Configuration.PATH_FETCHER_SHOW404, false);
     private static final boolean ignoreIfBinary = Configuration.getBooleanProperty(

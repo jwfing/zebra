@@ -3,15 +3,15 @@ package org.zebra.spider;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.domain.*;
 import org.zebra.common.http.*;
 import org.zebra.common.utils.ProcessorUtil;
 
 public class FetcherController {
-    private static final Logger logger = Logger.getLogger(FetcherController.class.getName());
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private SeedCollection seedCollection = null;
     private CrawlDocumentCollection docCollection = null;
 
@@ -31,7 +31,7 @@ public class FetcherController {
         this.docCollection = docCollection;
     }
 
-    private static class FetcherThread extends Thread {
+    private class FetcherThread extends Thread {
         private Fetcher fetcher = null;
 
         private SeedCollection seedCollection = null;
@@ -65,15 +65,10 @@ public class FetcherController {
                     UrlInfo urlInfo = new UrlInfo(url.getUrl());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, ProcessorUtil.FLAG_VALUE_LIST);
                     CrawlDocument doc = this.fetcher.fetchDocument(urlInfo);
-                    if (null == doc) {
-                        logger.warn("failed to fetch document. url=" + url.getUrl());
-                    } else if (doc.getFetchStatus() != FetchStatus.OK) {
+                    if (doc.getFetchStatus() != FetchStatus.OK) {
                         logger.warn("failed to fetch document. url=" + url.getUrl() + ", fetchStatus=" + doc.getFetchStatus());
-                        doc = null;
-                    }else {
-                        logger.debug("success to fetch document. url=" + url.getUrl());
-                        this.docCollection.offer(doc);
                     }
+                    this.docCollection.offer(doc);
                 }
             }
         }
@@ -84,13 +79,11 @@ public class FetcherController {
     public void initialize() {
         HttpClientFetcher.startConnectionMonitorThread();
 
-        int threadNum = Configuration.getIntProperty(Constants.PATH_FETCHER_NUM, 1);
+        int threadNum = Configuration.getIntProperty(Constants.PATH_FETCHER_NUM, 5);
         if (threadNum <= 0) {
             logger.warn("fetcher thread num is invalid!");
-            threadNum = 1;
+            threadNum = 5;
         }
-        SeedCollection seedCollection = SeedCollection.getInstance();
-        CrawlDocumentCollection docCollection = CrawlDocumentCollection.getInstance();
         for (int i = 0; i < threadNum; i++) {
             FetcherThread thread = new FetcherThread(new HttpClientFetcher(), seedCollection,
                     docCollection);

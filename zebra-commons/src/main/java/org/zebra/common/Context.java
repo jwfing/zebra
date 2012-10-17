@@ -3,10 +3,11 @@ package org.zebra.common;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Context {
-    private static final Logger logger = Logger.getLogger(Context.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private Map<String, Object> features = new HashMap<String, Object>();
 
     public void setVariable(String key, Object value) {

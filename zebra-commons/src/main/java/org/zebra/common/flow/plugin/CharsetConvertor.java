@@ -1,12 +1,13 @@
 package org.zebra.common.flow.plugin;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.flow.*;
 import org.zebra.common.utils.ProcessorUtil;
 
 public class CharsetConvertor implements Processor {
-    private final Logger logger = Logger.getLogger(CharsetConvertor.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final String DEFAULT_TARGET_CHARSET = "utf-8";
     private String targetCharset = DEFAULT_TARGET_CHARSET;
 
@@ -34,6 +35,10 @@ public class CharsetConvertor implements Processor {
         if (null == doc || null == context) {
             logger.warn("parameter is invalid");
             return false;
+        }
+
+        if (doc.getFetchStatus() != FetchStatus.OK) {
+            return true;
         }
 
         String encoding = doc.getFeature(ProcessorUtil.COMMON_PROP_CONTENTTYPE);

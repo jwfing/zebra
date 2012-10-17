@@ -1,8 +1,9 @@
 package org.zebra.common.flow.plugin;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 import org.zebra.common.utils.*;
 import org.zebra.common.flow.*;
@@ -10,7 +11,7 @@ import org.zebra.common.domain.*;
 import org.zebra.common.domain.dao.*;
 
 public class OutlinkWriter implements Processor {
-    private static final Logger logger = Logger.getLogger(OutlinkWriter.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private FollowedLinkDao linkDao = null;
 
     public boolean initialize() {
@@ -36,6 +37,9 @@ public class OutlinkWriter implements Processor {
     public boolean process(CrawlDocument doc, Context context) {
         if (null == doc || null == context || null == this.linkDao) {
             return false;
+        }
+        if (doc.getFetchStatus() != FetchStatus.OK) {
+            return true;
         }
         String source = doc.getUrl();
         long now = System.currentTimeMillis() / 1000;

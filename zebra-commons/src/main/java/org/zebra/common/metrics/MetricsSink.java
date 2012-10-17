@@ -2,22 +2,24 @@ package org.zebra.common.metrics;
 
 import java.util.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MetricsSink {
-	private static final Logger logger = Logger.getLogger(MetricsSink.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 	private static MetricsSink instance = null;
 	private List<MetricsReporter> reporters = new ArrayList<MetricsReporter>();
-	private int sleepInterval = 5;
+	private int sleepInterval = 3;
 	private class Gather extends Thread {
 		public void run() {
 			while(isAlive()) {
 				for (MetricsReporter reporter : reporters) {
 					List<Metrics> status = reporter.stat();
+					StringBuilder sb = new StringBuilder();
 					for (Metrics metrics : status) {
-						System.out.print(metrics.getKey() + "=" + metrics.getValue() + " ");
+					    sb.append(metrics.toString() + " ");
 					}
-					System.out.println("");
+                    logger.info("[METRICS_STAT] " + sb.toString());
 				}
 				try {
 				    sleep(sleepInterval * 60000);
@@ -33,7 +35,6 @@ public class MetricsSink {
     	if (null == instance) {
     		synchronized(MetricsSink.class) {
     			if (null == instance) {
-    				logger.info("create MetricsSink Instance.");
     				instance = new MetricsSink();
     			}
     		}

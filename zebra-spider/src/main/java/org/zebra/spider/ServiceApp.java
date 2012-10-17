@@ -2,17 +2,14 @@ package org.zebra.spider;
 
 import java.util.*;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.Level;
 import org.zebra.common.CrawlDocumentCollection;
+import org.zebra.common.metrics.*;
 
 /**
  * Hello world!
  * 
  */
 public class ServiceApp {
-    private static final Logger logger = Logger.getLogger(ServiceApp.class);
-
     public static void main(String[] args) {
         String properties = System.getProperty("core.properties");
         if (null == properties || properties.isEmpty()) {
@@ -34,6 +31,13 @@ public class ServiceApp {
         fetcherController.setSeedCollection(seedCollection);
         fetcherController.initialize();
 
+        LoadMonitor loadMonitor = new LoadMonitor();
+        MetricsSink sink = MetricsSink.getInstance();
+        sink.register(seedCollection);
+        sink.register(docCollection);
+        sink.register(loadMonitor);
+        sink.start();
+
         while (true) {
             try {
                 Thread.sleep(30000);
@@ -43,5 +47,6 @@ public class ServiceApp {
                 break;
             }
         }
+        sink.stop();
     }
 }

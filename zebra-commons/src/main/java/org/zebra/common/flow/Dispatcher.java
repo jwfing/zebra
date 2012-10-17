@@ -2,11 +2,12 @@ package org.zebra.common.flow;
 
 import java.util.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
 
 public class Dispatcher {
-    private static final Logger logger = Logger.getLogger(Dispatcher.class.getName());
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private ProcessorEntry entry = null;
     private Map<ProcessDirectory, ProcessorChain> chains = new HashMap<ProcessDirectory, ProcessorChain>();
 

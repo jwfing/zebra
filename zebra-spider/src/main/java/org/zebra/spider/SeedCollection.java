@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.zebra.common.domain.Seed;
+import org.zebra.common.metrics.Metrics;
+import org.zebra.common.metrics.MetricsReporter;
 
 @Component
-public class SeedCollection {
-    private static final Logger logger = Logger.getLogger(SeedCollection.class.getName());
+public class SeedCollection implements MetricsReporter {
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static SeedCollection instance = null;
     private ConcurrentLinkedQueue<Seed> queue = new ConcurrentLinkedQueue<Seed>();
     private int maxSize = 102400;
@@ -19,7 +22,6 @@ public class SeedCollection {
         if (null == instance) {
             synchronized (SeedCollection.class) {
                 if (null == instance) {
-                    logger.info("create SeedCollection Instance.");
                     instance = new SeedCollection();
                 }
             }
@@ -28,6 +30,16 @@ public class SeedCollection {
     }
 
     private SeedCollection() {
+    }
+
+    public List<Metrics> stat() {
+        List<Metrics> stats = new ArrayList<Metrics>();
+        stats.add(new Metrics("seedSize", new Integer(size()).toString()));
+        return stats;
+    }
+
+    public int size() {
+        return this.queue.size();
     }
 
     public List<Seed> getSeeds(int max) {

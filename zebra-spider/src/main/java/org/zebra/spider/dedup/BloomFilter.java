@@ -128,19 +128,6 @@ public class BloomFilter implements Serializable {
     public BloomFilter(String binary) {
         byte[] bytes = binary.getBytes(charset);
         reload(bytes);
-//        ByteBuffer bbuf = ByteBuffer.allocate(bytes.length);
-//        bbuf.put(bytes);
-//        int index = bytes.length - 4 * 4;
-//        bitSetSize = bbuf.getInt(index);
-//        bitset = new BitSet(bitSetSize);
-//        for (int i = 0; i < bitSetSize; i++) {
-//            if ((bytes[i / 8] & (1 << (i % 8))) > 0) {
-//                bitset.set(i);
-//            }
-//        }
-//        expectedNumberOfFilterElements = bbuf.getInt(index + 4);
-//        k = bbuf.getInt(index + 8);
-//        numberOfAddedElements = bbuf.getInt(index + 12);
     }
 
     public int getDumpSize() {
@@ -149,6 +136,10 @@ public class BloomFilter implements Serializable {
     }
 
     public void reload(byte[] bytes) {
+        this.bitset = null;
+        this.bitSetSize = 0;
+        this.expectedNumberOfFilterElements = 0;
+        this.k = 0;
         ByteBuffer bbuf = ByteBuffer.allocate(bytes.length);
         bbuf.put(bytes);
         int index = bytes.length - 4 * 4;

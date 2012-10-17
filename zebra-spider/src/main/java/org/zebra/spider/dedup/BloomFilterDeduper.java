@@ -5,12 +5,13 @@ import java.io.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zebra.common.UrlInfo;
 import org.zebra.common.AtomicCounter;
 
 public class BloomFilterDeduper implements Deduper {
-    private static final Logger logger = Logger.getLogger(BloomFilterDeduper.class);
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     // on test, when size is 1250000 bits, the 53000th record confict
     public final static int DEFAULT_RATE = 1250000 / 50000;
@@ -108,6 +109,8 @@ public class BloomFilterDeduper implements Deduper {
             dos.writeBytes(this.bloomFilter.toBinary());
             fos.flush();
             fos.close();
+            logger.info("[CHECKPOINT DUMP] count=" + storeNum + ", size=" + this.size
+                    + ", dumpSize=" + this.bloomFilter.getDumpSize());
             result = true;
         } catch (FileNotFoundException ex) {
             logger.warn("failed to write file. cause:" + ex.getMessage());
@@ -128,14 +131,15 @@ public class BloomFilterDeduper implements Deduper {
             FileInputStream fis = new FileInputStream(fileName);
             DataInput dis = new DataInputStream(fis);
             long counter = dis.readLong();
-            this.size = dis.readInt();
             this.storeCounter.set(counter);
+            this.size = dis.readInt();
             int dumpSize = dis.readInt();
             byte[] binary = new byte[dumpSize];
             dis.readFully(binary);
             this.bloomFilter.reload(binary);
-//            this.bloomFilter.read(dis);
             fis.close();
+            logger.info("[CHECKPOINT LOAD] count=" + counter + ", size=" + this.size
+                    + ", dumpSize=" + dumpSize);
             return true;
         } catch (FileNotFoundException ex) {
             logger.warn("failed to read file. cause:" + ex.getMessage());
