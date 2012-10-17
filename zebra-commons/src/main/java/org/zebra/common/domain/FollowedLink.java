@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = false)
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Table(name="zb_followlink")
 public class FollowedLink {
     @Transient
     private static final long serialVersionUID = 3294254512031773014L;

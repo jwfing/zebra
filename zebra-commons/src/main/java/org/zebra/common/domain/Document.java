@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.*;
 
 @Entity
-@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = false)
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Table(name="zb_document")
 public class Document {
     private static int MAX_URL_LEN = 256;
     private static int MAX_TITLE_LEN = 256;

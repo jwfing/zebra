@@ -8,4 +8,6 @@ public class Constants {
     public static final String PATH_DEDUP_CHECKPOINT = "deduper.checkpoint";
     public static final String PATH_DEDUP_CHECKPOINT_BAK = "deduper.checkpoint.backup";
     public static final String PATH_DEDUP_CHECKPOINT_TMP = "deduper.checkpoint.tmp";
+    public static final String META_ENDPOINT_URL = "metaservice.endpoint";
+    public static final String META_ENDPOINT_URLENCODING = "metaservice.endpoint.urlencoding";
 }

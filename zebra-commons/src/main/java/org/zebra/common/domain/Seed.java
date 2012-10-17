@@ -2,6 +2,7 @@ package org.zebra.common.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +11,8 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.*;
 
 @Entity
-@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = false)
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Table(name="zb_seed")
 public class Seed {
     @Transient
     private static final long serialVersionUID = 3294254521331773014L;

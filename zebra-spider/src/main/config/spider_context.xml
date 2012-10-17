@@ -71,6 +71,9 @@
 	    class="org.zebra.common.flow.plugin.SeedPeriodModifier" init-method="initialize" destroy-method="destroy">
 	    <property name="seedDao" ref="seedDAO" />
 	</bean>
+    <bean id="newlinkTriger" name="newlinkTriger"
+        class="org.zebra.spider.plugin.NewLinkTriger" init-method="initialize" destroy-method="destroy">
+    </bean>
 
 	<bean id="listChain" name="listChain"
 		  class="org.zebra.common.flow.ProcessorChain">
@@ -82,6 +85,7 @@
               <ref bean="deduperClient"/>
               <ref bean="outlinkWriter"/>
               <ref bean="seedPeriodModifier"/>
+              <ref bean="newlinkTriger"/>
           </list>
           </property>
 	</bean>
