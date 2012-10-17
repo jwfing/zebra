@@ -54,20 +54,21 @@ public class SeedPeriodModifier implements Processor {
         long now = System.currentTimeMillis() / 1000;
         long newPeriod = 0;
         long nextFetch = 0;
+        long oldPeriod = seed.getUpdatePeriod();
         List<UrlInfo> outlinks = (List<UrlInfo>) context
                 .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
         if (null == outlinks || outlinks.size() < 1) {
-            newPeriod = seed.getUpdatePeriod() * 2;
+            newPeriod = oldPeriod * 2;
             if (newPeriod > MAX_PERIOD) {
                 newPeriod = MAX_PERIOD;
             }
         } else {
-            newPeriod = seed.getUpdatePeriod() / 2;
+            newPeriod = oldPeriod / 2;
             if (newPeriod < MIN_PERIOD) {
                 newPeriod = MIN_PERIOD;
             }
         }
-        nextFetch = seed.getNextFetch() + newPeriod;
+        nextFetch = seed.getNextFetch() + newPeriod - oldPeriod;
         if (nextFetch < now) {
             nextFetch = now + MIN_PERIOD;
         }

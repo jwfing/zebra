@@ -35,6 +35,11 @@
           <artifactId>httpcore</artifactId>
           <version>4.1.1</version>
       </dependency>
+      <dependency>
+          <groupId>rome</groupId>
+          <artifactId>rome</artifactId>
+          <version>1.0</version>
+      </dependency>
  
      <!--
       <dependency>

@@ -41,7 +41,7 @@ public class DeduperClient implements Processor {
                     }
                     tmpFile = new File(TMP_CHECKPOINT);
                     tmpFile.renameTo(curFile);
-                    logger.info("successfully generated a checkpoint for HashDeduper");
+                    logger.info("successfully generated a checkpoint for " + deduper.getClass().getName());
                 }
                 try {
                     sleep(this.intervalMinutes * 60000);

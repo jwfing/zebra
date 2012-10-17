@@ -7,10 +7,10 @@ public class Configuration {
     public static final String PATH_FETCHER_SHOW404 = "http.fetcher.show404page";
     public static final String PATH_FETCHER_IGNOREBINARY = "http.fetcher.ignoreBinary";
     public static final String PATH_FETCHER_USERAGENT = "http.fetcher.userAgent";
-    public static final String PATH_FETCHER_ENABLEHTTPS = "http.fetcher.enableHTTPS";
     public static final String PATH_FETCHER_SOCKET_TIMEOUT = "http.fetcher.socketTimeout";
     public static final String PATH_FETCHER_CONNECTION_TIMEOUT = "http.fetcher.connectionTimeout";
     public static final String PATH_FETCHER_MAXCONN_PERHOST = "http.fetcher.maxConnectionPerHost";
+    public static final String PATH_FETCHER_TOTAL_CONN = "http.fetcher.totalConnection";
     public static final String PATH_FETCHER_MAXDOWNLOAD_SIZE = "http.fetcher.maxDownloadSize";
 
 	private static Properties prop = new Properties();

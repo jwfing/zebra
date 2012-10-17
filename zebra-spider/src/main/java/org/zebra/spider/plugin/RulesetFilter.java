@@ -38,6 +38,11 @@ public class RulesetFilter implements Processor {
         if (null != outlinks && outlinks.size() > 0) {
             List<UrlInfo> reallinks = new ArrayList<UrlInfo>();
             for (UrlInfo item : outlinks) {
+                String linkUrl = item.getUrl().toLowerCase();
+                if (linkUrl.endsWith(".gif") || linkUrl.endsWith(".jpg") || linkUrl.endsWith(".png")
+                        || linkUrl.endsWith(".bmp") || linkUrl.endsWith(".jpeg")) {
+                    continue;
+                }
                 String itemHost = UrlUtil.getHostFromUrl(item.getUrl());
                 if (docHost.equalsIgnoreCase(itemHost)) {
                     reallinks.add(item);

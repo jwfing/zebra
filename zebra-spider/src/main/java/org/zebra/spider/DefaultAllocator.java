@@ -28,6 +28,12 @@ public class DefaultAllocator implements Allocator {
             this.intervalMinutes = intervalMinutes;
         }
 
+        private long calcNextFetch(long now, long fetch, long period) {
+            if (fetch + period > now) {
+                return fetch + period;
+            }
+            return now + 3600;
+        }
         public void run() {
             boolean ret = false;
             while (isAlive()) {
@@ -48,6 +54,10 @@ public class DefaultAllocator implements Allocator {
                         ret = collection.putSeeds(urls);
                         if (!ret) {
                             logger.warn("failed to add urls to collection. urlsize=" + urls.size());
+                        }
+                        for (Seed seed : urls) {
+                            seed.setNextFetch(calcNextFetch(now, seed.getNextFetch(), seed.getUpdatePeriod()));
+                            seedDao.update(seed);
                         }
                     }
                 } else {

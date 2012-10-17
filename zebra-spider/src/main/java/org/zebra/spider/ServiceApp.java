@@ -3,6 +3,7 @@ package org.zebra.spider;
 import java.util.*;
 
 import org.zebra.common.CrawlDocumentCollection;
+import org.zebra.common.http.HttpClientFetcher;
 import org.zebra.common.metrics.*;
 
 /**
@@ -37,16 +38,5 @@ public class ServiceApp {
         sink.register(docCollection);
         sink.register(loadMonitor);
         sink.start();
-
-        while (true) {
-            try {
-                Thread.sleep(30000);
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-                break;
-            }
-        }
-        sink.stop();
     }
 }

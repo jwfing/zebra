@@ -1,5 +1,6 @@
 package org.zebra.common;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -47,40 +48,37 @@ public class CrawlDocument {
         return this.contentBytes;
     }
 
+    private byte[] readStream(InputStream is) throws IOException {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[16384];
+        int totalRead = 0;
+        try {
+            while ((nRead = is.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+                totalRead += nRead;
+                if (totalRead > HttpClientFetcher.MAX_DOWNLOAD_SIZE) {
+                    return null;
+                }
+            }
+            buffer.flush();
+            return buffer.toByteArray();
+        } finally {
+            is.close();
+        }
+    }
+
     public boolean setContent(InputStream is, int size, boolean isBinary) {
         if (null == is) {
             return false;
         }
         this.isBinary = isBinary;
-        if (size <= 0 || size > HttpClientFetcher.MAX_DOWNLOAD_SIZE) {
-            size = HttpClientFetcher.MAX_DOWNLOAD_SIZE;
-        }
-        boolean result = true;
-        this.contentBytes = new byte[size];
-        for (byte tmpItem : this.contentBytes) {
-            tmpItem = 0;
-        }
         try {
-            int readSize = 0;
-            int tmpSize = 0;
-            while (readSize < size) {
-                tmpSize = is.read(contentBytes, readSize, size - readSize);
-                if (tmpSize <= 0) {
-                    break;
-                }
-                readSize += tmpSize;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            result = false;
-        } finally {
-            try {
-                is.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            this.contentBytes = readStream(is);
+        } catch (IOException ex) {
+            this.contentBytes = null;
         }
-        return result;
+        return this.contentBytes != null;
     }
 
     public UrlInfo getUrlInfo() {

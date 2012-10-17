@@ -3,6 +3,7 @@ package org.zebra.common.http;
 import java.io.*;
 import java.util.*;
 import org.apache.http.Header;
+import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -10,6 +11,8 @@ import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.entity.DeflateDecompressingEntity;
+import org.apache.http.client.entity.GzipDecompressingEntity;
 import org.apache.http.client.methods.HttpGet;
 //import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.conn.params.ConnPerRouteBean;
@@ -20,9 +23,8 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParamBean;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpProtocolParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zebra.common.*;
@@ -30,7 +32,6 @@ import org.zebra.common.utils.*;
 
 public class HttpClientFetcher implements Fetcher {
     protected Logger logger = LoggerFactory.getLogger(getClass().getName());
-    private static ThreadSafeClientConnManager connectionManager = null;
     private static DefaultHttpClient httpclient = null;
     public static final int MAX_DOWNLOAD_SIZE = Configuration.getIntProperty(
             Configuration.PATH_FETCHER_MAXDOWNLOAD_SIZE, 4*1024*1024);
@@ -41,53 +42,45 @@ public class HttpClientFetcher implements Fetcher {
     private static IdleConnectionMonitorThread connectionMonitorThread = null;
 
     static {
-        HttpParams params = new BasicHttpParams();
-        HttpProtocolParamBean paramsBean = new HttpProtocolParamBean(params);
-        paramsBean.setVersion(HttpVersion.HTTP_1_1);
-        paramsBean.setContentCharset(GB2312_CHARSET);
-        paramsBean.setUseExpectContinue(false);
+        java.security.Security.setProperty("networkaddress.cache.ttl", "86400");
 
-        params.setParameter(HTTP_USERAGENT, Configuration.getStringProperty(
-                Configuration.PATH_FETCHER_USERAGENT,
-                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.1 (KHTML, like Gecko) Ubuntu/11.10 Chromium/14.0.835.202 Chrome/14.0.835.202 Safari/535.1"));
-        params.setIntParameter(HTTP_SOCK_TIMEOUT,
-                Configuration.getIntProperty(Configuration.PATH_FETCHER_SOCKET_TIMEOUT, 20000));
-        params.setIntParameter(HTTP_CONN_TIMEOUT,
-                Configuration.getIntProperty(Configuration.PATH_FETCHER_CONNECTION_TIMEOUT, 60000));
-        params.setBooleanParameter(HTTP_HANDLE_REDIRECT, false);
+        Scheme http = new Scheme("http", 80, PlainSocketFactory.getSocketFactory());
+        // always trust
+        Scheme https =
+                new Scheme("https", 443, new SSLSocketFactory(SslContextFactory.getClientContext()));
 
-        ConnPerRouteBean connPerRouteBean = new ConnPerRouteBean();
-        connPerRouteBean.setDefaultMaxPerRoute(Configuration.getIntProperty(
+        SchemeRegistry sr = new SchemeRegistry();
+        sr.register(http);
+        sr.register(https);
+
+        ThreadSafeClientConnManager cm = new ThreadSafeClientConnManager(sr);
+        cm.setMaxTotal(Configuration.getIntProperty(Configuration.PATH_FETCHER_TOTAL_CONN, 512));
+        cm.setDefaultMaxPerRoute(Configuration.getIntProperty(
                 Configuration.PATH_FETCHER_MAXCONN_PERHOST, 100));
-        /*
-         * ConnManagerParams.setMaxConnectionsPerRoute(params,
-         * connPerRouteBean); ConnManagerParams.setMaxTotalConnections(params,
-         * Configuration
-         * .getIntProperty(Configuration.PATH_FETCHER_MAXCONN_TOTAL, 100));
-         */
-        SchemeRegistry schemeRegistry = new SchemeRegistry();
-        schemeRegistry
-                .register(new Scheme(PROTOCOL_HTTP, PlainSocketFactory.getSocketFactory(), 80));
-
-        if (Configuration.getBooleanProperty(Configuration.PATH_FETCHER_ENABLEHTTPS, false)) {
-            schemeRegistry.register(new Scheme(PROTOCOL_HTTPS, SSLSocketFactory.getSocketFactory(),
-                    443));
-        }
-
-        connectionManager = new ThreadSafeClientConnManager(params, schemeRegistry);
-        httpclient = new DefaultHttpClient(connectionManager, params);
+        httpclient = new DefaultHttpClient(cm);
+        
+        HttpConnectionParams.setConnectionTimeout(httpclient.getParams(),
+                Configuration.getIntProperty(Configuration.PATH_FETCHER_CONNECTION_TIMEOUT, 60000));
+        HttpConnectionParams.setSoTimeout(httpclient.getParams(),
+                Configuration.getIntProperty(Configuration.PATH_FETCHER_SOCKET_TIMEOUT, 20000));
+        // disable Nagle's algorithm, in order to decrease network latency and
+        // increase performance
+        HttpConnectionParams.setTcpNoDelay(httpclient.getParams(), true);
+        HttpProtocolParams.setUserAgent(httpclient.getParams(),
+                Configuration.getStringProperty(Configuration.PATH_FETCHER_USERAGENT,
+                        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.1 (KHTML, like Gecko) Ubuntu/11.10 Chromium/14.0.835.202 Chrome/14.0.835.202 Safari/535.1"));
     }
 
     public synchronized static void startConnectionMonitorThread() {
         if (connectionMonitorThread == null) {
-            connectionMonitorThread = new IdleConnectionMonitorThread(connectionManager);
+            connectionMonitorThread = new IdleConnectionMonitorThread(
+                    (ThreadSafeClientConnManager)httpclient.getConnectionManager());
         }
         connectionMonitorThread.start();
     }
 
     public synchronized static void stopConnectionMonitorThread() {
         if (connectionMonitorThread != null) {
-            connectionManager.shutdown();
             connectionMonitorThread.shutdown();
         }
     }
@@ -141,11 +134,32 @@ public class HttpClientFetcher implements Fetcher {
         HttpGet get = new HttpGet(toFetchURL);
         HttpEntity entity = null;
         try {
+            get.addHeader("Accept",
+                    "text/html,text/css,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8");
+            get.addHeader("Accept-Language", "en, zh, zh-CN;q=0.8");
+            get.addHeader("Accept-Charset", "utf-8, utf-16, GBK, *;q=0.1");
+            get.addHeader("Accept-Encoding", "deflate, gzip");
+            get.addHeader("Connection", "Keep-Alive");
+            get.addHeader("Referer", toFetchURL);
             HttpResponse response = httpclient.execute(get);
             entity = response.getEntity();
+            org.apache.http.Header ceheader = entity.getContentEncoding();
+            if (null != ceheader) {
+                for (HeaderElement element : ceheader.getElements()) {
+                    if (element.getName().equalsIgnoreCase("gzip")) {
+                        entity = new GzipDecompressingEntity(response.getEntity());
+                        response.setEntity(entity);
+                        break;
+                    } else if (element.getName().equalsIgnoreCase("deflate")) {
+                        entity = new DeflateDecompressingEntity(response.getEntity());
+                        response.setEntity(entity);
+                        break;
+                    }
+                }
+            }
 
             int statusCode = response.getStatusLine().getStatusCode();
-            if (statusCode != HttpStatus.SC_OK) {
+            if (statusCode >= HttpStatus.SC_MULTIPLE_CHOICES) {
                 if (statusCode != HttpStatus.SC_NOT_FOUND) {
                     if (statusCode == HttpStatus.SC_MOVED_PERMANENTLY
                             || statusCode == HttpStatus.SC_MOVED_TEMPORARILY) {
@@ -176,19 +190,7 @@ public class HttpClientFetcher implements Fetcher {
 
             if (entity != null) {
                 long size = entity.getContentLength();
-                if (size == -1) {
-                    Header length = response.getLastHeader("Content-Length");
-                    if (length == null) {
-                        length = response.getLastHeader("Content-length");
-                    }
-                    if (length != null) {
-                        size = Integer.parseInt(length.getValue());
-                    } else {
-                        size = -1;
-                    }
-                }
                 if (size > MAX_DOWNLOAD_SIZE) {
-                    entity.consumeContent();
                     logger.warn("document is too big. url=" + toFetchURL);
                     return FetchStatus.PageTooBig;
                 }
@@ -206,7 +208,6 @@ public class HttpClientFetcher implements Fetcher {
                         isBinary = true;
                         page.setBinary(true);
                         if (ignoreIfBinary) {
-                            entity.consumeContent();
                             return FetchStatus.PageIsBinary;
                         }
                     }
@@ -215,13 +216,9 @@ public class HttpClientFetcher implements Fetcher {
                 if (page.setContent(entity.getContent(), (int) size, isBinary)) {
                     return FetchStatus.OK;
                 } else {
-                    entity.consumeContent();
                     logger.warn("failed to read document content. url=" + toFetchURL);
                     return FetchStatus.PageLoadError;
                 }
-            } else {
-                logger.warn("failed to parse response entity. url=" + toFetchURL);
-                get.abort();
             }
         } catch (IOException e) {
             logger.error("Fatal transport error: " + e.getMessage() + " while fetching "
@@ -240,12 +237,13 @@ public class HttpClientFetcher implements Fetcher {
         } finally {
             try {
                 if (entity != null) {
-                    entity.consumeContent();
-                } else if (get != null) {
+                    entity.getContent().close();
+                }
+                if (get != null) {
                     get.abort();
                 }
             } catch (Exception e) {
-                logger.warn("encounter exception while consume http entiry. cause:" + e.getMessage());
+                ;
             }
         }
         return FetchStatus.UnknownError;

@@ -25,7 +25,7 @@ JAVA=`which java`
 JARS="$APP_HOME/*:$APP_HOME/dependency/*:"
 CP=$JARS"${APP_HOME}/conf/"
 MAIN_CLASS="org.zebra.spider.ServiceApp"
-JAVA_CONFIG="-Dfile.encoding=UTF-8 ${JVM_HEAP_SIZE} -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dnetworkaddress.cache.ttl=300  -Djava.net.preferIPv4Stack=true  -XX:+UseCompressedOops -Dlog4j.logdir=${LOG_DIR_ROOT} -Dlog4j.configuration=file:${APP_HOME}/conf/log4j.properties -Dcore.properties=spider_context.xml -cp $CP $MAIN_CLASS"
+JAVA_CONFIG="-Dfile.encoding=UTF-8 ${JVM_HEAP_SIZE} -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dnetworkaddress.cache.ttl=300  -Djava.net.preferIPv4Stack=true  -XX:+UseCompressedOops -Dlog4j.logdir=${LOG_DIR_ROOT} -Dlog4j.configuration=file:${APP_HOME}/conf/log4j.properties -cp $CP $MAIN_CLASS"
 
 daemon_args="--name $APP_NAME --user $AS_USER --pidfile $PID_DIR/pid --stdout=$LOG_DIR/output.log --stderr=$LOG_DIR/error.log --chdir $APP_HOME"
 
