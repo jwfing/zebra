@@ -15,17 +15,15 @@ public class BloomFilterDeduper implements Deduper {
 
     // on test, when size is 1250000 bits, the 53000th record confict
     public final static int DEFAULT_RATE = 1250000 / 50000;
-    private int spaceRate = DEFAULT_RATE;
 
     private int size = 0;
-    private int hashNum = 17;
     private AtomicCounter storeCounter = new AtomicCounter();
     private Lock writeLock = new ReentrantLock();
     private BloomFilter bloomFilter = null;
 
-    public BloomFilterDeduper(int size) {
-        this.size = size;
-        this.bloomFilter = new BloomFilter(this.size * this.spaceRate, this.hashNum);
+    public BloomFilterDeduper(int expectedElementSize) {
+        this.size = expectedElementSize;
+        this.bloomFilter = new BloomFilter(expectedElementSize * DEFAULT_RATE, expectedElementSize);
     }
 
     public boolean isFull() {
@@ -35,7 +33,7 @@ public class BloomFilterDeduper implements Deduper {
     public void clear() {
         this.writeLock.lock();
         this.storeCounter.set(0);
-        this.bloomFilter = new BloomFilter(this.size, this.hashNum);;
+        this.bloomFilter = new BloomFilter(this.size * DEFAULT_RATE, this.size);;
         this.writeLock.unlock();
     }
 

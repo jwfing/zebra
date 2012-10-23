@@ -32,9 +32,9 @@ public class PipelineDriver {
             while (isAlive()) {
                 CrawlDocument doc = collection.poll();
                 if (null == doc) {
-                    logger.debug("have no document in pipeline, sleep 5000ms");
+                    logger.debug("have no document in pipeline, sleep 90s");
                     try {
-                        sleep(5000);
+                        sleep(90000);
                     } catch (Exception ex) {
                         logger.warn("failed to sleep 50ms. cause:" + ex.getMessage());
                     }

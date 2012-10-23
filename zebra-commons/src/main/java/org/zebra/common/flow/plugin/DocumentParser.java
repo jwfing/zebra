@@ -45,8 +45,9 @@ public class DocumentParser implements Processor {
         // TODO: we can filter some doc with specificed mime-types
         String content = doc.getContentString();
         if (null == content || content.isEmpty()) {
-            logger.warn("failed to fetch doc, url=" + doc.getUrl());
-            return false;
+            logger.warn("failed to fetch doc[content is empty], url=" + doc.getUrl());
+            doc.setFetchStatus(FetchStatus.PageLoadError);
+            return true;
         }
         Page page = new Page(content, defaultEncoding);
         page.setBaseUrl(doc.getUrl());

@@ -22,6 +22,11 @@
 
   <dependencies>
       <dependency>
+          <groupId>org.perf4j</groupId>
+          <artifactId>perf4j</artifactId>
+          <version>0.9.13</version>
+      </dependency>
+      <dependency>
           <groupId>commons-configuration</groupId>
           <artifactId>commons-configuration</artifactId>
           <version>1.6</version>

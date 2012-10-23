@@ -103,6 +103,7 @@ public class LinkFollower implements Processor {
             logger.warn("exception occurred. cause:{}", ex);
         }
         setOutlinks(doc, context, linkList);
+        context.setVariable(ProcessorUtil.COMMON_PROP_TRUSTRANK, ProcessorUtil.TRUSTRANK_PROP_HIGH);
         return true;
     }
 

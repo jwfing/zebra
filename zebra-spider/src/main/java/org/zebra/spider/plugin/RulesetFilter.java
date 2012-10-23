@@ -32,6 +32,11 @@ public class RulesetFilter implements Processor {
             return true;
         }
 
+        String trustRank = (String)context.getVariable(ProcessorUtil.COMMON_PROP_TRUSTRANK);
+        if (ProcessorUtil.TRUSTRANK_PROP_HIGH.equalsIgnoreCase(trustRank)) {
+            return true;
+        }
+
         String docHost = UrlUtil.getHostFromUrl(doc.getUrl());
         List<UrlInfo> outlinks = (List<UrlInfo>) context
                 .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);

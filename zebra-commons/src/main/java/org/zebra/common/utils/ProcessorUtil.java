@@ -24,6 +24,7 @@ public class ProcessorUtil {
 	public static final String COMMON_PROP_OLDCONTENT = "oldContent";
 	public static final String COMMON_PROP_DISABLEFOLLOW = "disableFollow";
 	public static final String COMMON_PROP_CHANNEL = "channel";
+    public static final String COMMON_PROP_TRUSTRANK = "trustrank";
 
 	public static final String COMMON_PROP_TITLE = "title";
 	public static final String COMMON_PROP_DESCRIPTION = "description";
@@ -34,6 +35,7 @@ public class ProcessorUtil {
 	public static final String COMMON_PROP_CRAWLSOURCE = "crawlsource";
 	public static final String COMMON_PROP_PUBLISHSOURCE = "publishsource";
 	public static final String COMMON_PROP_TAG = "tag";
+    public static final String TRUSTRANK_PROP_HIGH = "high";
 
     public static final String FLAG_VALUE_LIST = "list";
 	public static final String FLAG_VALUE_CONTENT = "content";

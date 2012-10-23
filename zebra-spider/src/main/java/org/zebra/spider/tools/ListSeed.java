@@ -24,7 +24,7 @@ public class ListSeed {
     public int execute(String localFile) {
 		List<UrlInfo> result = new ArrayList<UrlInfo>();
 		int offset = 0;
-		List<Seed> seeds = this.dao.getSeeds(0, offset, 1000);
+		List<Seed> seeds = this.dao.getSeeds(1999999999, offset, 1000);
 		while(null != seeds && seeds.size() > 0) {
 		    offset += 1000;
 		    for (Seed seed : seeds) {

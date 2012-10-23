@@ -73,8 +73,12 @@ public class ImportSeed {
 		    seed.setUpdatePeriod(fetchPeriod);
 		    seed.setTimeCreated(now);
 		    seed.setUrlMd5(StringUtil.computeMD5(url.getUrl()));
-		    this.dao.save(seed);
-		    logger.info("insert seed: " + url.getUrl());
+		    try {
+    		    this.dao.save(seed);
+                logger.info("insert seed: " + url.getUrl());
+		    } catch (Exception ex) {
+		        logger.warn("failed to insert seed: " + url.getUrl() + ", cause: " + ex.getMessage());
+		    }
 		}
 		return 0;
 	}

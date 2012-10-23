@@ -54,8 +54,8 @@ public class FetcherController {
                 urls = this.seedCollection.getSeeds(10);
                 if (null == urls || urls.size() <= 0) {
                     try {
-                        logger.debug("have no url to fetch, sleep 10s");
-                        sleep(10000);
+                        logger.info("have no url to fetch, sleep 120s");
+                        sleep(120000);
                     } catch (Exception ex) {
                         logger.warn("failed to sleep. cause:" + ex.getMessage());
                     }
