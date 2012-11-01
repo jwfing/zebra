@@ -35,6 +35,7 @@ public class ProcessorUtil {
 	public static final String COMMON_PROP_CRAWLSOURCE = "crawlsource";
 	public static final String COMMON_PROP_PUBLISHSOURCE = "publishsource";
 	public static final String COMMON_PROP_TAG = "tag";
+	public static final String COMMON_PROP_STRICT = "strict";
     public static final String TRUSTRANK_PROP_HIGH = "high";
 
     public static final String FLAG_VALUE_LIST = "list";

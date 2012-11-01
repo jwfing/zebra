@@ -63,7 +63,10 @@ public class FetcherController {
                 }
                 for (Seed url : urls) {
                     UrlInfo urlInfo = new UrlInfo(url.getUrl());
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_TAG, url.getTags());
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_STRICT, url.getStrict());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, ProcessorUtil.FLAG_VALUE_LIST);
+                    logger.info("fetch document. url=" + url.getUrl() + " tags=" + url.getTags() + " strict=" + url.getStrict());
                     CrawlDocument doc = this.fetcher.fetchDocument(urlInfo);
                     if (doc.getFetchStatus() != FetchStatus.OK) {
                         logger.warn("failed to fetch document. url=" + url.getUrl() + ", fetchStatus=" + doc.getFetchStatus());

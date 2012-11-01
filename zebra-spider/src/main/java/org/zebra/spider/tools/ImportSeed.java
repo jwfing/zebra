@@ -38,10 +38,10 @@ public class ImportSeed {
 		    	if (line.isEmpty() || line.startsWith("#")) {
 		    		continue;
 		    	}
-		    	String[] sections = line.split("\t");
+		    	String[] sections = line.split("\\s");
 		    	UrlInfo url = new UrlInfo(sections[0]);
 		    	for (int i = 1; i < sections.length; ++i) {
-		    		String temp = sections[i];
+		    		String temp = sections[i].trim();
 		    		String[] kv = temp.split("=");
 		    		if (kv.length != 2) {
 		    			continue;
