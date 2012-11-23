@@ -45,14 +45,14 @@ public class FetcherController {
         }
 
         public void run() {
-            List<Seed> urls = null;
+            List<Seed> seeds = null;
             if (null == this.fetcher || null == this.seedCollection || null == this.docCollection) {
                 logger.warn("fetcher / seed collection / doc collection is null");
                 return;
             }
             while (isAlive()) {
-                urls = this.seedCollection.getSeeds(10);
-                if (null == urls || urls.size() <= 0) {
+                seeds = this.seedCollection.getSeeds(10);
+                if (null == seeds || seeds.size() <= 0) {
                     try {
                         logger.info("have no url to fetch, sleep 120s");
                         sleep(120000);
@@ -61,15 +61,15 @@ public class FetcherController {
                     }
                     continue;
                 }
-                for (Seed url : urls) {
-                    UrlInfo urlInfo = new UrlInfo(url.getUrl());
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_TAG, url.getTags());
-                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_STRICT, url.getStrict());
+                for (Seed seed : seeds) {
+                    UrlInfo urlInfo = new UrlInfo(seed.getUrl());
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_TAG, seed.getTags());
+                    urlInfo.addFeature(ProcessorUtil.COMMON_PROP_STRICT, seed.getStrict());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, ProcessorUtil.FLAG_VALUE_LIST);
-                    logger.info("fetch document. url=" + url.getUrl() + " tags=" + url.getTags() + " strict=" + url.getStrict());
+                    logger.info("fetch document. url=" + seed.getUrl() + " tags=" + seed.getTags() + " strict=" + seed.getStrict());
                     CrawlDocument doc = this.fetcher.fetchDocument(urlInfo);
                     if (doc.getFetchStatus() != FetchStatus.OK) {
-                        logger.warn("failed to fetch document. url=" + url.getUrl() + ", fetchStatus=" + doc.getFetchStatus());
+                        logger.warn("failed to fetch document. url=" + seed.getUrl() + ", fetchStatus=" + doc.getFetchStatus());
                     }
                     this.docCollection.offer(doc);
                 }

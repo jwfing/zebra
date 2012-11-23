@@ -42,6 +42,7 @@ public class OutlinkWriter implements Processor {
             return true;
         }
         String source = doc.getUrl();
+        String tag = doc.getFeature(ProcessorUtil.COMMON_PROP_TAG);
         long now = System.currentTimeMillis() / 1000;
         List<UrlInfo> outlinks = (List<UrlInfo>) context
                 .getVariable(ProcessorUtil.COMMON_PROP_OUTLINKS);
@@ -51,6 +52,7 @@ public class OutlinkWriter implements Processor {
                 followedLink.setSeedUrl(source);
                 followedLink.setUrl(url.getUrl());
                 followedLink.setUrlMd5(StringUtil.computeMD5(url.getUrl()));
+                followedLink.setTags(tag);
                 followedLink.setTimeCreated(now);
                 try {
                     this.linkDao.save(followedLink);
