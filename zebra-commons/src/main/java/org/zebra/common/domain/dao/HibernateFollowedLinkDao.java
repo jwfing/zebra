@@ -25,6 +25,11 @@ public class HibernateFollowedLinkDao extends HibernateDaoSupport implements Fol
     }
 
     @Override
+    public void update(FollowedLink link) {
+        getHibernateTemplate().merge(link);
+    }
+
+    @Override
     public List<FollowedLink> getLinks(long beginTimeCreated,
             long endTimeCreated, int offset, int limit) {
         List<FollowedLink> result = null;

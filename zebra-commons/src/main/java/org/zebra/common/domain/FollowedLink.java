@@ -30,6 +30,10 @@ public class FollowedLink {
     @Column
     private Long timeCreated;
 
+    public long getId() {
+        return this.id;
+    }
+
     public String getUrlMd5() {
         return urlMd5;
     }
