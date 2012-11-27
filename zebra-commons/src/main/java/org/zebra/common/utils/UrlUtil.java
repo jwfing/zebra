@@ -1,9 +1,13 @@
 package org.zebra.common.utils;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.restlet.data.Reference;
 
 public final class UrlUtil {
     private static final String kindvprov = "aero|asia|biz|cat|com|co|coop|edu|gov|info|int|jobs|mil|mobi" +
@@ -79,11 +83,7 @@ public final class UrlUtil {
     }
 
     public static String getCanonicalURL(String url) {
-        URL canonicalURL = getCanonicalURL(url, null);
-        if (canonicalURL != null) {
-            return canonicalURL.toExternalForm();
-        }
-        return null;
+        return canonalizeUrl(url);
     }
 
     public static URL genURL(String url) {
@@ -94,6 +94,31 @@ public final class UrlUtil {
             return null;
         }
         return parentUrl;
+    }
+
+    public static String canonalizeUrl(final String taintedURL) {
+        try {
+            URI uri = new URI(taintedURL);
+            Reference ref = new Reference(uri);
+            ref.normalize();
+            String scheme = ref.getScheme();
+            String useInfo = ref.getUserInfo();
+            String host = ref.getHostDomain();
+            int port = ref.getHostPort();
+            String path = ref.getPath();
+            if (null == path || path.isEmpty()) {
+                path = "/";
+            }
+            String query = ref.getQuery();
+            String fragment = ref.getFragment();
+            if (scheme == null || host == null || path == null
+                    || host.isEmpty() || scheme.isEmpty()) {
+                return null;
+            }
+            return Reference.toString(scheme, host, path, query, fragment);
+        } catch (URISyntaxException e) {
+        }
+        return null;
     }
 
     public static URL getCanonicalURL(String href, String context) {
@@ -119,6 +144,15 @@ public final class UrlUtil {
             return canonicalURL;
         } catch (MalformedURLException ex) {
             return null;
+        }
+    }
+    public static void main(String[] args) {
+        String[] urls = {"http://www.gxdxw.cn/最新搞笑短信/youmobubaoshou.html",
+        "http://www.gxdxw.cn/经典搞笑短信/xiyoujizhongshenxianyaoguaijieshaozijidewangming.html",
+        "http://www.gxdxw.cn/经典搞笑短信/kuaileshenghuodongdedeshitiaozheli.html"};
+        for (String url : urls) {
+            System.out.println(UrlUtil.genURL(url).toString());
+            System.out.println(canonalizeUrl(url));
         }
     }
 }

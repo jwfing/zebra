@@ -92,7 +92,7 @@ public class LinkFollower implements Processor {
                         contentString.getBytes())));
                 List<SyndEntry> entries = feed.getEntries();
                 for (SyndEntry entry : entries) {
-                    UrlInfo urlInfo = new UrlInfo(entry.getLink());
+                    UrlInfo urlInfo = new UrlInfo(UrlUtil.canonalizeUrl(entry.getLink()));
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_SEEDURL, doc.getUrl());
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_FLAG, "page");
                     urlInfo.addFeature(ProcessorUtil.COMMON_PROP_CHANNEL, channel);
