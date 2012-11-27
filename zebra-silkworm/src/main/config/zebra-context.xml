@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <context:annotation-config />
+
+    <context:component-scan
+        base-package="com.avos.backend.apps,
+                                          com.avos.backend.logic" />
+
+    <!-- Thread pool shared by all beans for general executor services -->
+    <task:executor id="executor" pool-size="${executor.poolsize:5-50}"
+        queue-capacity="2147483647" />
+
+    <!-- Task scheduler shared by all beans for general scheduling services -->
+    <task:scheduler id="scheduler" />
+
+    <!-- Allow for @Scheduled annotations on component methods -->
+    <task:annotation-driven />
+
+    <bean id="corePropertyPlaceholder"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <bean class="org.springframework.jndi.JndiObjectFactoryBean">
+                <property name="jndiName" value="coreProperties" />
+                <property name="resourceRef" value="true" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- just use this for redis store,still point it to core.properties -->
+    <bean id="fetcherPropertyPlaceholder"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:zebra.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- ============ DataSource, Pool, EntityManagerFactory, etc. ========== -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/zebra?characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="bWy4$*5K"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxWait" value="5000"/>
+        <property name="minIdle" value="3"/>
+        <property name="maxIdle" value="10"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testOnBorrow" value="true"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>org.zebra.common.domain.Document</value>
+                <value>org.zebra.common.domain.Seed</value>
+                <value>org.zebra.common.domain.FollowedLink</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="documentDAO" class="org.zebra.common.domain.dao.HibernateDocumentDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- CAMEL/JMS -->
+    <bean id="kestrelConfiguration" class="org.apache.camel.component.kestrel.KestrelConfiguration">
+        <property name="addresses" value="localhost:22133" />
+        <property name="waitTimeMs" value="100" />
+        <property name="concurrentConsumers" value="${kestrel.concurrentConsumers:1}" />
+    </bean>
+
+    <bean id="kestrel" class="org.apache.camel.component.kestrel.KestrelComponent">
+        <property name="configuration" ref="kestrelConfiguration" />
+    </bean>
+
+    <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
+        <!-- ProducerTemplate bean -->
+        <template id="producerTemplate" />
+
+        <endpoint id="parse" uri="kestrel://${kestrel.address}/parseLink" />
+
+        <route>
+            <from ref="parse" />
+            <bean ref="documentParser" method="onNewLink" />
+        </route>
+    </camelContext>
+
+    <!-- CORE BACKEND BEANS -->
+    <bean id="documentParser" name="documentParser"
+          class="org.zebra.common.flow.plugin.DocumentParser" init-method="initialize" destroy-method="destroy">
+    </bean>
+    <bean id="listChain" name="listChain"
+          class="org.zebra.common.flow.ProcessorChain">
+          <property name="processors">
+          <list>
+              <ref bean="documentParser"/>
+              <ref bean="linkFollower"/>
+              <ref bean="filter"/>
+              <ref bean="deduperClient"/>
+              <ref bean="outlinkWriter"/>
+              <ref bean="seedPeriodModifier"/>
+              <ref bean="newlinkTriger"/>
+          </list>
+          </property>
+    </bean>
+    <bean id="documentParser" class=""
+        autowire="byName" />
+</beans>
