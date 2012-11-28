@@ -301,41 +301,9 @@ public class NewsLinkFollower implements Processor {
             url = UrlUtil.getAbsoluteUrl(parentUrl, tag.getAttribute("src"));
         }
 
-        url = UrlUtil.getCanonicalURL(url);// normalizeUrl(url, origEncoding);
+        url = UrlUtil.getCanonicalURL(url);
         UrlInfo urlInfo = new UrlInfo(url);
 
         return urlInfo;
     }
-
-    /*
-     * protected String normalizeUrl(String url, String origEncoding) { if (url
-     * == null) { return url; } url = url.replaceAll("\\s+", "+"); url =
-     * urlEnc(url, origEncoding); url = urlSpecialDecode(url);
-     * 
-     * // add by fengjw if (url.endsWith(PREFIX_5C22)) { url = url.substring(0,
-     * url.length() - PREFIX_5C22_LEN); } if (url.endsWith(SUFFIX_MINUS)) { url
-     * = url.substring(0, url.length() - SUFFIX_MINUS.length()); } if
-     * (url.endsWith(SUFFIX_PLUS)) { url = url.substring(0, url.length() -
-     * SUFFIX_PLUS.length()); }
-     * 
-     * int invadIndex = url.indexOf(HTTP_PROCOTOL); if (invadIndex > 0) { url =
-     * url.substring(invadIndex); } // end end by fengjw invadIndex =
-     * url.indexOf("#"); if (invadIndex > 0) { url = url.substring(0,
-     * invadIndex); }
-     * 
-     * if (this.rmSidFromUrl) { url = removeSidFromUrl(url); } return url; }
-     * 
-     * private String urlSpecialDecode(String url) { if ((url == null) ||
-     * (url.length() == 0)) { return url; } url = url.replaceAll("&amp;", "&");
-     * return url; }
-     * 
-     * private String urlEnc(String u, String origEncoding) { StringBuffer r =
-     * new StringBuffer(); try { for (int i = 0; i < u.length(); ++i) { int n =
-     * u.codePointAt(i); char c = u.charAt(i);
-     * 
-     * if ((n >= 123) || (n <= 32) || (n == 92) || ((n >= 91) && (n <= 94)) ||
-     * (n == 96) || (n == 34)) r.append(URLEncoder.encode(String.valueOf(c),
-     * origEncoding)); else r.append(c); } } catch (Exception e) {
-     * this.logger.warn("", e); } return r.toString(); }
-     */
 }

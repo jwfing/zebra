@@ -1,4 +1,4 @@
-package org.zebra.silkworm.plugin.dbstorage;
+package org.zebra.silkworm.dao;
 
 import java.util.*;
 

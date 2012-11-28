@@ -120,7 +120,7 @@ public final class UrlUtil {
         }
         return null;
     }
-
+/*
     public static URL getCanonicalURL(String href, String context) {
         if (href.contains("#")) {
             href = href.substring(0, href.indexOf("#"));
@@ -146,6 +146,7 @@ public final class UrlUtil {
             return null;
         }
     }
+*/
     public static void main(String[] args) {
         String[] urls = {"http://www.gxdxw.cn/最新搞笑短信/youmobubaoshou.html",
         "http://www.gxdxw.cn/经典搞笑短信/xiyoujizhongshenxianyaoguaijieshaozijidewangming.html",

@@ -26,6 +26,7 @@ public class TimeExtractor {
 	private Pattern pattern2 = null;
 	private Pattern pattern3 = null;
 	private PatternMatcher pm = new Perl5Matcher();
+
 	public TimeExtractor() {
 		try {
 		    pattern1 = orocom.compile(TIME_REGEX_PATTERN1);

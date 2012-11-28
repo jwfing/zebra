@@ -5,6 +5,9 @@ import org.zebra.common.*;
 import org.zebra.common.flow.*;
 import org.zebra.common.utils.ProcessorUtil;
 
+/*
+ * unimplement
+ */
 public class ContentBasedSignature implements Processor {
     private final Logger logger = Logger.getLogger(ContentBasedSignature.class);
 

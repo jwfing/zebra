@@ -19,7 +19,7 @@ import org.zebra.silkworm.plugin.ConfigurableTemplate.RuleItem;
 public class SubNodeExtractor {
 	private final Logger logger = Logger.getLogger(SubNodeExtractor.class);
 	private List<RuleItem> rules;
-	
+
 	public List<RuleItem> getRules() {
 		return rules;
 	}

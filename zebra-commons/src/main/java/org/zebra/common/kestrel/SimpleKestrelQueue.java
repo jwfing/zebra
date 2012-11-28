@@ -3,7 +3,6 @@ package org.zebra.common.kestrel;
 import net.spy.memcached.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -11,15 +10,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.List;
 
-/**
- * User: evk
- * Date: 6/3/11
- * Time: 2:40 PM
- * The "KestrelQueue" class is complicated and optimized for very high read/write volumes.
- * It actively prefetches messages to get good throughput.
- * This class is simpler and designed for one-at-a-time reads.
- */
-@Component
 public class SimpleKestrelQueue {
     Logger logger = LoggerFactory.getLogger(getClass().getName());
 

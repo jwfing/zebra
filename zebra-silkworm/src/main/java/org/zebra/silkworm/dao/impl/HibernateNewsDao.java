@@ -1,4 +1,4 @@
-package org.zebra.silkworm.plugin.dbstorage;
+package org.zebra.silkworm.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.zebra.silkworm.dao.News;
+import org.zebra.silkworm.dao.NewsDao;
 
 public class HibernateNewsDao extends HibernateDaoSupport  implements NewsDao {
 	private static final Log LOG = LogFactory.getLog(HibernateNewsDao.class);

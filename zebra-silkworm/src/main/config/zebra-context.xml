@@ -71,6 +71,7 @@
             <list>
                 <value>org.zebra.common.domain.Document</value>
                 <value>org.zebra.common.domain.Seed</value>
+                <value>org.zebra.silkworm.dao.News</value>
                 <value>org.zebra.common.domain.FollowedLink</value>
             </list>
         </property>
@@ -101,11 +102,11 @@
         <!-- ProducerTemplate bean -->
         <template id="producerTemplate" />
 
-        <endpoint id="parse" uri="kestrel://${kestrel.address}/parseLink" />
+        <endpoint id="analyzer" uri="kestrel://${kestrel.address}/newLinks" />
 
         <route>
-            <from ref="parse" />
-            <bean ref="documentParser" method="onNewLink" />
+            <from ref="analyzer" />
+            <bean ref="linkAnalyzer" method="onNewLink" />
         </route>
     </camelContext>
 
@@ -118,15 +119,12 @@
           <property name="processors">
           <list>
               <ref bean="documentParser"/>
-              <ref bean="linkFollower"/>
-              <ref bean="filter"/>
-              <ref bean="deduperClient"/>
-              <ref bean="outlinkWriter"/>
-              <ref bean="seedPeriodModifier"/>
-              <ref bean="newlinkTriger"/>
           </list>
           </property>
     </bean>
-    <bean id="documentParser" class=""
-        autowire="byName" />
+    <bean id="linkAnalyzer" class="org.zebra.silkworm.DocumentAnalyzer"
+        autowire="byName" >
+        <property name="processorChain" ref="listChain" />
+        <property name="documentDao" ref="documentDAO" />
+    </bean>
 </beans>

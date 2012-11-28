@@ -19,7 +19,7 @@ initd_dir = 'deploy'
 def clean_local():
     local("rm -rf %s" % (tmp_dir))
 
-def prepare_spider_local():
+def prepare_spider_local(prod):
     clean_local();
 
     local("cd %s && mvn clean compile package install -Dmaven.test.skip=true" % (zebra_commons_src_dir))
@@ -29,7 +29,7 @@ def prepare_spider_local():
     local("mkdir -p %s/zebra/spider/checkpoint" % (tmp_dir))
 
     local("cp -v %s/target/*.jar %s/zebra/spider" % (zebra_spider_src_dir, tmp_dir))
-    local("cp -v %s/src/main/config/* %s/zebra/spider/conf" % (zebra_spider_src_dir, tmp_dir))
+    local("cp -v %s/src/main/config/%s/* %s/zebra/spider/conf" % (zebra_spider_src_dir, prod, tmp_dir))
     local("cp -rv %s/target/dependency %s/zebra/spider" % (zebra_spider_src_dir, tmp_dir))
 
 def prepare_silkworm_local():
@@ -41,7 +41,7 @@ def prepare_silkworm_local():
     local("mkdir -p %s/zebra/silkworm/conf" % (tmp_dir))
 
     local("cp -v %s/target/*.jar %s/zebra/silkworm" % (zebra_silkworm_src_dir, tmp_dir))
-    local("cp -v %s/src/main/config/* %s/zebra/silkworm/conf" % (zebra_silkworm_src_dir, tmp_dir))
+    local("cp -rv %s/src/main/config/* %s/zebra/silkworm/conf" % (zebra_silkworm_src_dir, tmp_dir))
     local("cp -rv %s/target/dependency %s/zebra/silkworm" % (zebra_silkworm_src_dir, tmp_dir))
 
 def prepare_remote_dirs():
@@ -85,9 +85,9 @@ def deploy_silkworm():
     put('deploy/zebra-silkworm', '/etc/init.d/zebra-silkworm', use_sudo=True, mode=0544)
     clean_local()
 
-def deploy_spider():
+def deploy_spider(prod='monkey'):
     clean_local();
-    prepare_spider_local();
+    prepare_spider_local(prod);
 
     prepare_remote_dirs()
     rsync_project(local_dir=tmp_dir + "/zebra/spider/",

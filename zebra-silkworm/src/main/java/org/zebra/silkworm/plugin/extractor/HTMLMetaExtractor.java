@@ -30,23 +30,18 @@ public class HTMLMetaExtractor {
             logger.debug("the node list is null");
             return result;
         }
-        String title = null;//this.titleExtractor.extract(doc, context);
-//        if (null != title) {
-//            title = title.trim();
-//        }
-        if (null == title || title.isEmpty()) {
-            NodeFilter fileter = new TagNameFilter(ProcessorUtil.COMMON_PROP_TITLE);
-            NodeList candidates = nodeList.extractAllNodesThatMatch(fileter, true);
-            if (candidates != null && candidates.size() > 0) {
-                title = candidates.elementAt(0).getFirstChild().getText();
-            } else {
-                title = "";
-            }
+        String title = null;
+        NodeFilter fileter = new TagNameFilter(ProcessorUtil.COMMON_PROP_TITLE);
+        NodeList candidates = nodeList.extractAllNodesThatMatch(fileter, true);
+        if (candidates != null && candidates.size() > 0) {
+            title = candidates.elementAt(0).getFirstChild().getText();
+        } else {
+            title = "";
         }
         result.put(ProcessorUtil.COMMON_PROP_TITLE, title);
-        NodeFilter fileter = new AndFilter(new TagNameFilter("meta"), new HasAttributeFilter("name",
+        fileter = new AndFilter(new TagNameFilter("meta"), new HasAttributeFilter("name",
                 "description"));
-        NodeList candidates = nodeList.extractAllNodesThatMatch(fileter, true);
+        candidates = nodeList.extractAllNodesThatMatch(fileter, true);
         if (candidates != null && candidates.size() > 0) {
             Node node = candidates.elementAt(0);
             if (node instanceof TagNode) {
