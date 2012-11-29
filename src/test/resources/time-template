@@ -1,8 +1,0 @@
-<rules-template>
- <site>
-  <regurl>finance.sina.com.cn</regurl>
-  <tag>span id=pub_date</tag>
-  <beginPattern></beginPattern>
-  <endPattern></endPattern>
- </site>
-</rules-template>
