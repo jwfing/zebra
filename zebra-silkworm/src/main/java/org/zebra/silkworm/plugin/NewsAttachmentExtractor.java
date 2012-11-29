@@ -14,12 +14,16 @@ import org.htmlparser.util.NodeList;
 import org.zebra.common.*;
 import org.zebra.common.flow.*;
 import org.zebra.common.utils.*;
+import org.zebra.common.http.Fetcher;
 
 public class NewsAttachmentExtractor implements Processor{
 	private final Logger logger = Logger.getLogger(NewsAttachmentExtractor.class);
 
 	private static final String defaultEncoding = "GB2312";
 	private static final String goodUrlType = "(pdf|doc)";
+
+	private Fetcher fetcher = null;
+	private String downloadDir = "";
 
 	public boolean initialize() {
 		logger.info("successful initialized " + NewsAttachmentExtractor.class.getName());
@@ -35,7 +39,23 @@ public class NewsAttachmentExtractor implements Processor{
 		return this.getClass().getName();
 	}
 
-	private NodeList extractLinkNodes(NodeList nodeList) {
+	public Fetcher getFetcher() {
+        return fetcher;
+    }
+
+    public void setFetcher(Fetcher fetcher) {
+        this.fetcher = fetcher;
+    }
+
+    public String getDownloadDir() {
+        return downloadDir;
+    }
+
+    public void setDownloadDir(String downloadDir) {
+        this.downloadDir = downloadDir;
+    }
+
+    private NodeList extractLinkNodes(NodeList nodeList) {
 		NodeFilter[] linkFilters = {new TagNameFilter("A")};
 		OrFilter orFilter = new OrFilter();
 		orFilter.setPredicates(linkFilters);

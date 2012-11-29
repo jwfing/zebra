@@ -87,9 +87,8 @@ public class ConfigurableTemplate {
 	}
 
 	public boolean load(String path) {
-		File file = new File(path);
 		try {
-			InputStream input = new FileInputStream(file);
+			InputStream input = this.getClass().getClassLoader().getResourceAsStream(path);
 			List<RuleItem> result = new ArrayList<RuleItem>();
 			this.digester.push(result);
 			this.digester.parse(input);

@@ -1,4 +1,4 @@
-package org.zebra.silkworm.plugin;
+package org.zebra.common.flow.plugin;
 
 import org.apache.log4j.Logger;
 import org.zebra.common.*;

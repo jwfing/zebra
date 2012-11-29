@@ -27,7 +27,7 @@ import org.zebra.silkworm.plugin.ConfigurableTemplate;
 public class MainTextExtractor extends SubNodeExtractor{
 	public MainTextExtractor() {
 		ConfigurableTemplate template = new ConfigurableTemplate();
-		boolean result = template.load("./conf/maintext-template");
+		boolean result = template.load("templates/maintext-template");
 		setRules(template.getRules());
 		if (!result) {
 			System.out.println("warning: maintext-template is invalid!!");

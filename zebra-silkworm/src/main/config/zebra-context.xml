@@ -5,52 +5,8 @@
     xmlns:camel="http://camel.apache.org/schema/spring"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/task
-       http://www.springframework.org/schema/task/spring-task.xsd
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd
        http://camel.apache.org/schema/spring
        http://camel.apache.org/schema/spring/camel-spring.xsd">
-
-    <context:annotation-config />
-
-    <context:component-scan
-        base-package="com.avos.backend.apps,
-                                          com.avos.backend.logic" />
-
-    <!-- Thread pool shared by all beans for general executor services -->
-    <task:executor id="executor" pool-size="${executor.poolsize:5-50}"
-        queue-capacity="2147483647" />
-
-    <!-- Task scheduler shared by all beans for general scheduling services -->
-    <task:scheduler id="scheduler" />
-
-    <!-- Allow for @Scheduled annotations on component methods -->
-    <task:annotation-driven />
-
-    <bean id="corePropertyPlaceholder"
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <bean class="org.springframework.jndi.JndiObjectFactoryBean">
-                <property name="jndiName" value="coreProperties" />
-                <property name="resourceRef" value="true" />
-            </bean>
-        </property>
-    </bean>
-
-    <!-- just use this for redis store,still point it to core.properties -->
-    <bean id="fetcherPropertyPlaceholder"
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="ignoreResourceNotFound" value="true" />
-        <property name="ignoreUnresolvablePlaceholders" value="true" />
-        <property name="locations">
-            <list>
-                <value>classpath:zebra.properties</value>
-            </list>
-        </property>
-    </bean>
 
     <!-- ============ DataSource, Pool, EntityManagerFactory, etc. ========== -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -71,8 +27,8 @@
             <list>
                 <value>org.zebra.common.domain.Document</value>
                 <value>org.zebra.common.domain.Seed</value>
-                <value>org.zebra.silkworm.dao.News</value>
                 <value>org.zebra.common.domain.FollowedLink</value>
+                <value>org.zebra.silkworm.domain.News</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -83,15 +39,18 @@
             </props>
         </property>
     </bean>
-    <bean id="documentDAO" class="org.zebra.common.domain.dao.HibernateDocumentDao">
+    <bean id="documentDao" class="org.zebra.common.domain.dao.HibernateDocumentDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
+    <bean id="newsDao" class="org.zebra.silkworm.dao.impl.HibernateNewsDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <!-- CAMEL/JMS -->
     <bean id="kestrelConfiguration" class="org.apache.camel.component.kestrel.KestrelConfiguration">
         <property name="addresses" value="localhost:22133" />
         <property name="waitTimeMs" value="100" />
-        <property name="concurrentConsumers" value="${kestrel.concurrentConsumers:1}" />
+        <property name="concurrentConsumers" value="1" />
     </bean>
 
     <bean id="kestrel" class="org.apache.camel.component.kestrel.KestrelComponent">
@@ -102,7 +61,7 @@
         <!-- ProducerTemplate bean -->
         <template id="producerTemplate" />
 
-        <endpoint id="analyzer" uri="kestrel://${kestrel.address}/newLinks" />
+        <endpoint id="analyzer" uri="kestrel://localhost:22133/newLinks" />
 
         <route>
             <from ref="analyzer" />
@@ -114,17 +73,31 @@
     <bean id="documentParser" name="documentParser"
           class="org.zebra.common.flow.plugin.DocumentParser" init-method="initialize" destroy-method="destroy">
     </bean>
+    <bean id="newsElementsExtractor" name="newElementsExtractor"
+         class="org.zebra.silkworm.plugin.NewsElementsExtractor" init-method="initialize" destroy-method="destroy">
+    </bean>
+    <bean id="attachmentExtractor" name="attachmentExtractor"
+        class="org.zebra.silkworm.plugin.NewsAttachmentExtractor" init-method="initialize" destroy-method="destroy">
+        <property name="downloadDir" value="/tmp/zebra-silkworm" />
+    </bean>
+    <bean id="pageSaver" name="pageSaver"
+        class="org.zebra.silkworm.plugin.NewsPageSaver" init-method="initialize" destroy-method="destroy">
+        <property name="newsDao" ref="newsDao" />
+    </bean>
     <bean id="listChain" name="listChain"
           class="org.zebra.common.flow.ProcessorChain">
           <property name="processors">
           <list>
-              <ref bean="documentParser"/>
+              <ref bean="documentParser" />
+              <ref bean="newsElementsExtractor" />
+              <ref bean="attachmentExtractor" />
+              <ref bean="pageSaver" />
           </list>
           </property>
     </bean>
     <bean id="linkAnalyzer" class="org.zebra.silkworm.DocumentAnalyzer"
         autowire="byName" >
         <property name="processorChain" ref="listChain" />
-        <property name="documentDao" ref="documentDAO" />
+        <property name="documentDao" ref="documentDao" />
     </bean>
 </beans>

@@ -1,24 +1,24 @@
-package org.zebra.silkworm.dao;
-
-import java.util.*;
+package org.zebra.silkworm.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.*;
 
 @Entity
 @org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Table(name="zb_news")
 public class News {
     @Transient
     private static final long serialVersionUID = 3294254521331173014L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @Column(nullable = false, length = 256, updatable = false, unique = true)
     private String url;
 
@@ -31,7 +31,7 @@ public class News {
     private String mainText = "";
     private String attachmentPath = "";
     private boolean dupFlag = false;
-    private long signature = 0l;
+    private Long signature = 0l;
 
     public long getId() {
         return id;
