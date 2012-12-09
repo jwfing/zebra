@@ -7,24 +7,23 @@ import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefiniti
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-//import org.springframework.mock.jndi.SimpleNamingContextBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 public class ServiceApp {
     public static void runBean(Class clazz, String... contextsNeeded) {
         Logger logger = LoggerFactory.getLogger(ServiceApp.class.getName());
 
         logger.info("Initializing the ApplicationContext");
-//        try {
-//            SimpleNamingContextBuilder builder = SimpleNamingContextBuilder
-//                    .emptyActivatedContextBuilder();
-//            builder.bind("java:comp/env/coreProperties", System.getProperty(
-//                    "coreProperties", "classpath:core.properties"));
-//            if (resourceBinder != null) {
-//                resourceBinder.bindResources(builder);
-//            }
-//        } catch (javax.naming.NamingException e) {
-//            throw new RuntimeException("Unable to set up mock JNDI context", e);
-//        }
+        try {
+            SimpleNamingContextBuilder builder = SimpleNamingContextBuilder
+                    .emptyActivatedContextBuilder();
+            builder.bind("java:comp/env/coreProperties", System.getProperty(
+                    "coreProperties", "classpath:zebra.properties"));
+        } catch (javax.naming.NamingException e) {
+            throw new RuntimeException("Unable to set up mock JNDI context", e);
+        }
 
         // Create the application context
         GenericApplicationContext appContext = new GenericApplicationContext();
@@ -50,26 +49,13 @@ public class ServiceApp {
         appContext.refresh();
         logger.info("Done initializing ApplicationContext");
 
-        boolean runSleepLoop = true;
-        if (clazz != null) {
-            Object bean = null;//appContext.getBean(clazz);
-            if (bean != null && bean instanceof Runnable) {
-                logger.debug("Invoking " + clazz.getName() + ".run()");
-                ((Runnable) bean).run();
-                logger.debug(clazz.getName() + ".run() returned");
-                runSleepLoop = false;
-            }
-        }
-
-        if (runSleepLoop) {
-            logger.debug("Entering a sleep loop to let the context(s) run...");
-            while (true) {
-                try {
-                    Thread.sleep(30000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    break;
-                }
+        logger.debug("Entering a sleep loop to let the context(s) run...");
+        while (true) {
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                break;
             }
         }
 

@@ -5,6 +5,12 @@
     xmlns:camel="http://camel.apache.org/schema/spring"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
        http://camel.apache.org/schema/spring
        http://camel.apache.org/schema/spring/camel-spring.xsd">
 
@@ -96,7 +102,7 @@
           </property>
     </bean>
     <bean id="linkAnalyzer" class="org.zebra.silkworm.DocumentAnalyzer"
-        autowire="byName" >
+        autowire="byName" init-method="initialize" destroy-method="destroy">
         <property name="processorChain" ref="listChain" />
         <property name="documentDao" ref="documentDao" />
     </bean>
