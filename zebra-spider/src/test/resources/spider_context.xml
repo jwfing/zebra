@@ -27,7 +27,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
@@ -71,8 +71,19 @@
 	    class="org.zebra.common.flow.plugin.SeedPeriodModifier" init-method="initialize" destroy-method="destroy">
 	    <property name="seedDao" ref="seedDAO" />
 	</bean>
+    <bean id="newlinkTriger" name="newlinkTriger"
+        class="org.zebra.spider.plugin.KestrelLinkTriger" init-method="initialize" destroy-method="destroy">
+	    <property name="outgoingQueue" value="newLinks" />
+	    <property name="kestrelQueue" ref="kestrelQueue" />
+    </bean>
 
-	<bean id="listChain" name="listChain"
+    <bean id="kestrelQueue" name="kestrelQueue" class="org.zebra.common.kestrel.SimpleKestrelQueue"
+        init-method="init" destroy-method="destroy">
+        <property name="kestrelAddress" value="localhost:22133" />
+        <property name="incomingQueue" value="newLinks" />
+    </bean>
+
+    <bean id="listChain" name="listChain"
 		  class="org.zebra.common.flow.ProcessorChain">
           <property name="processors">
           <list>
@@ -81,6 +92,8 @@
               <ref bean="filter"/>
               <ref bean="deduperClient"/>
               <ref bean="outlinkWriter"/>
+              <ref bean="seedPeriodModifier"/>
+              <ref bean="newlinkTriger"/>
           </list>
           </property>
 	</bean>

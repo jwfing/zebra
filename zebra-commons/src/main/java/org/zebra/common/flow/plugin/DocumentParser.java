@@ -49,7 +49,11 @@ public class DocumentParser implements Processor {
             doc.setFetchStatus(FetchStatus.PageLoadError);
             return true;
         }
-        Page page = new Page(content, defaultEncoding);
+        String encoding = doc.getFeature(ProcessorUtil.COMMON_PROP_ENCODING);
+        if (null == encoding || encoding.isEmpty()) {
+            encoding = "gb2312";
+        }
+        Page page = new Page(content, encoding);
         page.setBaseUrl(doc.getUrl());
 
         Lexer lexer = new Lexer(page);

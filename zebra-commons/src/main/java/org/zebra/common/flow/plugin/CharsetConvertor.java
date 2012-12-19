@@ -41,6 +41,7 @@ public class CharsetConvertor implements Processor {
             return true;
         }
 
+        
         String encoding = doc.getFeature(ProcessorUtil.COMMON_PROP_CONTENTTYPE);
         if (null != encoding) {
             if (encoding.indexOf("charset=") >= 0) { 
@@ -49,17 +50,15 @@ public class CharsetConvertor implements Processor {
                 encoding = null;
             }
         }
+        if (null == encoding || encoding.isEmpty()) {
+            encoding = "gb2312";
+        }
         try {
             // convert to UTF-8
             byte[] contentBytes = doc.getContentBytes();
-            String old = null;
-            if (encoding != null) {
-                old = new String(contentBytes, encoding);
-            } else {
-                old = new String(contentBytes);
-            }
-            String result = new String(old.getBytes(), this.targetCharset);
-            doc.setContentString(result);
+            String old = new String(contentBytes, encoding);
+            String result = new String(old.getBytes(), targetCharset);
+            doc.setContentString(old);
             doc.addFeature(ProcessorUtil.COMMON_PROP_ENCODING, encoding);
             context.setVariable(ProcessorUtil.COMMON_PROP_OLDCONTENT, contentBytes);
             logger.info("convert doc(" + doc.getUrl() + ") content from " + encoding + " to "

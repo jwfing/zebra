@@ -9,6 +9,8 @@ import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.List;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class SimpleKestrelQueue {
     Logger logger = LoggerFactory.getLogger(getClass().getName());
@@ -16,7 +18,7 @@ public class SimpleKestrelQueue {
     private String kestrelAddress = "";
     private String incomingQueue = "";
     private MemcachedClient client = null;
-    private int pollTimeoutMS = 100;
+    private int pollTimeoutMS = 1000;
 
     public String getKestrelAddress() {
         return kestrelAddress;
@@ -58,7 +60,8 @@ public class SimpleKestrelQueue {
             ConnectionFactory memcachedConnectionFactory = builder.build();
             List<InetSocketAddress> addrs = AddrUtil.getAddresses(kestrelAddress);
             client = new MemcachedClient(memcachedConnectionFactory, addrs);
-        } catch(IOException e) {
+            Thread.sleep(1000);
+        } catch(Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -66,9 +69,10 @@ public class SimpleKestrelQueue {
     @PreDestroy
     public void destroy() {
         if (null != client) {
-            client.shutdown();
+            client.shutdown(3, TimeUnit.SECONDS);
         }
     }
+
     public String dequeue() {
         if (null == client) {
             throw new IllegalStateException("Cannot peform dequeue() operation without specifying kestrel address.");
@@ -84,6 +88,13 @@ public class SimpleKestrelQueue {
             logger.warn("Not initialized SimpleKestrelQueue with correct parameters.");
             return;
         }
-        client.set(outgoingQueue, 0, msg);
+        try {
+            Future<Boolean> ret = client.set(outgoingQueue, 864000, msg);
+            if (ret.get().booleanValue() == true) {
+                logger.info("put message: " + msg + " into queue: " + outgoingQueue);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

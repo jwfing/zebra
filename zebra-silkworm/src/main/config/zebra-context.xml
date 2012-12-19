@@ -56,7 +56,7 @@
     <bean id="kestrelConfiguration" class="org.apache.camel.component.kestrel.KestrelConfiguration">
         <property name="addresses" value="localhost:22133" />
         <property name="waitTimeMs" value="100" />
-        <property name="concurrentConsumers" value="1" />
+        <property name="concurrentConsumers" value="3" />
     </bean>
 
     <bean id="kestrel" class="org.apache.camel.component.kestrel.KestrelComponent">
