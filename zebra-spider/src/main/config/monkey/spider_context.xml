@@ -7,7 +7,7 @@
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 	    <property name="url" value="jdbc:mysql://localhost:3306/zebra?characterEncoding=UTF-8"/>
 	    <property name="username" value="root"/>
-	    <property name="password" value="bWy4$*5K"/>
+	    <property name="password" value="yourpassword"/>
 	    <property name="maxActive" value="20"/>
 	    <property name="maxWait" value="5000"/>
 	    <property name="minIdle" value="3"/>

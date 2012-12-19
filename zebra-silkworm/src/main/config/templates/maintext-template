@@ -1,12 +1,12 @@
 <rules-template>
  <site>
-  <regurl>finance.sina.com.cn</regurl>
+  <regurl>.*finance\.sina\.com\.cn</regurl>
   <tag>div id=artibody</tag>
   <beginPattern></beginPattern>
   <endPattern></endPattern>
  </site>
  <site>
-  <regurl>finance.163.com</regurl>
+  <regurl>.*finance\.163\.com</regurl>
   <tag>div id=endText</tag>
   <beginPattern></beginPattern>
   <endPattern></endPattern>

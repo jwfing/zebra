@@ -1,5 +1,6 @@
 package org.zebra.silkworm.plugin;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.zebra.common.*;
 import org.zebra.common.flow.*;
@@ -32,10 +33,10 @@ public class NewsElementsExtractor implements Processor {
             logger.warn("invalid parameter.");
             return false;
         }
-        String title = this.titleExtractor.extract(doc, context);
-        String time = this.timeExtractor.extract(doc, context);
-        String source = this.sourceExtractor.extract(doc, context);
-        String mainText = this.mainTextExtractor.extract(doc, context);
+        String title = StringEscapeUtils.unescapeHtml(this.titleExtractor.extract(doc, context));
+        String time = StringEscapeUtils.unescapeHtml(this.timeExtractor.extract(doc, context));
+        String source = StringEscapeUtils.unescapeHtml(this.sourceExtractor.extract(doc, context));
+        String mainText = StringEscapeUtils.unescapeHtml(this.mainTextExtractor.extract(doc, context));
         context.setVariable(ProcessorUtil.COMMON_PROP_ARTICLETITLE, title);
         context.setVariable(ProcessorUtil.COMMON_PROP_PUBLISHTIME, time);
         context.setVariable(ProcessorUtil.COMMON_PROP_MAINBODY, mainText);

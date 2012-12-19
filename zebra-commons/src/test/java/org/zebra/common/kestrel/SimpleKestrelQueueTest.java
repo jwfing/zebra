@@ -23,9 +23,7 @@ public class SimpleKestrelQueueTest extends TestCase {
         } catch (Exception ex) {
             ;
         }
-        String[] urls = {"http://vip.stock.finance.sina.com.cn/q/go.php/vReport_Show/kind/company/rptid/1648986/index.phtml",
-                "http://finance.sina.com.cn/stock/quanshang/qsyj/20121219/033214046052.shtml",
-                "http://finance.sina.com.cn/china/20121219/012414044470.shtml"};
+        String[] urls = {"http://finance.sina.com.cn/stock/gujiayidong/20121219/131714052786.shtml"};
 
         for (String url : urls) {
             this.queue.enqueue("newLinks", url);

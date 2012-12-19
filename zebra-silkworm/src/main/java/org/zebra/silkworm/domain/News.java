@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 @Table(name="zb_news")
 public class News {
     @Transient
-    private static final long serialVersionUID = 3294254521331173014L;
+    private static final long serialVersionUID = 329423521331173014L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,15 +22,25 @@ public class News {
     @Column(nullable = false, length = 256, updatable = false, unique = true)
     private String url;
 
+    @Column
     private String downloadTime = "";
+    @Column
     private String publishTime = "";
+    @Column
     private String title = "";
+    @Column
     private String downloadSource = "";
+    @Column
     private String publisher = "";
+    @Column
     private String tags = "";
+    @Column
     private String mainText = "";
+    @Column
     private String attachmentPath = "";
-    private boolean dupFlag = false;
+    @Column
+    private int dupFlag = 0;
+    @Column
     private Long signature = 0l;
 
     public long getId() {
@@ -113,11 +123,11 @@ public class News {
         this.attachmentPath = attachmentPath;
     }
 
-    public boolean isDupFlag() {
+    public int getDupFlag() {
         return dupFlag;
     }
 
-    public void setDupFlag(boolean dupFlag) {
+    public void setDupFlag(int dupFlag) {
         this.dupFlag = dupFlag;
     }
 

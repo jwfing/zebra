@@ -18,8 +18,8 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/zebra?characterEncoding=UTF-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="bWy4$*5K"/>
+        <property name="username" value="yourname"/>
+        <property name="password" value="yourpasword"/>
         <property name="maxActive" value="20"/>
         <property name="maxWait" value="5000"/>
         <property name="minIdle" value="3"/>
@@ -31,16 +31,13 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>org.zebra.common.domain.Document</value>
-                <value>org.zebra.common.domain.Seed</value>
-                <value>org.zebra.common.domain.FollowedLink</value>
                 <value>org.zebra.silkworm.domain.News</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
@@ -51,7 +48,7 @@
     <bean id="newsDao" class="org.zebra.silkworm.dao.impl.HibernateNewsDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    
+
     <!-- CAMEL/JMS -->
     <bean id="kestrelConfiguration" class="org.apache.camel.component.kestrel.KestrelConfiguration">
         <property name="addresses" value="localhost:22133" />
@@ -68,7 +65,6 @@
         <template id="producerTemplate" />
 
         <endpoint id="analyzer" uri="kestrel://localhost:22133/newLinks" />
-
         <route>
             <from ref="analyzer" />
             <bean ref="linkAnalyzer" method="onNewLink" />
